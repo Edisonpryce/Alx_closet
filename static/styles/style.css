@@ -1,3 +1,347 @@
-body {
-    background-color: lemonchiffon;
+/* Import fonts from Google */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+/* Basic reset and setting up fonts */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    scroll-behavior: smooth; /* Smooth scrolling for the page */
+    height: 100%;
+    overflow-y: scroll; /* Always show scrollbar */
+}
+
+/* Set a different font for headers and paragraphs */
+p, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Navbar styles to fix it at the top */
+.navbar {
+    background-color: #fffdfa; /* Light background color */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: fixed; /* Stick to the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Make sure it's on top of other stuff */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tiny shadow */
+    overflow: hidden;
+}
+
+/* Container to organize navbar items */
+.navbar-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* Navbar icon styling */
+.icon {
+    font-size: 20px;
+    margin: 0 15px; /* Space between icons */
+    cursor: pointer;
+    color: #000;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Make icons change color and zoom a bit on hover */
+.icon:hover, .icon:active {
+    color: #855a5b; /* Maroon color on hover */
+    transform: scale(1.2); /* Slight zoom */
+}
+
+/* Styling the search box */
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #855a5b;
+    border-radius: 40px;
+    padding: 5px 15px;
+    transition: transform 0.3s ease; /* Smooth hover effect */
+    flex-grow: 1; /* Let it expand */
+    max-width: 400px; /* But not too much */
+}
+
+/* Input field inside the search box */
+.search-box input {
+    border: none;
+    outline: none;
+    width: 100%; /* Take up all the space */
+    font-size: 16px;
+    background-color: #fffdfa; /* Match navbar background */
+    color: #000;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Change text color when input is focused */
+.search-box input:focus {
+    color: #855a5b;
+}
+
+/* Slight zoom when hovering over the search box */
+.search-box:hover {
+    transform: scale(1.05);
+}
+
+/* Color the search icon in the box */
+.search-icon {
+    color: #855a5b;
+    margin-left: 10px;
+}
+
+/* Style the scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Thumb of the scrollbar */
+::-webkit-scrollbar-thumb {
+    background-color: #855a5b;
+    border-radius: 10px;
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+}
+
+/* Styling for the banner section */
+.banner {
+    position: relative;
+    margin-top: 60px; /* Push it down so it doesn’t cover the navbar */
+    text-align: left;
+    color: #333; /* Text color */
+}
+
+/* Banner image should stretch across the screen */
+.banner img {
+    width: 100%;
+    height: auto;
+}
+
+/* Position the banner content */
+.banner-content {
+    position: absolute;
+    top: 71%; /* Push content down in the banner */
+    left: 90px;
+    transform: translateY(-50%);
+    color: #000; /* Text color */
+}
+
+/* Banner heading styles */
+.banner-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    margin: 0 0 10px;
+    color: #000;
+}
+
+/* Paragraph in the banner */
+.banner-content p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 0 20px;
+    color: #000;
+}
+
+/* Button styles in the banner */
+.banner-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px; /* Space between text and buttons */
+}
+
+/* Basic button styles */
+.banner-buttons .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #f2e6e7;
+    color: #855a5b;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Change button background on hover */
+.banner-buttons .btn:hover {
+    background-color: #855a5b;
+    color: #fff;
+    transform: scale(1.05); /* Slight zoom */
+}
+
+/* Different background colors for the buttons */
+.shop-now {
+    background-color: #f2e6e7;
+}
+
+.explore-more {
+    background-color: #855a5b;
+    color: #fff;
+}
+
+/* Category section styling */
+.womens-category, .mens-category, .sports-category {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+/* Category headings */
+.womens-category h2, .mens-category h2, .sports-category h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* Container to center content and limit width */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Layout for the product grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+    gap: 30px; /* Space between products */
+    justify-items: stretch;
+}
+
+/* Styling for individual product cards */
+.product {
+    background-color: #fff;
+    border-radius: 15px; /* Rounded corners */
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    text-align: center;
+    transition: transform 0.3s ease;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Make product images stretch full width */
+.product img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Styling for product titles */
+.product h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Styling for product descriptions */
+.product p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 15px;
+    padding: 0 10px;
+}
+
+/* Container for the price slider */
+.product .currency-slider {
+    margin: 20px auto;
+    width: 80%;
+    position: relative;
+}
+
+/* Slider track styling */
+.slider-container {
+    position: relative;
+    height: 20px;
+    background-color: #f0f1f2;
+    border-radius: 10px;
+}
+
+/* Actual slider input */
+.slider {
+    --webkit-appearance: none;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    z-index: 1; /* Keep slider on top */
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Styling for the slider thumb (the draggable part) */
+.slider-thumb {
+    position: absolute;
+    left: 0;
+    top: -12px;
+    width: 40px;
+    height: 40px;
+    background-color: #6fb96f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    transition: left 0.2s ease;
+    z-index: 2; /* Keep thumb on top */
+}
+
+/* Currency icon inside the slider thumb */
+.slider-thumb .currency-icon {
+    font-size: 18px;
+    color: #fff;
+}
+
+/* Hide the default thumb styling */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 0;
+    height: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* 3D gloss effect on the slider thumb */
+.currency-slider .slider-thumb {
+    background: linear-gradient(to top, #64b164, #8dd38d);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Make the currency icon smaller inside the thumb */
+.slider-thumb .currency-icon {
+    font-size: 16px;
+    color: #fff;
+}
+
+/* Slight zoom on product hover */
+.product:hover {
+    transform: scale(1.07);
 }

@@ -3,16 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This would be the home page of the application">
-    <meta name="author" content="Edison asare">
-    <link rel="shortcut icon" href="../static/images/" type="image/x-icon">
-    <title>ALX closet</title>
+    <title>ALXCLOSET Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/styles/style.css">
-    <script src="../static/js/main.js"></script>
 </head>
 <body>
-    <header>
-        <h1>This page is under production</h1>
-    </header>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <div class="icon">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+            </div>
+            <div class="navbar-right">
+                <i class="fas fa-user icon"></i>
+                <i class="fas fa-shopping-cart icon"></i>
+                <i class="fas fa-star icon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Section -->
+    <div class="banner">
+        <img src="../static/images/banner1.png" alt="ALX Closet Banner">
+        <div class="banner-content">
+            <p>Lorem Ipsum ist ein Platzhaltertext, der in der Druck- und Satzindustrie verwendet wird. Seit dem 16. Jahrhundert d</p>
+            <div class="banner-buttons">
+                <button class="btn shop-now">shop now</button>
+                <button class="btn explore-more">explore more</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Women's Category Section -->
+    <div class="container">
+        <div class="womens-category">
+            <h2>Womens Category</h2>
+            <div class="products-grid">
+                <div class="product">
+                    <img src="../static/images/pinkhoodie.png" alt="Smiley Hoodie">
+                    <h3>Smiley Hoodie</h3>
+                    <p>Comfortable pink hoodie with a playful smiley face, perfect for outings.</p>
+                    <div class="currency-slider">
+                        <div class="slider-container">
+                            <div class="slider-thumb">
+                                <span class="currency-icon">$</span>
+                            </div>
+                            <input type="range" min="5" max="1000" value="0" class="slider">
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="../static/images/pufferjacket.png" alt="Puffer Jacket">
+                    <h3>Puffer Jacket</h3>
+                    <p>Stylish and warm puffer jacket to keep you cozy during the winter season.</p>
+                    <div class="currency-slider">
+                        <div class="slider-container">
+                            <div class="slider-thumb">
+                                <span class="currency-icon">$</span>
+                            </div>
+                            <input type="range" min="5" max="1000" value="0" class="slider">
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="../static/images/greypolo.png" alt="Polo Tshirt">
+                    <h3>Polo Tshirt</h3>
+                    <p>Classic grey polo shirt that combines comfort with timeless style.</p>
+                    <div class="currency-slider">
+                        <div class="slider-container">
+                            <div class="slider-thumb">
+                                <span class="currency-icon">$</span>
+                            </div>
+                            <input type="range" min="5" max="1000" value="0" class="slider">
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="../static/images/pullneck.png" alt="Long Sleeved">
+                    <h3>Long Sleeved</h3>
+                    <p>Soft and warm long-sleeved top, ideal for layering on cooler days.</p>
+                    <div class="currency-slider">
+                        <div class="slider-container">
+                            <div class="slider-thumb">
+                                <span class="currency-icon">$</span>
+                            </div>
+                            <input type="range" min="5" max="1000" value="0" class="slider">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Men's Category Section -->
+    <div class="container">
+        <div class="mens-category">
+            <h2>Mens Category</h2>
+            <div class="products-grid">
+                <div class="product">
+                    <img src="../static/images/greenhoodieguy.png" alt="Green Hoodie">
+                    <h3>Green Hoodie</h3>
+                    <p>Sporty green hoodie that offers both style and comfort for everyday wear.</p>
+                    <div class="currency-slider">
+                        <div class="slider-container">
+                            <div class="slider-thumb">
+                                <span class="currency-icon">$</span>
+                            </div>
+                            <input type="range" min="5" max="1000" value="0" class="slider">
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="../static/images/orangeteeguy.png" alt="Orange Tee">
+                    <h3>Orange Tee</h3>
+                    <p>Bright orange t-shirt that adds a pop of color to your casual wardrobe.</p>
+                    <div class="currency-slider">
+                        <div class="slider-container">
+                            <div class="slider-thumb">
+                                <span class="currency-icon">$</span>
+                            </div>
+                            <input type="range" min="5" max="1000" value="0" class="slider">
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="../static/images/whiteguy.png" alt="Polo Tshirt">
+                    <h3>Polo Tshirt</h3>
+                    <p>Crisp white polo shirt that pairs well with both casual and formal attire.</p>
+                    <div class="currency-slider">
+                        <div class="slider-container">
+                            <div class="slider-thumb">
+                                <span class="currency-icon">$</span>
+                            </div>
+                            <input type="range" min="5" max="1000" value="0" class="slider">
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="../static/images/dreadlockguy.png" alt="Long Sleeved">
+                    <h3>Long Sleeved</h3>
+                    <p>Classic long-sleeved shirt designed for comfort and style in any season.</p>
+                    <div class="currency-slider">
+                        <div class="slider-container">
+                            <div class="slider-thumb">
+                                <span class="currency-icon">$</span>
+                            </div>
+                            <input type="range" min="5" max="1000" value="0" class="slider">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sports Category Section -->
+    <div class="container">
+        <div class="sports-category">
+            <h2>Sports Category</h2>
+            <div class="products-grid">
+                <div class="product">
+                    <img src="../static/images/pinkhoodie.png" alt="Sporty Hoodie">
+                    <h3>Sporty Hoodie</h3>
+                    <p>Lightweight hoodie perfect for warming up before or after workouts.</p>
+                    <div class="currency-slider">
+                        <div class="slider-container">
+                            <div class="slider-thumb">
+                                <span class="currency-icon">$</span>
+                            </div>
+                            <input type="range" min="5" max="1000" value="0" class="slider">
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="../static/images/pufferjacket.png" alt="Athletic Jacket">
+                    <h3>Athletic Jacket</h3>
+                    <p>Durable jacket that provides warmth without restricting your movements.</p>
+                    <div class="currency-slider">
+                        <div class="slider-container">
+                            <div class="slider-thumb">
+                                <span class="currency-icon">$</span>
+                            </div>
+                            <input type="range" min="5" max="1000" value="0" class="slider">
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="../static/images/greypolo.png" alt="Sport Polo">
+                    <h3>Sport Polo</h3>
+                    <p>Breathable polo shirt designed to keep you cool during your workout.</p>
+                    <div class="currency-slider">
+                        <div class="slider-container">
+                            <div class="slider-thumb">
+                                <span class="currency-icon">$</span>
+                            </div>
+                            <input type="range" min="5" max="1000" value="0" class="slider">
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="../static/images/pullneck.png" alt="Training Pullover">
+                    <h3>Training Pullover</h3>
+                    <p>Stretchable pullover perfect for layering during training sessions.</p>
+                    <div class="currency-slider">
+                        <div class="slider-container">
+                            <div class="slider-thumb">
+                                <span class="currency-icon">$</span>
+                            </div>
+                            <input type="range" min="5" max="1000" value="0" class="slider">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/js/script.js"></script>
 </body>
 </html>
