@@ -1,11 +1,12 @@
 #!/usr/bin/python3 
 from flask import Flask
-
-app = Flask(__name__)
-app.config['SECRETE_KEY'] = 'uekhkaekjnkjankjenkjnekakejkjaekjakje@@1333'
 from models.admin import admin
 from models.auth import auth
 from models.pages import pages
+
+
+app = Flask(__name__)
+app.config['SECRETE_KEY'] = 'uekhkaekjnkjankjenkjnekakejkjaekjakje@@1333'
 
 
 app.register_blueprint(pages, url_prefix='/')
