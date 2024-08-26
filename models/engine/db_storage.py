@@ -19,10 +19,18 @@ class DBStorage:
         self.__engine = create_engine(f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PWD}@{MYSQL_HOST}/{MYSQL_DB}')
 
     def all(self, cls, id=None):
-        pass
+        if cls:
+            self.__session.query(classes[cls]).all()
+
+
+    def save(self):
+        """ This commits changes to the database"""
+        self.__session.commit()
+
 
     def reload(self):
-        """reloads data from the database"""
+        """Creation and reloads of data into the database"""
+
         Base.metadata.create_all(self.__engine)
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
