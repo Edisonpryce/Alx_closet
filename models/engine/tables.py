@@ -2,9 +2,9 @@
 """
 from uuid import uuid4
 from hashlib import md5
-from sqlalchemy import Column, String, Integer, Float, DateTime, ForeignKey, create_engine
+from sqlalchemy import Column, String, Integer, Float, DateTime, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy.orm import relationship
 from datetime import datetime
 
 
@@ -80,17 +80,3 @@ class Order(Base):
 
     def __str__(self):
         return f"<Order {self.id}>"
-
-
-MYSQL_USER = 'edison'
-MYSQL_PWD = 'password'
-MYSQL_HOST = 'localhost'
-MYSQL_DB= 'alxcloset'
-engine = create_engine(f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PWD}@{MYSQL_HOST}/{MYSQL_DB}')
-Base.metadata.create_all(engine)
-
-Session = sessionmaker(bind=engine)
-session = Session()
-
-session.commit()
-
