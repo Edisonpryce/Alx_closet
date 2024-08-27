@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
-from models.db_storage import DBStorage
+from forms import LoginForm, SignUpForm, PasswordChangeForm
+from models.db_storage import DBStorage as db
 
 
 
@@ -10,7 +11,9 @@ auth = Blueprint('auth', __name__)
 def authentication():
     return render_template("login.html")
 
-@auth.route('/sign-up', strict_slashes=False)
+
+@auth.route('/sign-up', method=['GET', 'POST'], strict_slashes=False)
 def sign_up():
-    return render_template("sign_up.html")
+    form = SignUpForm()
+    return render_template("sign_up.html", form=form)
 
