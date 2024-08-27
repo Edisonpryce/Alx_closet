@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-from tables import Base
-from tables import User, Product, Cart, Order
+from .tables import Base
+from .tables import User, Product, Cart, Order
 
 classes = {"User": User, "Product": Product, "Cart": Cart, "Order": Order}
 
@@ -48,8 +48,3 @@ class DBStorage:
         session = scoped_session(Session)
         self.__session = session
 
-db = DBStorage()
-db.reload()
-customer4 = User(id='44', username="Mr asare", email="Yoooooo@ndnnd ", password="ddjdjjdjd", telephone=10088282)
-db.new(customer4)
-db.save()

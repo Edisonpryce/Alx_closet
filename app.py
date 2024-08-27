@@ -1,14 +1,19 @@
 #!/usr/bin/python3 
 from flask import Flask
 from models.admin import admin
-from models.auth import auth
 from models.pages import page as pg
+from models.auth import auth
+from models.db_storage import DBStorage
 import secrets
 
 
 app = Flask(__name__)
 foo = secrets.token_urlsafe(16)
 app.secret_key = foo
+
+db = DBStorage()
+db.reload()
+app.config['SESSION'] = db._DBStorage__session
 
 app.register_blueprint(pg, url_prefix='/')
 app.register_blueprint(admin, url_prefix='/') # localhost:5000/admin
