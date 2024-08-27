@@ -4,9 +4,6 @@ from models.admin import admin
 from models.auth import auth
 from models.pages import page as pg
 import secrets
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 
 app = Flask(__name__)

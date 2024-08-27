@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-from models.tables import Base
-from models.tables import User, Product, Cart, Order
+from tables import Base
+from tables import User, Product, Cart, Order
 
 classes = {"User": User, "Product": Product, "Cart": Cart, "Order": Order}
 
@@ -26,8 +26,15 @@ class DBStorage:
         else:
             users_dict = [dict(user) for user in self.__session.query(User).all()]
         return users_dict
-    
-    
+
+    def close(self):
+        """call remove() method on the private session attribute"""
+        self.__session.remove()
+
+    def new(self, obj):
+        """add the object to the current database session"""
+        self.__session.add(obj)
+
     def save(self):
         """ This commits changes to the database"""
         self.__session.commit()
@@ -37,6 +44,12 @@ class DBStorage:
         """Creation and reloads of data into the database"""
 
         Base.metadata.create_all(self.__engine)
-        sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        Session = scoped_session(sess_factory)
-        self.__session = Session
+        Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        session = scoped_session(Session)
+        self.__session = session
+
+db = DBStorage()
+db.reload()
+customer4 = User(id='44', username="Mr asare", email="Yoooooo@ndnnd ", password="ddjdjjdjd", telephone=10088282)
+db.new(customer4)
+db.save()
