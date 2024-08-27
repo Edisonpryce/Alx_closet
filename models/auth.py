@@ -1,9 +1,11 @@
 from flask import Blueprint, render_template, redirect, flash, url_for
 from models.forms import LoginForm, SignUpForm, PasswordChangeForm
-from models.db_storage import DBStorage as db
+from models.db_storage import DBStorage
+from models.tables import User
 
-
-
+db = DBStorage()
+customer = User(username='Edisonasare', email="edison@gmail.com", password='1221oos',telephone='0553650094')
+db.save()
 auth = Blueprint('auth', __name__)
 
 @auth.route('/', strict_slashes=False)
@@ -12,23 +14,7 @@ def authentication():
     return render_template("login.html")
 
 
-@auth.route('/sign-up', strict_slashes=False)
-def sign_up():
-    form = SignUpForm()
-    if form.validate_on_submit():
-        # Process the form data
-        username = form.username.data
-        email = form.email.data
-        phone = form.phone.data
-        password = form.password.data
-        
-        # Here you would typically save the user to your database
-        # For example:
-        # new_user = User(username=username, email=email, phone=phone)
-        # new_user.set_password(password)
-        # db.session.add(new_user)
-        # db.session.commit()
-        
-        flash('Account created successfully!', 'success')
-        return redirect(url_for('login')) 
-    return render_template("sign_up.html", form=form)
+@auth.route('/signup', methods=['GET', 'POST'], strict_slashes=False)
+def signup(): 
+    
+    return render_template("signup.html")

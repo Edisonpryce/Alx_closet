@@ -7,17 +7,16 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
-
 Base = declarative_base()
 
 class User(Base):
     __tablename__ = 'users'
 
     # Columns for User infor intake 
-    id = Column(String(36), primary_key=True, nullable=False, default=lambda: str(uuid4()))
+    id = Column(String(36), primary_key=True, nullable=False, default=str(uuid4()))
+    username = Column(String(26), nullable=True)
     email = Column(String(46), nullable=False)
     password = Column(String(150), nullable=False)
-    username = Column(String(26), nullable=True)
     telephone = Column(Integer, nullable=False)
     created_at = Column(DateTime, default=datetime.now(), nullable=True)
     updated_at = Column(DateTime, default=datetime.now(), onupdate=datetime.now(), nullable=True)
@@ -39,7 +38,7 @@ class Product(Base):
     __tablename__ = 'products'
 
     # Creation of the products table
-    id = Column(String(36), primary_key=True, nullable=False, default=lambda: str(uuid4()))
+    id = Column(String(36), primary_key=True, nullable=False, default=str(uuid4()))
     product_name = Column(String(36), nullable=False)
     current_price = Column(Integer, nullable=False)
     chosen_price = Column(Integer, nullable=False)
@@ -48,6 +47,7 @@ class Product(Base):
     created_at = Column(DateTime, default=datetime.now())
     carts = relationship("Cart", backref="product")
     orders = relationship("Order", backref="product")
+
     
     def __str__(self):
         return f"<Product {self.id}>"
@@ -80,3 +80,4 @@ class Order(Base):
 
     def __str__(self):
         return f"<Order {self.id}>"
+    
