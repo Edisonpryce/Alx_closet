@@ -3,14 +3,15 @@ from flask import Flask
 from models.admin import admin
 from models.auth import auth
 from models.pages import page as pg
+import secrets
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 
 app = Flask(__name__)
-app.config['SECRETE_KEY'] = 'uekhkaekjnkjankjenkjnekakejkjaekjakje@@1333'
-
+foo = secrets.token_urlsafe(16)
+app.secret_key = foo
 
 app.register_blueprint(pg, url_prefix='/')
 app.register_blueprint(admin, url_prefix='/') # localhost:5000/admin
