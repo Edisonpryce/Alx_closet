@@ -27,11 +27,12 @@ class User(Base):
         return f"<User {self.id}>"
 
 
+    """
     def __setattr__(self, name, value):
-        """sets a password with md5 encryption"""
         if name == "password":
             value = md5(value.encode()).hexdigest()
         super().__setattr__(name, value)
+    """
 
 
 class Product(Base):

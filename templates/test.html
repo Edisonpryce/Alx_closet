@@ -6,10 +6,15 @@
     <title>Testing here</title>
 </head>
 <body>
-    <h1>This is the test of the database</h1>
-    {% for user in users%}
-    <p>{{user.username}}</p>
-    {%endfor%}
-    
+    <form method="POST" action="{{ url_for('autho.test') }}"> 
+        {{ form.hidden_tag() }}
+        {{ form.username(placeholder="Username") }} 
+        {{ form.email(placeholder="Email") }} 
+        {{ form.phone(placeholder="Phone number") }} 
+        {{ form.password(placeholder="Password") }} 
+        {{ form.confirm_password(placeholder="Confirm Password") }} 
+        {{ form.submit() }} 
+    </form>
+</form>
 </body>
 </html>
