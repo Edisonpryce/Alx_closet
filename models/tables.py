@@ -49,8 +49,9 @@ class Product(Base):
     orders = relationship("Order", backref="product")
 
     
-    def __str__(self):
+    """def __str__(self):
         return f"<Product {self.id}>"
+    """
 
 
 class Cart(Base):
