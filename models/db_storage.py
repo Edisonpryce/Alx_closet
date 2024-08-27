@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-from db_storage import Base
-from tables import User, Product, Cart, Order
+from models.tables import Base
+from models.tables import User, Product, Cart, Order
 
-classes = {"User": User, "Product": Product, "Cart": Cart, "Order":Order}
+classes = {"User": User, "Product": Product, "Cart": Cart, "Order": Order}
 
 class DBStorage:
     __engine = None
@@ -19,10 +19,15 @@ class DBStorage:
         self.__engine = create_engine(f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PWD}@{MYSQL_HOST}/{MYSQL_DB}')
 
     def all(self, cls, id=None):
-        if cls:
-            self.__session.query(classes[cls]).all()
-
-
+        if cls and id:
+            obj = self.__session.query(classes[cls]).get(id)
+            obj = dict(obj)
+            return obj
+        else:
+            users_dict = [dict(user) for user in self.__session.query(User).all()]
+        return users_dict
+    
+    
     def save(self):
         """ This commits changes to the database"""
         self.__session.commit()

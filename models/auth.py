@@ -1,13 +1,15 @@
-from flask import Blueprint
-from . import storage
+from flask import Blueprint, render_template
+from models.db_storage import DBStorage
+
+
 
 auth = Blueprint('auth', __name__)
 
 @auth.route('/login')
 def authdentication():
-    return "This is the login page"
+    return render_template("login.html")
 
 @auth.route('/sign-up')
 def sign_up():
-    return "This is the sign up page"
+    return render_template("sign_up.html")
 
