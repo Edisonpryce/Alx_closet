@@ -1,15 +1,14 @@
 from flask import render_template, redirect, url_for, flash, current_app, Blueprint
-from models.auth import auth  # Assuming Blueprint is set up
 from .forms import SignUpForm  # Import your form
 from .tables import User
 import hashlib
 
-autho = Blueprint('autho', __name__)
+auth = Blueprint('auth', __name__)
 
 
 @auth.route('/', strict_slashes=False)
 @auth.route('/login', strict_slashes=False)
-def authentication():
+def login():
     return render_template("login.html")
 
 @auth.route('/signup', methods=['GET', 'POST'], strict_slashes=False)
@@ -31,6 +30,6 @@ def signup():
         ))
         session.commit()
         flash('Account created successfully!', 'success')
-        return redirect(url_for('admin.admins')) 
+        return redirect(url_for('pages')) 
 
     return render_template('login.html', form=form)
