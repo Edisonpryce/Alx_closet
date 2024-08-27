@@ -5,8 +5,12 @@ from models.tables import User
 
 db = DBStorage()
 customer = User(username='Edisonasare', email="edison@gmail.com", password='1221oos',telephone='0553650094')
-db.save()
 auth = Blueprint('auth', __name__)
+
+@auth.teardown_appcontext
+def close_db(error):
+    """ Remove the current SQLAlchemy Session """
+    db.close()
 
 @auth.route('/', strict_slashes=False)
 @auth.route('/login', strict_slashes=False)

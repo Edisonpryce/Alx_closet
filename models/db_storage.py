@@ -27,6 +27,10 @@ class DBStorage:
             users_dict = [dict(user) for user in self.__session.query(User).all()]
         return users_dict
 
+    def close(self):
+        """call remove() method on the private session attribute"""
+        self.__session.remove()
+
     def new(self, obj):
         """add the object to the current database session"""
         self.__session.add(obj)
@@ -34,6 +38,7 @@ class DBStorage:
     def save(self):
         """ This commits changes to the database"""
         self.__session.commit()
+
 
     def reload(self):
         """Creation and reloads of data into the database"""
