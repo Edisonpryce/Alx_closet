@@ -1,39 +1,44 @@
-/* Import fonts from Google */
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
-/* Basic reset and setting up fonts */
+/* Basic reset and setting up default fonts */
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Raleway', sans-serif;
-    scroll-behavior: smooth; /* Smooth scrolling for the page */
+    font-family: 'Raleway', sans-serif; /* Main font */
+    scroll-behavior: smooth;
     height: 100%;
-    overflow-y: scroll; /* Always show scrollbar */
+    overflow-y: scroll;
 }
 
-/* Set a different font for headers and paragraphs */
+/* Use a different font for headings and paragraphs */
 p, h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
 }
 
-/* Navbar styles to fix it at the top */
+/* Navbar styles */
 .navbar {
-    background-color: #fffdfa; /* Light background color */
+    background-color: #fffdfa;
     padding: 10px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    position: fixed; /* Stick to the top */
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; /* Make sure it's on top of other stuff */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tiny shadow */
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
-/* Container to organize navbar items */
+.navbar-right a {
+    list-style-type: none; 
+    text-decoration: none;
+}
+
+/* Organize navbar items */
 .navbar-container {
     width: 100%;
     max-width: 1200px;
@@ -43,100 +48,97 @@ p, h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
 }
 
-/* Navbar icon styling */
+/* Icon styles with hover effect */
 .icon {
+    
     font-size: 20px;
-    margin: 0 15px; /* Space between icons */
+    margin: 0 15px;
     cursor: pointer;
     color: #000;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Make icons change color and zoom a bit on hover */
 .icon:hover, .icon:active {
-    color: #855a5b; /* Maroon color on hover */
-    transform: scale(1.2); /* Slight zoom */
+    color: #855a5b;
+    transform: scale(1.2);
 }
 
-/* Styling the search box */
+/* Search box styles */
 .search-box {
+    margin-left: 150px;
     display: flex;
     align-items: center;
     border: 1px solid #855a5b;
     border-radius: 40px;
     padding: 5px 15px;
-    transition: transform 0.3s ease; /* Smooth hover effect */
-    flex-grow: 1; /* Let it expand */
-    max-width: 400px; /* But not too much */
+    transition: transform 0.3s ease;
+    flex-grow: 1;
+    max-width: 200px;
+    
 }
 
-/* Input field inside the search box */
+
 .search-box input {
     border: none;
     outline: none;
-    width: 100%; /* Take up all the space */
+    width: 100%;
     font-size: 16px;
-    background-color: #fffdfa; /* Match navbar background */
+    background-color: #fffdfa;
     color: #000;
     transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Change text color when input is focused */
 .search-box input:focus {
     color: #855a5b;
 }
 
-/* Slight zoom when hovering over the search box */
 .search-box:hover {
     transform: scale(1.05);
 }
 
-/* Color the search icon in the box */
 .search-icon {
     color: #855a5b;
     margin-left: 10px;
 }
 
-/* Style the scrollbar */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 5px;
 }
 
-/* Thumb of the scrollbar */
 ::-webkit-scrollbar-thumb {
     background-color: #855a5b;
     border-radius: 10px;
 }
 
-/* Track of the scrollbar */
 ::-webkit-scrollbar-track {
     background-color: #f0f0f0;
 }
 
-/* Styling for the banner section */
+
+  
+
+/* Banner section */
 .banner {
     position: relative;
-    margin-top: 60px; /* Push it down so it doesn’t cover the navbar */
+    margin-top: 60px;
     text-align: left;
-    color: #333; /* Text color */
+    color: #333;
 }
 
-/* Banner image should stretch across the screen */
 .banner img {
     width: 100%;
     height: auto;
 }
 
-/* Position the banner content */
 .banner-content {
     position: absolute;
-    top: 71%; /* Push content down in the banner */
+    top: 71%;
     left: 90px;
     transform: translateY(-50%);
-    color: #000; /* Text color */
+    color: #000;
 }
 
-/* Banner heading styles */
 .banner-content h1 {
     font-family: 'Playfair Display', serif;
     font-size: 60px;
@@ -144,7 +146,7 @@ p, h1, h2, h3, h4, h5, h6 {
     color: #000;
 }
 
-/* Paragraph in the banner */
+
 .banner-content p {
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
@@ -152,15 +154,12 @@ p, h1, h2, h3, h4, h5, h6 {
     margin: 0 0 20px;
     color: #000;
 }
-
-/* Button styles in the banner */
 .banner-buttons {
     display: flex;
     gap: 20px;
-    margin-top: 20px; /* Space between text and buttons */
+    margin-top: 20px;
 }
 
-/* Basic button styles */
 .banner-buttons .btn {
     padding: 10px 20px;
     border: none;
@@ -172,100 +171,92 @@ p, h1, h2, h3, h4, h5, h6 {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Change button background on hover */
 .banner-buttons .btn:hover {
     background-color: #855a5b;
     color: #fff;
-    transform: scale(1.05); /* Slight zoom */
+    transform: scale(1.05);
 }
 
-/* Different background colors for the buttons */
-.shop-now {
+.Login {
     background-color: #f2e6e7;
 }
 
-.explore-more {
+.shop-now {
     background-color: #855a5b;
     color: #fff;
 }
 
-/* Category section styling */
+/* Category section */
 .womens-category, .mens-category, .sports-category {
     padding: 40px 20px;
     background-color: #f9f9f9;
     text-align: center;
 }
 
-/* Category headings */
 .womens-category h2, .mens-category h2, .sports-category h2 {
-    font-family: 'Playfair Display', serif;
     font-size: 30px;
     color: #333;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     text-transform: uppercase;
 }
 
-/* Container to center content and limit width */
+/* Center content and limit width */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Layout for the product grid */
+/* Product grid layout */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Four equal columns */
-    gap: 30px; /* Space between products */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
     justify-items: stretch;
 }
 
-/* Styling for individual product cards */
+/* Product card styles */
 .product {
     background-color: #fff;
-    border-radius: 15px; /* Rounded corners */
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 
-/* Make product images stretch full width */
 .product img {
     width: 100%;
     height: auto;
     display: block;
+    transition: opacity 0.3s ease;
 }
 
-/* Styling for product titles */
 .product h3 {
-    font-family: 'Playfair Display', serif;
     font-size: 20px;
     color: #333;
     margin: 10px 0;
 }
 
-/* Styling for product descriptions */
 .product p {
-    font-family: 'Raleway', sans-serif;
     font-size: 14px;
     color: #777;
     margin-bottom: 15px;
     padding: 0 10px;
 }
 
-/* Container for the price slider */
+/* Currency slider */
 .product .currency-slider {
     margin: 20px auto;
     width: 80%;
     position: relative;
 }
 
-/* Slider track styling */
 .slider-container {
     position: relative;
     height: 20px;
@@ -273,7 +264,7 @@ p, h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
 }
 
-/* Actual slider input */
+/* Custom slider */
 .slider {
     --webkit-appearance: none;
     width: 100%;
@@ -284,12 +275,11 @@ p, h1, h2, h3, h4, h5, h6 {
     top: 0;
     left: 0;
     margin: 0;
-    z-index: 1; /* Keep slider on top */
+    z-index: 1;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-/* Styling for the slider thumb (the draggable part) */
 .slider-thumb {
     position: absolute;
     left: 0;
@@ -303,18 +293,12 @@ p, h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     transform: translateX(-50%);
     transition: left 0.2s ease;
-    z-index: 2; /* Keep thumb on top */
+    z-index: 2;
 }
 
-/* Currency icon inside the slider thumb */
-.slider-thumb .currency-icon {
-    font-size: 18px;
-    color: #fff;
-}
-
-/* Hide the default thumb styling */
+/* Hide default slider styling */
 .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
+    --webkit-appearance: none;
     appearance: none;
     width: 0;
     height: 0;
@@ -329,19 +313,180 @@ p, h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
 }
 
-/* 3D gloss effect on the slider thumb */
+/* 3D effect on the slider thumb */
 .currency-slider .slider-thumb {
     background: linear-gradient(to top, #64b164, #8dd38d);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Make the currency icon smaller inside the thumb */
 .slider-thumb .currency-icon {
     font-size: 16px;
     color: #fff;
 }
 
-/* Slight zoom on product hover */
+/* Zoom effect on product hover */
 .product:hover {
     transform: scale(1.07);
 }
+
+/* Card actions (like buttons) */
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.action-btn {
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn ion-icon {
+    font-size: 20px;
+    color: #333;
+}
+
+.action-btn:hover {
+    background-color: #855a5b;
+    transform: scale(1.1);
+}
+
+.action-btn:hover ion-icon {
+    color: #fff;
+}
+
+/* Show card actions on product hover */
+.product:hover .card-actions {
+    opacity: 1;
+}
+
+/* Banner list */
+.banner-list {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+.banner-card:hover {
+    transform: scale(0.9);
+}
+
+.banner-card {
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    color: #fff;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-card .card-subtitle {
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.banner-card .btn {
+    background-color: #f2e6e7;
+    color: #855a5b;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 50;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.has-bg-image {
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+ul, ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Feature section */
+.feature {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    margin-top: 40px;
+}
+
+.feature .section-title {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.flex-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.flex-item {
+    flex: 1;
+    min-width: 200px;
+}
+
+.feature-card {
+    text-align: center;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card .card-icon {
+    width: 100px;
+    height: auto;
+    margin: 0 auto 20px;
+}
+
+.feature-card .card-title {
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+.feature-card .card-text {
+    font-size: 16px;
+    color: #777;
+}
+
+
