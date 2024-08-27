@@ -31,14 +31,13 @@
     </nav>
     <div class="form-container">
   <h2>Register</h2>
-  <form method="POST">
-        {{ form.hidden_tag() }}
-        {{ form.username(placeholder="Username") }}
-        {{ form.email(placeholder="Email") }}
-        {{ form.phone(placeholder="Phone number") }}
-        {{ form.password(placeholder="Password") }}
-        {{ form.confirm_password(placeholder="Confirm Password") }}
-        {{ form.submit() }}
+    <form method="POST" action="">
+        <input type="text" placeholder="Username" required> 
+        <input type="email" placeholder="Email" required> 
+        <input type="tel" placeholder="Phone number"  required> 
+        <input type="password" placeholder="Password" required> 
+        <input type="password" placeholder="Confirm Password" required> 
+        <button type="submit">Create Account</button>
     </form>
   <p>By signing up, you agree to the <a href="#">Terms and Conditions</a></p>
   <p>Already have an account? <a href="./login">Login</a></p>
