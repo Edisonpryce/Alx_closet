@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template
-from forms import LoginForm, SignUpForm, PasswordChangeForm
+from flask import Blueprint, render_template, redirect, flash, url_for
+from models.forms import LoginForm, SignUpForm, PasswordChangeForm
 from models.db_storage import DBStorage as db
 
 
@@ -12,7 +12,7 @@ def authentication():
     return render_template("login.html")
 
 
-@auth.route('/sign-up', method=['GET', 'POST'], strict_slashes=False)
+@auth.route('/sign-up', strict_slashes=False)
 def sign_up():
     form = SignUpForm()
     if form.validate_on_submit():
@@ -32,4 +32,3 @@ def sign_up():
         flash('Account created successfully!', 'success')
         return redirect(url_for('login')) 
     return render_template("sign_up.html", form=form)
-
