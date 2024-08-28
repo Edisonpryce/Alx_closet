@@ -2,7 +2,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, TelField, FloatField, PasswordField, EmailField, BooleanField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Length, NumberRange, Email, EqualTo
 from flask_wtf.file import FileField, FileRequired
-from .tables import User
+
+#from .tables import User
 
 
 class SignUpForm(FlaskForm):
@@ -17,14 +18,15 @@ class SignUpForm(FlaskForm):
         if  field.data != self.password.data:
             raise ValueError("Password must match")
 
+"""
     def validate_email(self, field):
-        if db.session.query(User.email).filter(User.email == field.data).scalar() is not None:
+        if session.query(User.email).filter(User.email == field.data).scalar() is not None:
             raise ValueError("Email already exists")
     
     def validate_username(self, field):
-        if db.session.query(User.username).filter(User.username == field.data).scalar() is not None:
+        if session.query(User.username).filter(User.username == field.data).scalar() is not None:
             raise ValueError("Username already exists")
-    
+"""
 
 class LoginForm(FlaskForm):
     email = EmailField('Email', validators=[DataRequired()])
