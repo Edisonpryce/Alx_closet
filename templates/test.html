@@ -6,7 +6,7 @@
     <title>Testing here</title>
 </head>
 <body>
-    <form method="POST" action="{{ url_for('autho.test') }}"> 
+    <form method="POST" action="{{ url_for('auth.signup') }}"> 
         {{ form.hidden_tag() }}
         {{ form.username(placeholder="Username") }} 
         {{ form.email(placeholder="Email") }} 

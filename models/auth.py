@@ -6,11 +6,8 @@ import hashlib
 auth = Blueprint('auth', __name__)
 
 
-@auth.route('/', strict_slashes=False)
-@auth.route('/login', strict_slashes=False)
-def login():
-    return render_template("login.html")
 
+@auth.route('/login', strict_slashes=False)
 @auth.route('/signup', methods=['GET', 'POST'], strict_slashes=False)
 def signup():
     form = SignUpForm()
@@ -30,6 +27,6 @@ def signup():
         ))
         session.commit()
         flash('Account created successfully!', 'success')
-        return redirect(url_for('pages')) 
+        return redirect(url_for('auth.signup')) 
 
     return render_template('login.html', form=form)
