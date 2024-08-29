@@ -14,12 +14,14 @@ def login():
         email = form.email.data
         password = form.password.data
 
-        user = User.query.filter_by(email=email).first()
+        session = current_app.config['SESSION']
+
+        user = session.query(User).filter_by(email=email).first()
 
         if user:
-            if user.verify_password(password=password):
+            if user.verify_password(password, user.password):
                 login_user(user)
-                return redirect('/')
+                return redirect('admin.admin')
             else:
                 flash('Incorrect Email or Password')
         else:
@@ -48,8 +50,8 @@ def signup():
                 session.add(new_user)
                 session.commit()
                 flash('Account created successfully!', 'success')
-                message = "Account created successfully!', kindly login"
-                return redirect(url_for('auth.signup')) 
+                message = 'Account created successfully! Please Login!'
+                return redirect(url_for('auth.login',message=message )) 
             except Exception as e:
                 print(e)
                 flash("Can't create the Account, Email already exist")
@@ -58,4 +60,4 @@ def signup():
             form.username.data = ''
             form.password1.data = ''
             form.password2.data = ''
-    return render_template('login.html', form=form)
+    return render_template('signup.html', form=form)
