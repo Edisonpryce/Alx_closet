@@ -6,6 +6,7 @@ from sqlalchemy import Column, String, Integer, Float, DateTime, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from datetime import datetime
+from bcrypt import hashpw, gensalt, checkpw
 
 Base = declarative_base()
 
@@ -25,15 +26,13 @@ class User(Base):
 
     def __str__(self):
         return f"<User {self.id}>"
+    
+    def hash_password(self, password):
+        hashed_password = hashpw(password.encode(), gensalt())
+        return hashed_password
 
-
-    """
-    def __setattr__(self, name, value):
-        if name == "password":
-            value = md5(value.encode()).hexdigest()
-        super().__setattr__(name, value)
-    """
-
+    def verify_password(self, input_password, stored_hash):
+        return checkpw(input_password.encode(), stored_hash)
 
 class Product(Base):
     __tablename__ = 'products'
