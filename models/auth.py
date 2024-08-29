@@ -22,10 +22,8 @@ def login():
                 return redirect('/')
             else:
                 flash('Incorrect Email or Password')
-
         else:
             flash('Account does not exist please Sign Up')
-
     return render_template('login.html', form=form)
 
 
