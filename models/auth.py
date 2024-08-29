@@ -8,7 +8,7 @@ auth = Blueprint('auth', __name__)
 
 
 @auth.route('/login', methods=['GET', 'POST'])
-def login():
+def login(message=None):
     form = LoginForm()
     if form.validate_on_submit():
         email = form.email.data
@@ -26,7 +26,7 @@ def login():
                 flash('Incorrect Email or Password')
         else:
             flash('Account does not exist please Sign Up')
-    return render_template('login.html', form=form)
+    return render_template('login.html', mess=message, form=form)
 
 
 @auth.route('/signup', methods=['GET', 'POST'], strict_slashes=False)

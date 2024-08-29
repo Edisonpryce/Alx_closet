@@ -9,6 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/styles/style.css">
     <link rel="stylesheet" href="../static/styles/signup_login.css">
+    <style>
+        form {
+            margin-top: 15%;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -33,7 +38,7 @@
   <h2>Register</h2>
     <form method="POST" action="{{ url_for('auth.signup') }}"> 
         {{ form.hidden_tag() }}
-        {{ form.username(placeholder="Username") }} 
+        {{ form.name(placeholder="Username") }} 
         {{ form.email(placeholder="Email") }} 
         {{ form.phone(placeholder="Phone number") }} 
         {{ form.password(placeholder="Password") }} 
