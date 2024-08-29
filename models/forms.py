@@ -7,7 +7,7 @@ from flask_wtf.file import FileField, FileRequired
 
 
 class SignUpForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(min=4)])
+    name = StringField('name', validators=[DataRequired(), Length(min=4)])
     email = EmailField('Email', validators=[DataRequired()])
     phone = TelField('phone', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=6, message="Password must be 6 min characters long")])

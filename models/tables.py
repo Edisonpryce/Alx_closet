@@ -14,7 +14,7 @@ class User(Base):
 
     # Columns for User infor intake 
     id = Column(String(36), primary_key=True, nullable=False, default=str(uuid4()))
-    username = Column(String(26), nullable=True)
+    name = Column(String(26), nullable=True)
     email = Column(String(46), nullable=False)
     password = Column(String(150), nullable=False)
     telephone = Column(Integer, nullable=False)

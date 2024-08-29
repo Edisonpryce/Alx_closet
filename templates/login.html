@@ -47,8 +47,8 @@
                 </div>
                         {{ form.hidden_tag() }} 
                  <div> 
-                        {{ form.username(placeholder="Username") }} 
-                        {% for error in form.username.errors %} 
+                        {{ form.name(placeholder="name") }} 
+                        {% for error in form.name.errors %} 
                         <span style="color: red;">{{ error }}</span> 
                         {% endfor %} 
                 </div> 

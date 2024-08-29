@@ -1,6 +1,8 @@
+bcrypt==4.2.0
 blinker==1.8.2
 click==8.1.7
 Flask==3.0.3
+Flask-Login==0.6.3
 Flask-WTF==1.2.1
 greenlet==3.0.3
 gunicorn==23.0.0

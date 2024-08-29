@@ -3,6 +3,7 @@ from flask import Flask
 from models.admin import admin
 from models.pages import page 
 from models.auth import auth
+from models.client import customer
 from models.db_storage import DBStorage
 import secrets
 
@@ -17,8 +18,9 @@ app.config['SESSION'] = db._DBStorage__session
 
 
 app.register_blueprint(page, url_prefix='/')
-app.register_blueprint(admin, url_prefix='/') # localhost:5000/admin
-app.register_blueprint(auth, url_prefix='/auth')  # localhost:5000/auth/login
+app.register_blueprint(admin, url_prefix='/') 
+app.register_blueprint(auth, url_prefix='/')
+app.register_blueprint(customer, url_prefix='/')
 
 app.teardown_appcontext
 def remove_session(exception):
