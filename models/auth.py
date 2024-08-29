@@ -61,3 +61,18 @@ def signup():
             form.password1.data = ''
             form.password2.data = ''
     return render_template('signup.html', form=form)
+
+
+@auth.route('/logout', methods=['GET', 'POST'])
+@login_required
+def log_out():
+    logout_user()
+    return redirect('/')
+
+
+@auth.route('/profile/<int:customer_id>')
+@login_required
+def profile(user_id):
+    session = current_app.config['SESSION']
+    user = session.query(User).ger(user_id)
+    return render_template('profile.html', user=user_id)
