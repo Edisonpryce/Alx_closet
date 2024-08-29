@@ -38,7 +38,7 @@
   <h2>Register</h2>
     <form method="POST" action="{{ url_for('auth.signup') }}"> 
         {{ form.hidden_tag() }}
-        {{ form.name(placeholder="Username") }} 
+        {{ form.name(placeholder="name") }} 
         {{ form.email(placeholder="Email") }} 
         {{ form.phone(placeholder="Phone number") }} 
         {{ form.password(placeholder="Password") }} 
