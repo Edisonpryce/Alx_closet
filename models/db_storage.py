@@ -12,8 +12,8 @@ class DBStorage:
     # Interacting with the actual database
     def __init__(self):
         """Instantiate a DBStorage object"""
-        MYSQL_USER = 'edison'
-        MYSQL_PWD = 'password'
+        MYSQL_USER = 'janice'
+        MYSQL_PWD = 'Id36080957'
         MYSQL_HOST = 'localhost'
         MYSQL_DB= 'alxcloset'
         self.__engine = create_engine(f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PWD}@{MYSQL_HOST}/{MYSQL_DB}')
