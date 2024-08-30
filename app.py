@@ -5,6 +5,8 @@ from models.pages import page
 from models.auth import auth
 from models.client import customer
 from models.db_storage import DBStorage
+from flask_login import  LoginManager
+from models.auth import User
 import secrets
 
 
@@ -16,6 +18,13 @@ db = DBStorage()
 db.reload()
 app.config['SESSION'] = db._DBStorage__session
 
+login_manager = LoginManager()
+
+login_manager.init_app(app)
+login_manager.login_view = 'auth.login'
+@login_manager.user_loader
+def load_user(id):
+    return db._DBStorage__session.query(User).get(id) 
 
 app.register_blueprint(page, url_prefix='/')
 app.register_blueprint(admin, url_prefix='/') 

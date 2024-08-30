@@ -19,14 +19,15 @@ class User(Base, UserMixin):
     name = Column(String(26), nullable=True)
     email = Column(String(46), nullable=False)
     password = Column(String(150), nullable=False)
-    telephone = Column(Integer, nullable=False)
+    telephone = Column(String(15), nullable=False)
     created_at = Column(DateTime, default=datetime.now(), nullable=True)
     updated_at = Column(DateTime, default=datetime.now(), onupdate=datetime.now(), nullable=True)
     cart_item = relationship("Cart", backref="user")
     order_item = relationship("Order", backref="user")
 
-    def __str__(self):
-        return f"<User {self.id}>"
+
+    def get_id(self):
+        return str(self.id)
     
     def hash_password(self, password):
         hashed_password = hashpw(password.encode(), gensalt())
@@ -36,6 +37,9 @@ class User(Base, UserMixin):
         if isinstance(stored_hash, str):
             stored_hash = stored_hash.encode('utf-8')
         return checkpw(input_password.encode(), stored_hash)
+    
+    def __str__(self):
+     return f"<User {self.id}>"
 
 class Product(Base):
     __tablename__ = 'products'

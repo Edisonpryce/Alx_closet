@@ -8,7 +8,7 @@ auth = Blueprint('auth', __name__)
 
 
 @auth.route('/login', methods=['GET', 'POST'])
-def login(message=None):
+def login():
     form = LoginForm()
     if form.validate_on_submit():
         email = form.email.data
@@ -22,13 +22,13 @@ def login(message=None):
             if user.verify_password(password, user.password):
                 login_user(user)
                 flash('Login Successful', 'success')
-                return redirect(url_for('admin.admin'), message=message)
+                return redirect(url_for('admin.admins'))
             else:
                 flash('Incorrect Email or Password')
         else:
             flash('Account does not exist please Sign Up')
             message = 'Account does not exist please Sign Up'
-    return render_template('login.html', mess=message, form=form)
+    return render_template('login.html', form=form)
 
 
 @auth.route('/signup', methods=['GET', 'POST'], strict_slashes=False)
@@ -52,8 +52,7 @@ def signup():
                 session.add(new_user)
                 session.commit()
                 flash('Account created successfully!', 'success')
-                message = 'Account created successfully! Please Login!'
-                return redirect(url_for('auth.login',message=message )) 
+                return redirect(url_for('auth.login')) 
             except Exception as e:
                 print(e)
                 flash("Can't create the Account, Email already exist")
@@ -64,7 +63,7 @@ def signup():
             #form.password2.data = ''
     return render_template('signup.html', form=form)
 
-
+"""
 @auth.route('/logout', methods=['GET', 'POST'])
 @login_required
 def log_out():
@@ -104,3 +103,5 @@ def change_password(user_id):
             flash('Current Password is Incorrect')
 
     return render_template('change_password.html', form=form)
+
+"""
