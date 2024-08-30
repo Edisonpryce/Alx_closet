@@ -2,7 +2,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from .tables import Base
 from .tables import User, Product, Cart, Order
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 classes = {"User": User, "Product": Product, "Cart": Cart, "Order": Order}
 
 class DBStorage:
@@ -12,10 +15,10 @@ class DBStorage:
     # Interacting with the actual database
     def __init__(self):
         """Instantiate a DBStorage object"""
-        MYSQL_USER = 'edison'
-        MYSQL_PWD = 'password'
-        MYSQL_HOST = 'localhost'
-        MYSQL_DB= 'alxcloset'
+        MYSQL_USER = os.getenv('MYSQL_USER')
+        MYSQL_PWD = os.getenv('MYSQL_PWD')
+        MYSQL_HOST = os.getenv('MYSQL_HOST')
+        MYSQL_DB= os.getenv('MYSQL_DB')
         self.__engine = create_engine(f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PWD}@{MYSQL_HOST}/{MYSQL_DB}')
 
     def all(self, cls, id=None):
