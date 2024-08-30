@@ -21,11 +21,13 @@ def login(message=None):
         if user:
             if user.verify_password(password, user.password):
                 login_user(user)
-                return redirect('admin.admin')
+                flash('Login Successful', 'success')
+                return redirect(url_for('admin.admin'), message=message)
             else:
                 flash('Incorrect Email or Password')
         else:
             flash('Account does not exist please Sign Up')
+            message = 'Account does not exist please Sign Up'
     return render_template('login.html', mess=message, form=form)
 
 
@@ -33,6 +35,7 @@ def login(message=None):
 def signup():
     form = SignUpForm()
     if form.validate_on_submit():
+        session = current_app.config['SESSION']
         name = form.name.data
         email = form.email.data
         phone = form.phone.data
@@ -40,7 +43,6 @@ def signup():
         password2 = form.confirm_password.data
 
         if password1 == password2:
-            session = current_app.config['SESSION']
             new_user = User()
             new_user.name=name,
             new_user.email=email,
@@ -56,10 +58,10 @@ def signup():
                 print(e)
                 flash("Can't create the Account, Email already exist")
 
+            form.name.data = ''
             form.email.data = ''
-            form.username.data = ''
-            form.password1.data = ''
-            form.password2.data = ''
+            form.password.data = ''
+            #form.password2.data = ''
     return render_template('signup.html', form=form)
 
 

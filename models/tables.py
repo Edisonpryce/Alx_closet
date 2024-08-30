@@ -7,10 +7,11 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from bcrypt import hashpw, gensalt, checkpw
+from flask_login import UserMixin
 
 Base = declarative_base()
 
-class User(Base):
+class User(Base, UserMixin):
     __tablename__ = 'users'
 
     # Columns for User infor intake 
@@ -32,6 +33,8 @@ class User(Base):
         return hashed_password
 
     def verify_password(self, input_password, stored_hash):
+        if isinstance(stored_hash, str):
+            stored_hash = stored_hash.encode('utf-8')
         return checkpw(input_password.encode(), stored_hash)
 
 class Product(Base):

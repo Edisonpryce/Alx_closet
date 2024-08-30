@@ -23,9 +23,6 @@ class SignUpForm(FlaskForm):
         if session.query(User.email).filter(User.email == field.data).scalar() is not None:
             raise ValueError("Email already exists")
     
-    def validate_username(self, field):
-        if session.query(User.username).filter(User.username == field.data).scalar() is not None:
-            raise ValueError("Username already exists")
 """
 
 class LoginForm(FlaskForm):

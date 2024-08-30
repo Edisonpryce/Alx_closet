@@ -36,10 +36,10 @@
     </nav>
     <div class="form-container">
   <h2>Register</h2>
-    <form method="POST" action="{{ url_for('auth.signup') }}"> 
+    <form method="POST" action="{{ url_for('auth.login') }}"> 
         {{ form.hidden_tag() }}
-        {{ form.name(placeholder="name") }} 
         {{ form.email(placeholder="Email") }} 
+        {{ form.password(placeholder="password") }} 
         {{ form.submit() }} 
     </form>
 </form>

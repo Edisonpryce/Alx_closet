@@ -9,8 +9,8 @@ import secrets
 
 
 app = Flask(__name__)
-foo = secrets.token_urlsafe(16)
-app.secret_key = foo
+token = secrets.token_urlsafe(16)
+app.secret_key = token
 
 db = DBStorage()
 db.reload()
