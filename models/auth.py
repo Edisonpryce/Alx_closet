@@ -22,7 +22,7 @@ def login():
             if user.verify_password(password, user.password):
                 login_user(user)
                 flash('Login Successful', 'success')
-                return redirect(url_for('admin.admins'))
+                return redirect(url_for('customer.home'))
             else:
                 flash('Incorrect Email or Password')
         else:
