@@ -35,7 +35,10 @@
         </div>
     </nav>
     <div class="form-container">
-  <h2>Register</h2>
+        {% if message %}
+            <h2 style="color: rgb(255, 47, 227);">{{ message }}</h2> 
+        {%endif%}   
+  <h2>LOGIN HERE</h2>
     <form method="POST" action="{{ url_for('auth.login') }}"> 
         {{ form.hidden_tag() }}
         {{ form.email(placeholder="Email") }} 
@@ -43,8 +46,8 @@
         {{ form.submit() }} 
     </form>
 </form>
-  <p>By signing up, you agree to the <a href="#">Terms and Conditions</a></p>
-  <p>Already have an account? <a href="./login">Login</a></p>
+  <p>Input in your credentials to login</p>
+  <p>Don' have an account?<a href="{{ url_for('auth.signup') }}"> Sign Up </a></p>
   <script src="../static/js/script.js"></script>
 </div>
 </body>

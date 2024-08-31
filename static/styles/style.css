@@ -3,17 +3,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
 /* Basic reset and setting up default fonts */
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
-    font-family: 'Raleway', sans-serif; /* Main font */
+    font-family: 'Raleway', sans-serif;
+    /* Main font */
     scroll-behavior: smooth;
     height: 100%;
     overflow-y: scroll;
 }
 
 /* Use a different font for headings and paragraphs */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Playfair Display', serif;
 }
 
@@ -34,7 +42,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-right a {
-    list-style-type: none; 
+    list-style-type: none;
     text-decoration: none;
 }
 
@@ -48,9 +56,13 @@ p, h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
 }
 
+.navbar-container>img:hover {
+    cursor: pointer;
+}
+
 /* Icon styles with hover effect */
 .icon {
-    
+
     font-size: 20px;
     margin: 0 15px;
     cursor: pointer;
@@ -58,7 +70,8 @@ p, h1, h2, h3, h4, h5, h6 {
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.icon:hover, .icon:active {
+.icon:hover,
+.icon:active {
     color: #855a5b;
     transform: scale(1.2);
 }
@@ -74,7 +87,7 @@ p, h1, h2, h3, h4, h5, h6 {
     transition: transform 0.3s ease;
     flex-grow: 1;
     max-width: 200px;
-    
+
 }
 
 
@@ -116,7 +129,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 
-  
+
 
 /* Banner section */
 .banner {
@@ -154,6 +167,7 @@ p, h1, h2, h3, h4, h5, h6 {
     margin: 0 0 20px;
     color: #000;
 }
+
 .banner-buttons {
     display: flex;
     gap: 20px;
@@ -187,13 +201,17 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 /* Category section */
-.womens-category, .mens-category, .sports-category {
+.womens-category,
+.mens-category,
+.sports-category {
     padding: 40px 20px;
     background-color: #f9f9f9;
     text-align: center;
 }
 
-.womens-category h2, .mens-category h2, .sports-category h2 {
+.womens-category h2,
+.mens-category h2,
+.sports-category h2 {
     font-size: 30px;
     color: #333;
     margin-bottom: 50px;
@@ -434,7 +452,8 @@ p, h1, h2, h3, h4, h5, h6 {
     z-index: -1;
 }
 
-ul, ol {
+ul,
+ol {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -553,4 +572,3 @@ ul, ol {
     background-color: #4CAF50;
     color: white;
 }
-
