@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        #menu {
+            width: 200px;
+            background-color: #f0f0f0;
+            height: 100vh;
+            padding: 20px;
+        }
+        #menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #menu li {
+            margin-bottom: 10px;
+        }
+        #menu a {
+            text-decoration: none;
+            color: #333;
+        }
+        #menu a.active {
+            color: #0066cc;
+            font-weight: bold;
+        }
+        #content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <ul>
+            <li><a href="#" data-page="order-history">Order History</a></li>
+            <li><a href="#" data-page="wishlist">Wishlist</a></li>
+            <li><a href="#" data-page="address-book">Address Book</a></li>
+            <li><a href="#" data-page="password-reset">Password Reset</a></li>
+            <li><a href="#" data-page="favorite-products">Favorite Products</a></li>
+            <li><a href="#" data-page="notifications">Notifications</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div id="order-history" class="page">
+            <h2>Order History</h2>
+            <p>Your order history will be displayed here.</p>
+        </div>
+        <div id="wishlist" class="page">
+            <h2>Wishlist</h2>
+            <p>Items in your wishlist will appear here.</p>
+        </div>
+        <div id="address-book" class="page">
+            <h2>Address Book</h2>
+            <p>Manage your addresses here.</p>
+        </div>
+        <div id="password-reset" class="page">
+            <h2>Password Reset</h2>
+            <p>Reset your password here.</p>
+        </div>
+        <div id="favorite-products" class="page">
+            <h2>Favorite Products</h2>
+            <p>Your favorite products will be listed here.</p>
+        </div>
+        <div id="notifications" class="page">
+            <h2>Notifications</h2>
+            <p>Your notifications will appear here.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuLinks = document.querySelectorAll('#menu a');
+            const pages = document.querySelectorAll('.page');
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+
+                    // Remove active class from all links and pages
+                    menuLinks.forEach(l => l.classList.remove('active'));
+                    pages.forEach(p => p.classList.remove('active'));
+
+                    // Add active class to clicked link and corresponding page
+                    this.classList.add('active');
+                    document.getElementById(pageId).classList.add('active');
+                });
+            });
+
+            // Activate the first page by default
+            menuLinks[0].click();
+        });
+    </script>
+</body>
+</html>
