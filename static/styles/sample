@@ -10,11 +10,33 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        #top-bar {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #auth-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        #main-content {
+            display: flex;
+            flex-grow: 1;
         }
         #menu {
             width: 200px;
             background-color: #f0f0f0;
-            height: 100vh;
             padding: 20px;
         }
         #menu ul {
@@ -45,40 +67,49 @@
     </style>
 </head>
 <body>
-    <div id="menu">
-        <ul>
-            <li><a href="#" data-page="order-history">Order History</a></li>
-            <li><a href="#" data-page="wishlist">Wishlist</a></li>
-            <li><a href="#" data-page="address-book">Address Book</a></li>
-            <li><a href="#" data-page="password-reset">Password Reset</a></li>
-            <li><a href="#" data-page="favorite-products">Favorite Products</a></li>
-            <li><a href="#" data-page="notifications">Notifications</a></li>
-        </ul>
+    <div id="top-bar">
+        <div id="logo">Company Logo</div>
+        <div id="auth-links">
+            <a href="#" id="login-link">Login</a>
+            <a href="#" id="logout-link" style="display: none;">Logout</a>
+        </div>
     </div>
-    <div id="content">
-        <div id="order-history" class="page">
-            <h2>Order History</h2>
-            <p>Your order history will be displayed here.</p>
+    <div id="main-content">
+        <div id="menu">
+            <ul>
+                <li><a href="#" data-page="order-history">Order History</a></li>
+                <li><a href="#" data-page="wishlist">Wishlist</a></li>
+                <li><a href="#" data-page="address-book">Address Book</a></li>
+                <li><a href="#" data-page="password-reset">Password Reset</a></li>
+                <li><a href="#" data-page="favorite-products">Favorite Products</a></li>
+                <li><a href="#" data-page="notifications">Notifications</a></li>
+            </ul>
         </div>
-        <div id="wishlist" class="page">
-            <h2>Wishlist</h2>
-            <p>Items in your wishlist will appear here.</p>
-        </div>
-        <div id="address-book" class="page">
-            <h2>Address Book</h2>
-            <p>Manage your addresses here.</p>
-        </div>
-        <div id="password-reset" class="page">
-            <h2>Password Reset</h2>
-            <p>Reset your password here.</p>
-        </div>
-        <div id="favorite-products" class="page">
-            <h2>Favorite Products</h2>
-            <p>Your favorite products will be listed here.</p>
-        </div>
-        <div id="notifications" class="page">
-            <h2>Notifications</h2>
-            <p>Your notifications will appear here.</p>
+        <div id="content">
+            <div id="order-history" class="page">
+                <h2>Order History</h2>
+                <p>Your order history will be displayed here.</p>
+            </div>
+            <div id="wishlist" class="page">
+                <h2>Wishlist</h2>
+                <p>Items in your wishlist will appear here.</p>
+            </div>
+            <div id="address-book" class="page">
+                <h2>Address Book</h2>
+                <p>Manage your addresses here.</p>
+            </div>
+            <div id="password-reset" class="page">
+                <h2>Password Reset</h2>
+                <p>Reset your password here.</p>
+            </div>
+            <div id="favorite-products" class="page">
+                <h2>Favorite Products</h2>
+                <p>Your favorite products will be listed here.</p>
+            </div>
+            <div id="notifications" class="page">
+                <h2>Notifications</h2>
+                <p>Your notifications will appear here.</p>
+            </div>
         </div>
     </div>
 
@@ -86,17 +117,17 @@
         document.addEventListener('DOMContentLoaded', function() {
             const menuLinks = document.querySelectorAll('#menu a');
             const pages = document.querySelectorAll('.page');
+            const loginLink = document.getElementById('login-link');
+            const logoutLink = document.getElementById('logout-link');
 
             menuLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const pageId = this.getAttribute('data-page');
 
-                    // Remove active class from all links and pages
                     menuLinks.forEach(l => l.classList.remove('active'));
                     pages.forEach(p => p.classList.remove('active'));
 
-                    // Add active class to clicked link and corresponding page
                     this.classList.add('active');
                     document.getElementById(pageId).classList.add('active');
                 });
@@ -104,6 +135,19 @@
 
             // Activate the first page by default
             menuLinks[0].click();
+
+            // Simulating login/logout functionality
+            loginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginLink.style.display = 'none';
+                logoutLink.style.display = 'inline';
+            });
+
+            logoutLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                logoutLink.style.display = 'none';
+                loginLink.style.display = 'inline';
+            });
         });
     </script>
 </body>
