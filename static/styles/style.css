@@ -41,6 +41,10 @@ h6 {
     overflow: hidden;
 }
 
+.navbar-right a:hover {
+    text-decoration: underline;
+}
+
 .navbar-right a {
     list-style-type: none;
     text-decoration: none;
@@ -140,13 +144,6 @@ h6 {
     height: auto;
 }
 
-.banner-content {
-    position: absolute;
-    top: 71%;
-    left: 90px;
-    transform: translateY(-50%);
-    color: #000;
-}
 
 .banner-content h1 {
     font-family: 'Playfair Display', serif;
@@ -161,39 +158,71 @@ h6 {
     max-width: 500px;
     margin: 0 0 20px;
     color: #000;
-}
-
-.banner-buttons {
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
+    margin-left: 20px;
 }
 
 .banner-buttons .btn {
-    padding: 10px 20px;
+    padding: 10px 40px; /* Increased padding for a longer button */
     border: none;
-    border-radius: 20px;
+    border-radius: 0px; /* Fully rounded corners */
     font-size: 16px;
     cursor: pointer;
-    background-color: #f2e6e7;
-    color: #855a5b;
+    background-color: #855a5b; /* Maroon color */
+    color: #fff; /* White text */
     transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    margin: 0 10px; /* Spacing between buttons */
+    text-decoration: none;
 }
 
 .banner-buttons .btn:hover {
-    background-color: #855a5b;
-    color: #fff;
+    background-color: #a67a7b; /* Lighter maroon on hover */
     transform: scale(1.05);
 }
 
-.Login {
-    background-color: #f2e6e7;
+.banner-content {
+    position: absolute;
+    top: 71%;
+    left: 90px; /* Adjusted from 90px to 50px for better alignment */
+    transform: translateY(-50%);
+    color: #000;
 }
 
-.shop-now {
-    background-color: #855a5b;
-    color: #fff;
+
+.banner-buttons .btn a {
+    text-decoration: none; /* Remove underline */
+    color: white; /* Set text color to white */
 }
+
+
+
+.banner-buttons .btn:active {
+    background-color: #C29B99; /* Even lighter maroon when clicked */
+}
+
+.banner-buttons .btn a:hover {
+    color: white; /* Ensure text color remains white on hover */
+}
+
+/* Style for Login and Sign Up in the navbar */
+.navbar-right a {
+    color: #855a5b; /* Maroon color */
+    text-decoration: none; /* Remove default underline */
+    transition: color 0.3s ease; /* Smooth transition */
+}
+
+.navbar-right a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #855a5b; /* Keep the text maroon */
+}
+
+.navbar-right .signup-link:hover {
+    text-decoration: underline; /* Underline on hover for Sign Up */
+    color: #855a5b; /* Keep the text maroon */
+}
+
+
 
 /* Category section */
 .womens-category,
