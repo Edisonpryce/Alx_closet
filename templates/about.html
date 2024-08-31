@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALXCLOSET Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/styles/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href=""><img src="../static/images/alx-logo.png" alt="Alx-logo"></a>
+            <div class="navbar-left">
+                <div class="search-box">
+                    <input type="text" placeholder="Search">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+            </div>
+            <div class="navbar-right">
+                <a href="">
+                    <i class="fas fa-shopping-cart icon"></i>
+                </a>
+                <a href="">
+                    <i class="fas fa-star icon"></i>
+                </a>
+                <a href="{{ url_for('auth.login') }}">
+                    <i class="fas fa-user icon"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <h2>
+        <p>About Us</p>
+        <div>
+            <p>
+                About Us
+                Welcome to our ALX community platform!
+
+                This project is a labor of passion by Edison Asare and Janice, fellow students of the ALX program. We embarked on this journey with a shared vision: to create a space where members of the ALX community can purchase exclusive ALX merchandise at a price that fits their budget.
+
+                Our platform is unique in that it allows you to choose how much you want to pay for an item, with prices ranging from $5 to $1000. But there’s more to it than just flexible pricing. When you choose to pay more than $5 for an item, the difference is automatically set aside for our sponsorship program. This program is dedicated to supporting brilliant and eager prospective students who need help funding their ALX fees—a privilege we were fortunate to receive for free.
+
+                Through this initiative, we aim to give back to the community that has given us so much, ensuring that more students can access the transformative experience that ALX offers.
+
+                Thank you for being a part of our journey!
+            </p>
+        </div>
+    </h2>
+    
+</body>
