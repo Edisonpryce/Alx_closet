@@ -14,7 +14,9 @@
 <body>
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="/"><img src="../static/images/alx-logo.png" alt="Alx-logo"></a>
+            <a href="index.html">
+                <img src="../static/images/alx-logo.png" alt="Alx-logo">
+            </a>
             <div class="navbar-left">
                 <div class="search-box">
                     <input type="text" placeholder="Search">
@@ -22,15 +24,19 @@
                 </div>
             </div>
             <div class="navbar-right">
-                <a href="">
+                <a href="#">
                     <i class="fas fa-shopping-cart icon"></i>
+                    
                 </a>
-                <a href="">
+                <a href="#">
                     <i class="fas fa-star icon"></i>
+                    
                 </a>
                 <a href="{{ url_for('auth.login') }}">
                     <i class="fas fa-user icon"></i>
+                    <span>Login |</span>
                 </a>
+                <a href="{{ url_for('auth.signup') }}" class="signup-link">Sign Up</a>
             </div>
         </div>
     </nav>
@@ -45,8 +51,6 @@
                 <button class="btn shop-now"><a href="{{ url_for('auth.signup') }}">Sign Up</a></button>
             </div>
         </div>
-    </div>
-            
     </div>
 
     <!-- Women's Category Section -->
@@ -162,7 +166,7 @@
                 <div class="product" data-colors='{"Blue":"../static/images/Found-Tee-Blue.png", "orange":"../static/images/Found-Tee-Orange.png"}'>
                     <img src="../static/images/Found-Tee-Blue.png" alt="Found-Me Tshirt">
                     <h3> Found-Me Tshirt</h3>
-                    <p>Be bold and confident! Let the world know you’ve found your place at Alx</p>
+                    <p>Be bold and confident! Let the world know you’ve found your place at ALX.</p>
                     <div class="currency-slider">
                         <div class="slider-container">
                             <div class="slider-thumb">
@@ -255,11 +259,9 @@
                         </button>
                     </div>
                 </div>
-               
             </div>
         </div>
     </div>
-
 
     <!-- New Banner Section -->
     <section class="section banner" aria-label="banner" data-section>
@@ -280,7 +282,8 @@
             </ul>
         </div>
     </section>
-    
+
+    <!-- Feature Section -->
     <section class="section feature" aria-label="feature" data-section>
         <div class="container">
             <h2 class="section-title">Why Shop with us?</h2>
@@ -288,30 +291,33 @@
                 <li class="flex-item">
                     <div class="feature-card">
                         <img src="../static/images/feature-truck.png" class="card-icon" alt="Free Shipping ">
-                        <h3 class="card-title">Free quality shipping </h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <h3 class="card-title">Free quality shipping</h3>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                 </li>
                 <li class="flex-item">
                     <div class="feature-card">
                         <img src="../static/images/feature-love.png" class="card-icon" alt="Love">
                         <h3 class="card-title">Designed with Love</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                 </li>
                 <li class="flex-item">
                     <div class="feature-card">
                         <img src="../static/images/feature-eco.png" class="card-icon" alt="Eco Friendly">
                         <h3 class="card-title">Eco Friendly</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                 </li>
             </ul>
         </div>
     </section>
-    
+
+    <!-- Footer Section -->
     <footer>
-        
+        <div class="container">
+            <p>&copy; 2024 ALXCLOSET. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>

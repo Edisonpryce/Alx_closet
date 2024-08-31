@@ -44,6 +44,8 @@ h6 {
 .navbar-right a {
     list-style-type: none;
     text-decoration: none;
+    font-size: 14px; /* Adjusted font size for "Login" and "Sign Up" */
+    color: #855a5b; /* Maroon color for "Login" and "Sign Up" */
 }
 
 /* Organize navbar items */
@@ -62,7 +64,6 @@ h6 {
 
 /* Icon styles with hover effect */
 .icon {
-
     font-size: 20px;
     margin: 0 15px;
     cursor: pointer;
@@ -87,9 +88,7 @@ h6 {
     transition: transform 0.3s ease;
     flex-grow: 1;
     max-width: 200px;
-
 }
-
 
 .search-box input {
     border: none;
@@ -128,9 +127,6 @@ h6 {
     background-color: #f0f0f0;
 }
 
-
-
-
 /* Banner section */
 .banner {
     position: relative;
@@ -158,7 +154,6 @@ h6 {
     margin: 0 0 10px;
     color: #000;
 }
-
 
 .banner-content p {
     font-family: 'Raleway', sans-serif;
@@ -459,7 +454,6 @@ ol {
     padding: 0;
 }
 
-
 /* Feature section */
 .feature {
     text-align: center;
@@ -507,7 +501,6 @@ ol {
     font-size: 16px;
     color: #777;
 }
-
 
 /* Modal styles */
 .modal {
