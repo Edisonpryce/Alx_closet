@@ -23,11 +23,11 @@ def product1():
 def product2():
     return render_template('/product2.html')
 
-@customer.route('/product2', methods=['GET', 'POST'], strict_slashes=False)
+@customer.route('/product3', methods=['GET', 'POST'], strict_slashes=False)
 def product3():
     return render_template('/product3.html')
 
-@customer.route('/product2', methods=['GET', 'POST'], strict_slashes=False)
+@customer.route('/product4', methods=['GET', 'POST'], strict_slashes=False)
 def product4():
     return render_template('/product4.html')
 
