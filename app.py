@@ -38,6 +38,8 @@ app.teardown_appcontext
 def remove_session(exception):
     db._DBStorage__session.remove()
 
+
+# Error handling route
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
