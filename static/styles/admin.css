@@ -119,38 +119,38 @@ body {
     background-color: #f0f0f0;
 }
 
-#main-content {
+.main-content {
     margin-top: 4%;
     display: flex;
     flex-grow: 1;
 }
 
-#menu {
+.menu {
     width: 200px;
     background-color: #f0f0f0;
     padding: 20px;
 }
 
-#menu ul {
+.menu ul {
     list-style-type: none;
     padding: 0;
 }
 
-#menu li {
+.menu li {
     margin-bottom: 10px;
 }
 
-#menu a {
+.menu a {
     text-decoration: none;
     color: #333;
 }
 
-#menu a.active {
+.menu a.active {
     color: #0066cc;
     font-weight: bold;
 }
 
-#content {
+.content {
     flex-grow: 1;
     padding: 20px;
 }
