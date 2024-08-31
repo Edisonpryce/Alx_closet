@@ -53,3 +53,17 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
+document.addEventListener('DOMContentLoaded', function () {
+    const viewProductButtons = document.querySelectorAll('.compare-btn');
+
+    viewProductButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const productUrl = this.getAttribute('data-url');
+            window.location.href = productUrl;
+        });
+    });
+
+
+});
+
