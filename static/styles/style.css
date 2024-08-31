@@ -586,12 +586,12 @@ ol {
 }
 
 .cancel {
-    background-color: #855a5b;
+    background-color:red;
     color: white;
 }
 
 .add-to-cart {
-    background-color: #249327;
+    background-color: #2bdb31;
     color: white;
 }
 
