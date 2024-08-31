@@ -11,16 +11,8 @@ document.querySelectorAll('.currency-slider').forEach(function(sliderWrapper) {
     });
 });
 
-// Example of handling other action buttons if necessary
-document.querySelectorAll('.action-btn:not(.compare-btn)').forEach(button => {
-    button.addEventListener('click', function() {
-        alert('Button clicked: ' + this.getAttribute('aria-label'));
-    });
-});
 
-
-
-//extras
+//extr
 'use strict';
 
 
