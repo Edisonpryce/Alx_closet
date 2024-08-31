@@ -1,11 +1,14 @@
-const container = document.getElementById('container');
-const registerBtn = document.getElementById('register');
-const loginBtn = document.getElementById('login');
 
-registerBtn.addEventListener('click', () => {
-    container.classList.add("active");
-});
+    document.querySelectorAll('.slider').forEach(function(slider, index) {
+        const priceDisplay = document.querySelector(`#price-display-${index + 1}`);
+        const sliderThumb = slider.parentElement.querySelector('.slider-thumb');
 
-loginBtn.addEventListener('click', () => {
-    container.classList.remove("active");
-});
+        slider.addEventListener('input', function() {
+            priceDisplay.textContent = `$${this.value}`;
+            sliderThumb.style.left = `${this.value / 20}%`; // Adjust left position based on value
+        });
+
+        slider.addEventListener('mousemove', function() {
+            sliderThumb.style.left = `${this.value / 20}%`;
+        });
+    });

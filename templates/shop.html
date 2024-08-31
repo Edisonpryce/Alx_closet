@@ -15,7 +15,9 @@
 <body>
     <nav class="navbar">
         <div class="navbar-container">
-            <img src="../static/images/alx-logo.png" alt="Alx-logo">
+            <a href="index.html">
+                <img src="../static/images/alx-logo.png" alt="Alx-logo">
+            </a>
             <div class="navbar-left">
                 <div class="search-box">
                     <input type="text" placeholder="Search">
@@ -23,17 +25,19 @@
                 </div>
             </div>
             <div class="navbar-right">
-                <a href="../templates/login.html">
-                    <i class="fas fa-user icon"></i>
-                </a>
                 <a href="#">
-                    <i class="fas fa-shopping-cart icon" id="cart-icon">
-                        <span id="cart-count">0</span>
-                    </i>
+                    <i class="fas fa-shopping-cart icon"></i>
+                    
                 </a>
                 <a href="#">
                     <i class="fas fa-star icon"></i>
+                    
                 </a>
+                <a href="{{ url_for('auth.login') }}">
+                    <i class="fas fa-user icon"></i>
+                    <span>Login</span><span> |</span>
+                </a>
+                <a href="{{ url_for('auth.signup') }}" class="signup-link">Sign Up</a>
             </div>
         </div>
     </nav>
@@ -406,6 +410,17 @@
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
     <script src="../static/js/shop.js"></script>
     <script src="../static/js/script.js"></script>
+    <script>
+    document.querySelectorAll('.slider').forEach(function (slider, index) {
+    const priceDisplay = document.querySelector(`#price-display-${index + 1}`);
+
+    slider.addEventListener('input', function () {
+        priceDisplay.textContent = `$${this.value}`;
+    });
+});
+
+
+    </script>
 </body>
 
 </html>
