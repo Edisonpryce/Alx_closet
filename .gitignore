@@ -1,4 +1,4 @@
 # Ignore venv
 .venv
-.logins
+.env
 .logins.sh
