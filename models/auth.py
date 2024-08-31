@@ -75,15 +75,15 @@ def log_out():
     return redirect('/')
 
 
-"""
+
 @auth.route('/profile/<int:customer_id>')
 @login_required
 def profile(user_id):
     session = current_app.config['SESSION']
-    user = session.query(User).ger(user_id)
+    user = session.query(User).get(user_id)
     return render_template('profile.html', user=user_id)
 
-
+"""
 @auth.route('/change-password/<int:customer_id>', methods=['GET', 'POST'])
 @login_required
 def change_password(user_id):

@@ -35,10 +35,12 @@
         </div>
     </nav>
     <div class="form-container">
+    <div>
         {% if message %}
-            <h2 style="color: rgb(255, 47, 227);">{{ message }}</h2> 
-        {%endif%}   
-  <h2>LOGIN HERE</h2>
+            <h2 style="color: rgb(255, 47, 227);">{{ message }}</h2>
+        {%endif%}
+    </div>   
+    <h4>LOGIN HERE</h2>
     <form method="POST" action="{{ url_for('auth.login') }}"> 
         {{ form.hidden_tag() }}
         {{ form.email(placeholder="Email") }} 

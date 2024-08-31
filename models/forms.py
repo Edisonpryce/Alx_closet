@@ -12,12 +12,12 @@ class SignUpForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password', message="Password must match")])
     submit = SubmitField('Create account')
 
+
 class LoginForm(FlaskForm):
     email = EmailField('Email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
     
-
 
 class PasswordChangeForm(FlaskForm):
     current_password = PasswordField('Current Password', validators=[DataRequired(), Length(min=6)])
@@ -28,12 +28,11 @@ class PasswordChangeForm(FlaskForm):
 
 class ShopItemsForm(FlaskForm):
     product_name = StringField('Name of Product', validators=[DataRequired()])
-    current_price = FloatField('Current Price', validators=[DataRequired()])
-    previous_price = FloatField('Previous Price', validators=[DataRequired()])
+    actual_price = FloatField('Current Price', validators=[DataRequired()])
+    chosen_price = FloatField('Previous Price', validators=[DataRequired()])
     in_stock = IntegerField('In Stock', validators=[DataRequired(), NumberRange(min=0)])
-    product_picture = FileField('Product Picture', validators=[DataRequired()])
-    flash_sale = BooleanField('Flash Sale')
-
+    product_picture = FileField('Product Picture', validators=[FileRequired()])
+    
     add_product = SubmitField('Add Product')
     update_product = SubmitField('Update')
 
