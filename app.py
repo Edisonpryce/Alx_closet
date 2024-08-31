@@ -1,4 +1,6 @@
 #!/usr/bin/python3 
+""" Main entry of the flask application
+"""
 from flask import Flask
 from models.admin import admin
 from models.pages import page 
@@ -39,6 +41,7 @@ def remove_session(exception):
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

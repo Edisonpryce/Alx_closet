@@ -1,4 +1,4 @@
-""" Using sqlalchemy to create database and tables
+""" Using sqlalchemy to create database tables
 """
 from uuid import uuid4
 from hashlib import md5

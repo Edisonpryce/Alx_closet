@@ -1,3 +1,9 @@
+""" This is the customer only accessible page.
+contains the home page and the index page
+which is the main page of the website.
+This is the main page of the website.
+"""
+
 from flask import Blueprint, render_template
 from flask_login import login_required, current_user
 

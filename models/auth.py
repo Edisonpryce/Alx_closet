@@ -1,3 +1,6 @@
+""" Auth page dedication for the signing up and loging
+and all the logic authentication is handled here
+"""
 from flask import render_template, redirect, url_for, flash, current_app, Blueprint, request
 from .forms import SignUpForm, LoginForm, PasswordChangeForm  # Import your form
 from .tables import User

@@ -1,3 +1,5 @@
+""" Page dedicated for adminstration activities of the web application
+"""
 from flask import Blueprint
 from flask_login import login_required, current_user
 
