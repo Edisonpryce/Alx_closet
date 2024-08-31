@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALXCLOSET Project</title>
+    <title>User Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="stylesheet" href="../static/styles/admin.css">
 </head>
-
 <body>
     <nav class="navbar">
         <div class="navbar-container">
@@ -31,12 +29,91 @@
                 <a href="{{ url_for('auth.login') }}">
                     <i class="fas fa-user icon"></i>
                 </a>
+                <a href="{{ url_for('auth.log_out') }}">
+                    <span>Log out</span>
+                </a>
             </div>
         </div>
     </nav>
+    <div id="main-content">
+        <div id="menu">
+            <ul>
+                <li><a href="#" data-page="notifications">Notifications</a></li>
+                <li><a href="#" data-page="order-history">Order History</a></li>
+                <li><a href="#" data-page="wishlist">Wishlist</a></li>
+                <li><a href="#" data-page="address-book">Address Book</a></li>
+                <li><a href="#" data-page="password-reset">Password Reset</a></li>
+                <li><a href="#" data-page="favorite-products">Favorite Products</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <div id="order-history" class="page">
+                <h2>Order History</h2>
+                <p>Your order history will be displayed here.</p>
+            </div>
+            <div id="wishlist" class="page">
+                <h2>Wishlist</h2>
+                <p>Items in your wishlist will appear here.</p>
+            </div>
+            <div id="address-book" class="page">
+                <h2>Address Book</h2>
+                <p>Manage your addresses here.</p>
+            </div>
+            <div id="password-reset" class="page">
+                <h2>Password Reset</h2>
+                <p>Reset your password here.</p>
+            </div>
+            <div id="favorite-products" class="page">
+                <h2>Favorite Products</h2>
+                <p>Your favorite products will be listed here.</p>
+            </div>
+            <div id="notifications" class="page">
+                <h2>Notifications</h2>
+                <p>Your notifications will appear here.</p>
+            </div>
+        </div>
+    </div>
 
-    <h1>
-        All purchased items and more will be here
-    </h1>
+
+
+
     
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuLinks = document.querySelectorAll('#menu a');
+            const pages = document.querySelectorAll('.page');
+            const loginLink = document.getElementById('login-link');
+            const logoutLink = document.getElementById('logout-link');
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+
+                    menuLinks.forEach(l => l.classList.remove('active'));
+                    pages.forEach(p => p.classList.remove('active'));
+
+                    this.classList.add('active');
+                    document.getElementById(pageId).classList.add('active');
+                });
+            });
+
+            // Activate the first page by default
+            menuLinks[0].click();
+
+            // Simulating login/logout functionality
+            loginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginLink.style.display = 'none';
+                logoutLink.style.display = 'inline';
+            });
+
+            logoutLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                logoutLink.style.display = 'none';
+                loginLink.style.display = 'inline';
+            });
+        });
+    </script>
 </body>
+</html>
