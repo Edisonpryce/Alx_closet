@@ -23,3 +23,8 @@ def product1():
 def home():
     return render_template('/home.html', user=current_user.name)
 
+@customer.route('/profile', methods=['GET', 'POST'], strict_slashes=False)
+@login_required
+def profile():
+    return render_template('/profile.html')
+
