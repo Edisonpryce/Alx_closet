@@ -28,8 +28,12 @@ def login():
         if user:
             if user.verify_password(password, user.password):
                 login_user(user)
-                flash('Login Successful', 'success')
-                return redirect(url_for('customer.home'))
+                if user.is_admin:
+                    flash('Welcome Admin!', 'success')
+                    return redirect(url_for('admin.dashboard'))
+                else:
+                    flash('Welcome Customer!', 'success')
+                    return redirect(url_for('customer.home'))
             else:
                 flash('Incorrect Email or Password')
         else:

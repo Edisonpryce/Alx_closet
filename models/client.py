@@ -15,7 +15,7 @@ def index():
     return render_template('/index.html')
 
 @customer.route('/product1', methods=['GET', 'POST'], strict_slashes=False)
-def index():
+def product1():
     return render_template('/product1.html')
 
 @customer.route('/home', methods=['GET', 'POST'], strict_slashes=False)

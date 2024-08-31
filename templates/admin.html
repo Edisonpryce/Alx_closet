@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="../static/styles/style.css">
     <link rel="stylesheet" href="../static/styles/login.css">
-    <title> Alx Closet -Login Page</title>
+    <link rel="stylesheet" href="../static/styles/admin.css">
+    <title> Alx Closet -Admin Dashboard</title>
 </head>
 
 <body>
@@ -16,8 +17,9 @@
             <img src="../static/images/alx-logo.png" alt="Alx-logo">
             <div class="navbar-left">
                 <div class="search-box">
-                    <input type="text" placeholder="Search">
-                    <i class="fas fa-search search-icon"></i>
+                        <h4>
+                            Admin: {{ user }}
+                        </h4>
                 </div>
             </div>
             <div class="navbar-right">
@@ -30,11 +32,18 @@
                 <a href="">
                     <i class="fas fa-star icon"></i>
                 </a>
-
+                <a href="{{ url_for('auth.log_out') }}">
+                    <span>Log out</span><span></span>
+                </a>
             </div>
         </div>
     </nav>
 
+    <form method="POST">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+        <button type="submit">Promote to Admin</button>
+    </form>
    
     <script src="../static/js/admin.js"></script>
 </body>

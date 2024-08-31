@@ -2,7 +2,7 @@
 """
 from uuid import uuid4
 from hashlib import md5
-from sqlalchemy import Column, String, Integer, Float, DateTime, ForeignKey
+from sqlalchemy import Column, String, Integer, Float, DateTime, ForeignKey, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from datetime import datetime
@@ -20,6 +20,7 @@ class User(Base, UserMixin):
     email = Column(String(46), nullable=False)
     password = Column(String(150), nullable=False)
     telephone = Column(String(15), nullable=False)
+    is_admin = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.now(), nullable=True)
     updated_at = Column(DateTime, default=datetime.now(), onupdate=datetime.now(), nullable=True)
     cart_item = relationship("Cart", backref="user")
