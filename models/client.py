@@ -37,6 +37,7 @@ def home():
     return render_template('/home.html', user=current_user.name)
 
 
+@customer.route('/home/profile', methods=['GET', 'POST'], strict_slashes=False)
 @customer.route('/profile', methods=['GET', 'POST'], strict_slashes=False)
 @login_required
 def profile():
