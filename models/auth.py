@@ -4,7 +4,7 @@ and all the logic authentication is handled here
 from flask import render_template, redirect, url_for, flash, current_app, Blueprint, request
 from .forms import SignUpForm, LoginForm, PasswordChangeForm  # Import your form
 from .tables import User
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
 
@@ -82,38 +82,27 @@ def log_out():
     return redirect('/')
 
 
-
-@auth.route('/profile/<int:customer_id>')
+@auth.route('/profile', methods=['GET', 'POST'])
 @login_required
-def profile(user_id):
-    session = current_app.config['SESSION']
-    user = session.query(User).get(user_id)
-    return render_template('profile.html', user=user_id)
-
-"""
-@auth.route('/change-password/<int:customer_id>', methods=['GET', 'POST'])
-@login_required
-def change_password(user_id):
+def change_password():
     form = PasswordChangeForm()
     session = current_app.config['SESSION']
-    user = session.query(User).ger(user_id)
+    user = current_user
     if form.validate_on_submit():
         current_password = form.current_password.data
         new_password = form.new_password.data
         confirm_new_password = form.confirm_new_password.data
 
-        if user.verify_password(current_password):
+        if user.verify_password(current_password, user.password):
             if new_password == confirm_new_password:
-                user.password = confirm_new_password
+                user.password = user.hash_password(confirm_new_password)
                 session.commit()
                 flash('Password Updated Successfully')
-                return redirect(f'/profile/{user.id}')
+                return redirect(url_for('customer.profile'))
             else:
                 flash('New Passwords do not match!!')
 
         else:
             flash('Current Password is Incorrect')
 
-    return render_template('change_password.html', form=form)
-
-"""
+    return render_template('profile.html', form=form)

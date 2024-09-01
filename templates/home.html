@@ -28,7 +28,7 @@
                 <a href="{{ url_for('customer.favorite_products') }}">
                     <i class="fas fa-star icon"></i>
                 </a>
-                <a href="{{ url_for('customer.profile') }}" >
+                <a href="{{ url_for('customer.profile')}}" >
                     <i class="fas fa-user icon"></i>
                 </a>
                 <a href="{{ url_for('auth.log_out') }}">
@@ -44,7 +44,7 @@
         <div class="banner-content">
             <p>ALX Closet redefines shopping—set your price, support future leaders, and wear your impact with pride. Join us in making a difference.</p>
             <div class="banner-buttons">
-                <h3>Welcome {{ user }}</h3>
+                <h3>Welcome {{ user.name }}</h3>
             </div>
         </div>
     </div>

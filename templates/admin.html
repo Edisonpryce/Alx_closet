@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="../static/styles/style.css">
-    <link rel="stylesheet" href="../static/styles/login.css">
     <link rel="stylesheet" href="../static/styles/admin.css">
     <title> Alx Closet -Admin Dashboard</title>
 </head>
@@ -38,14 +36,67 @@
             </div>
         </div>
     </nav>
+    <div class="main-content">
+        <div class="menu">
+            <ul>
+                <li><a href="#" data-page="notifications">Notifications</a></li>
+                <li><a href="#" data-page="order-history">Add/Remove Admin</a></li>
+                <li><a href="#" data-page="wishlist">Wishlist</a></li>
+                <li><a href="#" data-page="address-book">Address Book</a></li>
+                <li><a href="#" data-page="favorite-products">Favorite Products</a></li>
+                <li><a href="#" data-page="password-reset">Password Reset</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="notifications page">
+                <h2>Notifications</h2>
+                <p>You have no notifications.</p>
+            </div>
+            <div class="order-history page">
+                <h2>Add/remove Admin</h2>
+                <p>You can add or remove admin users here/p>
+            </div>
+            <div class="wishlist page">
+                <h2>Wishlist</h2>
+                <p>Items in your wishlist will appear here.</p>
+            </div>
+            <div class="address-book page">
+                <h2>Address Book</h2>
+                <p>Manage your addresses here.</p>
+            </div>
+            <div class="password-reset page">
+                <h2>Password Reset</h2>
+                <p>This is the page for password reset</p>
+            </div>
+            <div class="favorite-products page">
+                <h2>Favorite Products</h2>
+                <p>Your favorite products will be listed here.</p>
+            </div>
+        </div>
+    </div>
 
-    <form method="POST">
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
-        <button type="submit">Promote to Admin</button>
-    </form>
-   
-    <script src="../static/js/admin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const menuLinks = document.querySelectorAll('.menu a');
+        const pages = document.querySelectorAll('.page');
+
+        menuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const pageClass = this.getAttribute('data-page');
+
+            menuLinks.forEach(l => l.classList.remove('active'));
+            pages.forEach(p => p.classList.remove('active'));
+
+            this.classList.add('active');
+            document.querySelector('.' + pageClass).classList.add('active');
+        });
+    });
+
+            // Activate the first page by default
+            menuLinks[0].click();
+    });
+    </script>
 </body>
 
 </html>

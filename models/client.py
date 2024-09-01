@@ -33,7 +33,7 @@ def product4():
 @customer.route('/home', methods=['GET', 'POST'], strict_slashes=False)
 @login_required
 def home():
-    return render_template('/home.html', user=current_user.name)
+    return render_template('/home.html', user=current_user)
 
 @customer.route('/cart', methods=['GET', 'POST'], strict_slashes=False)
 @login_required
@@ -46,8 +46,8 @@ def favorite_products():
     return "Welcome to  your favorite products page"
 
 
-@customer.route('/home/profile/', methods=['GET', 'POST'], strict_slashes=False)
-@customer.route('/profile/', methods=['GET', 'POST'], strict_slashes=False)
+@customer.route('/profile', methods=['GET', 'POST'], strict_slashes=False)
 @login_required
 def profile():
-    return render_template('/profile.html')
+    
+    return render_template('/profile.html', user=current_user)

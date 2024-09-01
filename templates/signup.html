@@ -14,7 +14,9 @@
 <body>
     <nav class="navbar">
         <div class="navbar-container">
-            <img src="../static/images/alx-logo.png" alt="Alx-logo">
+            <a href="{{ url_for('customer.index')}}">
+                <img src="../static/images/alx-logo.png" alt="Alx-logo">
+            </a>
             <div class="navbar-left">
                 <div class="search-box">
                     <input type="text" placeholder="Search">

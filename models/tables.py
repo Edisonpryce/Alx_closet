@@ -17,7 +17,7 @@ class User(Base, UserMixin):
     # Columns for User infor intake 
     id = Column(String(36), primary_key=True, nullable=False, default=str(uuid4()))
     name = Column(String(26), nullable=True)
-    email = Column(String(46), nullable=False)
+    email = Column(String(46), nullable=False, unique=True)
     password = Column(String(150), nullable=False)
     telephone = Column(String(15), nullable=False)
     is_admin = Column(Boolean, default=False)
