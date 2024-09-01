@@ -22,19 +22,19 @@
                 </div>
             </div>
             <div class="navbar-right">
-                <a href="">
+                <a href="{{ url_for('customer.cart') }}">
                     <i class="fas fa-shopping-cart icon"></i>
                 </a>
-                <a href="">
+                <a href="{{ url_for('customer.favorite_products') }}">
                     <i class="fas fa-star icon"></i>
                 </a>
-                <a href="">
+                <a href="{{ url_for('customer.profile') }}" >
                     <i class="fas fa-user icon"></i>
                 </a>
                 <a href="{{ url_for('auth.log_out') }}">
                     <span>Log out</span><span></span>
                 </a>
-            </div>
+            </div>    
         </div>
     </nav>
 

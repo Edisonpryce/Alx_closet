@@ -18,7 +18,6 @@ def index():
 def product1():
     return render_template('/product1.html')
 
-
 @customer.route('/product2', methods=['GET', 'POST'], strict_slashes=False)
 def product2():
     return render_template('/product2.html')
@@ -36,9 +35,19 @@ def product4():
 def home():
     return render_template('/home.html', user=current_user.name)
 
+@customer.route('/cart', methods=['GET', 'POST'], strict_slashes=False)
+@login_required
+def cart():
+    return "Welcome to your cart page"
 
-@customer.route('/home/profile', methods=['GET', 'POST'], strict_slashes=False)
-@customer.route('/profile', methods=['GET', 'POST'], strict_slashes=False)
+@customer.route('/favorite_products', methods=['GET', 'POST'], strict_slashes=False)
+@login_required
+def favorite_products():
+    return "Welcome to  your favorite products page"
+
+
+@customer.route('/home/profile/', methods=['GET', 'POST'], strict_slashes=False)
+@customer.route('/profile/', methods=['GET', 'POST'], strict_slashes=False)
 @login_required
 def profile():
-    return render_template('/profile.html', user=current_user.name)
+    return render_template('/profile.html')
