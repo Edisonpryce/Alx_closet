@@ -40,9 +40,8 @@
         </div>
     </nav>
 
-   
     <div class="breadcrumb">
-         <span>Puff-Up Jacket</span>
+        <span>Puff-Up Jacket</span>
     </div>
 
     <!-- Product Details Section -->
@@ -50,19 +49,21 @@
         <div class="product-image">
             <img src="../static/images/Puffer-Pink.png" alt="Puff-Up Jacket">
             <div class="thumbnails">
-                <img src="../static/images/Puffer-Grey.png" alt="Puff-Up Jacket">
                 <img src="../static/images/Puffer-Green.png" alt="Puff-Up Jacket">
                 <img src="../static/images/Puffer-Yellow.png" alt="Puff-Up Jacket">
-                
-
-
+                <img src="../static/images/Puffer-Grey.png" alt="Puff-Up Jacket">
             </div>
         </div>
-        <form action="{{ url_for('add_to_cart') }}" method="POST">
+
+        <form action="" method="POST">
             <input type="hidden" name="product_name" value="Puff-Up Jacket">
-            <input type="hidden" name="price" value="3750">
             <input type="hidden" name="image_url" value="../static/images/Puffer-Pink.png">
-        
+
+            <div class="product-price">
+                <label for="price">Your selected amount in dollars</label>
+                <input type="number" id="price" name="price" value="5" min="5" max="1000">
+            </div>
+
             <div class="product-options">
                 <label for="size">Size</label>
                 <select id="size" name="size">
@@ -72,19 +73,25 @@
                     <option value="XL">XL</option>
                 </select>
             </div>
+
             <div class="product-quantity">
                 <label for="quantity">Quantity</label>
                 <input type="number" id="quantity" name="quantity" value="1" min="1">
             </div>
+
             <button type="submit" class="btn add-to-cart-btn">
                 <i class="fas fa-cart-plus"></i> Add to Cart
             </button>
+            <button type="submit" class="btn add-to-credit-card">
+                <i class="fas fa-credit-card"></i> Buy Now
+            </button>
         </form>
-        
+    </div>
 
-    <!-- Footer Section -->
     <footer>
-       
+        <div class="container">
+            <p>&copy; 2024 ALXCLOSET. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>

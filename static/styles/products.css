@@ -69,6 +69,7 @@
     margin-bottom: 15px;
 }
 
+.product-price,
 .product-options,
 .product-quantity {
     margin-bottom: 15px;
@@ -112,17 +113,9 @@ input[type="number"] {
     background-color: #a67a7b;
 }
 
-/* Footer styles */
-footer {
-    background-color: #f9f9f9;
-    text-align: center;
-    padding: 20px 0;
-}
-
-footer p {
-    margin: 0;
+.product-description {
+    flex: 1;
     font-size: 14px;
-    color: #777;
+    color: #555;
+
 }
-
-
