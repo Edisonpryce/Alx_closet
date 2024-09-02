@@ -48,8 +48,8 @@ class Product(Base):
     # Creation of the products table
     id = Column(String(36), primary_key=True, nullable=False, default=str(uuid4()))
     product_name = Column(String(36), nullable=False)
-    current_price = Column(Integer, nullable=False)
-    chosen_price = Column(Integer, nullable=False)
+    min_price = Column(Integer, nullable=False)
+    max_price = Column(Integer, nullable=False)
     in_stock = Column(Integer, nullable=False)
     product_image = Column(String(36), nullable=True)
     created_at = Column(DateTime, default=datetime.now())

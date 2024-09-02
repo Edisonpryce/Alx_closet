@@ -28,8 +28,8 @@ class PasswordChangeForm(FlaskForm):
 
 class ShopItemsForm(FlaskForm):
     product_name = StringField('Name of Product', validators=[DataRequired()])
-    actual_price = FloatField('Current Price', validators=[DataRequired()])
-    chosen_price = FloatField('Previous Price', validators=[DataRequired()])
+    min_price = FloatField('minimum Price', validators=[DataRequired()])
+    max_price = FloatField('maximum  Price', validators=[DataRequired()])
     in_stock = IntegerField('In Stock', validators=[DataRequired(), NumberRange(min=0)])
     product_picture = FileField('Product Picture', validators=[FileRequired()])
     
