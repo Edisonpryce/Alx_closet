@@ -67,3 +67,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const carouselInner = document.querySelector('.carousel-inner');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const prevButton = document.querySelector('.carousel-control-prev');
+    const nextButton = document.querySelector('.carousel-control-next');
+    let currentIndex = 0;
+
+    function updateCarousel() {
+        // Calculate the translateX value for the carousel inner
+        const translateX = -currentIndex * 100;
+        carouselInner.style.transform = `translateX(${translateX}%)`;
+    }
+
+    function showNextSlide() {
+        currentIndex = (currentIndex + 1) % carouselItems.length; // Loop back to the first slide
+        updateCarousel();
+    }
+
+    function showPrevSlide() {
+        currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length; // Loop to the last slide
+        updateCarousel();
+    }
+
+    nextButton.addEventListener('click', showNextSlide);
+    prevButton.addEventListener('click', showPrevSlide);
+
+    // Optionally, you can also add auto-slide functionality
+    setInterval(showNextSlide, 5000); // Slide every 5 seconds
+});
+

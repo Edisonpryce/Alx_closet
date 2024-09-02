@@ -3,15 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALXCLOSET Project</title>
+    <title>ALXCLOSET Project - Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/styles/style.css">
-    <link rel="stylesheet" href="../static/styles/signup_login.css">
+
     <style>
+        /* Additional styling for the modal appearance */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4e6e7; /* Light maroon background */
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-left, .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding: 7px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            width: 200px;
+            padding-right: 30px;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #855a5b;
+        }
+
+        .form-container {
+            position: relative;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            margin-top: 100px; /* Adjusted for navbar */
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            color: #855a5b;
+            cursor: pointer;
+        }
+
+        .form-container h4 {
+            color: #855a5b; /* Updated color */
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+
         form {
-            margin-top: 15%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px; /* Rounded corners */
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #855a5b; /* Updated color */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 10px; /* Rounded corners */
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #6a4747; /* Slightly darker shade for hover effect */
+        }
+
+        p {
+            margin-top: 10px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        p a {
+            color: #855a5b; /* Updated color */
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -37,22 +159,31 @@
             </div>
         </div>
     </nav>
+
     <div class="form-container">
-    <div>
+        <span class="close-btn">&times;</span>
+
         {% if message %}
             <h2 style="color: rgb(255, 47, 227);">{{ message }}</h2>
-        {%endif%}
-    </div>   
-    <h4>LOGIN HERE</h2>
-    <form method="POST" action="{{ url_for('auth.login') }}"> 
-        {{ form.hidden_tag() }}
-        {{ form.email(placeholder="Email") }} 
-        {{ form.password(placeholder="password") }} 
-        {{ form.submit() }} 
-    </form>
-</form>
-  <p>Input in your credentials to login</p>
-  <p>Don' have an account?<a href="{{ url_for('auth.signup') }}"> Sign Up </a></p>
-  <script src="../static/js/script.js"></script>
-</div>
+        {% endif %}
+        
+        <h4>LOGIN HERE</h4>
+        <form method="POST" action="{{ url_for('auth.login') }}"> 
+            {{ form.hidden_tag() }}
+            {{ form.email(placeholder="Email") }}
+            {{ form.password(placeholder="Password") }}
+            {{ form.submit() }}
+        </form>
+
+        <p>Input your credentials to login</p>
+        <p>Don't have an account? <a href="{{ url_for('auth.signup') }}">Sign Up</a></p>
+    </div>
+
+    <script>
+        // JavaScript to close the form
+        document.querySelector('.close-btn').addEventListener('click', function() {
+            document.querySelector('.form-container').style.display = 'none';
+        });
+    </script>
 </body>
+</html>

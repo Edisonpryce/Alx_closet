@@ -6,10 +6,155 @@
     <title>Sign Up | ALXCLOSET Project</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="../static/styles/signup_login.css">
-    <link rel="stylesheet" href="../static/styles/style.css">
-   
+  
+    <style>
+        /* Additional styling for the sign-up form */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4e6e7; /* Light maroon background */
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-left, .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding: 7px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            width: 200px;
+            padding-right: 30px;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #855a5b;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 100px; /* Adjusted for navbar */
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .form-container h1 {
+            color: #855a5b; /* Updated color */
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            color: #855a5b;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #6a4747;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px; /* Rounded corners */
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #855a5b; /* Updated color */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 10px; /* Rounded corners */
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #6a4747; /* Slightly darker shade for hover effect */
+        }
+
+        span {
+            display: block;
+            margin: 10px 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #555;
+        }
+
+        p {
+            margin-top: 20px;
+            font-family: 'Montserrat', sans-serif;
+            color: #555;
+        }
+
+        p a {
+            color: #855a5b; /* Updated color */
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -29,8 +174,8 @@
                 <i class="fas fa-star icon"></i>
             </div>
         </div>
-        
     </nav>
+    
     <div class="container">
         <div class="form-container sign-up">
             <form method="POST" action="{{ url_for('auth.signup') }}">
@@ -54,6 +199,5 @@
             <p>Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
         </div>
     </div>
-    
 </body>
 </html>

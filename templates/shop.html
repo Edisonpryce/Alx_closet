@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALXCLOSET - Shop Now</title>
+    <title>Alxcloset- Shop Now</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -26,11 +26,9 @@
             <div class="navbar-right">
                 <a href="#">
                     <i class="fas fa-shopping-cart icon"></i>
-                    
                 </a>
                 <a href="#">
                     <i class="fas fa-star icon"></i>
-                    
                 </a>
                 <a href="{{ url_for('auth.login') }}">
                     <i class="fas fa-user icon"></i>
@@ -41,385 +39,380 @@
         </div>
     </nav>
 
-    <!-- Women's Category Section -->
+    <!-- Banner Section -->
+    <div class="banner">
+        <img src="../static/images/shopbanner.png" alt="ALX Closet Banner">
+    </div>
+
+    <!-- Product Section -->
     <div class="container">
         <div class="womens-category category-section">
-            <h2>Hoodies & Sweaters</h2>
-            <div class="products-grid">
-                <!-- Product 1 -->
-                <div class="product" data-colors='{"White":"../static/images/Splash-hoddie-White.png", "Pink":"../static/images/Splash-hoddie-Pink.png"}'>
-                    <img src="../static/images/Splash-hoddie-White.png" alt="Smiley Hoodie">
-                    <h3>The Smiley Hoodie</h3>
-                    <p>Comfortable soft hoodie with a playful smiley face, perfect for all your outings.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-1">
+            <h2>Shop All Items</h2>
+        <div class="products-grid">
+          
+            <!-- Hoodies -->
+            <!-- Product: The Smiley Hoodie -->
+            <div class="product"> 
+                <a href="{{ url_for('customer.product1') }}">
+                    <img src="../static/images/Smiley-Hoddie-Yellow.png" alt="Smiley Hoodie">
+                </a>
+                <h3>The Smiley Hoodie</h3>
+                <p>Comfortable soft hoodie with a playful smiley face, perfect for all your outings.</p>
+                <div class="currency-slider">
+                    <div class="slider-container">
+                        <div class="slider-thumb">
+                            <span class="currency-icon">$</span>
                         </div>
-                        <div class="price-display">
-                            <small>Your selected price:</small>
-                            <span id="price-display-1">$5</span>
-                        </div>
+                        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-1">
                     </div>
-                    <div class="card-actions">
-                        <button class="action-btn add-to-cart-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
+                    <div class="price-display">
+                        <small>Your selected price:</small>
+                        <span id="price-display-1">$5</span>
                     </div>
                 </div>
+                <div class="card-actions">
+                    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <button class="action-btn" aria-label="add to wishlist">
+                        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </div>
 
-                <!-- Product 2 -->
-                <div class="product" data-colors='{"Blue":"../static/images/Crop-Hoddie-Blue.png", "Yellow":"../static/images/Crop-Hoddie-Yellow.png"}'>
+            <!-- Product: Crop Hoodie -->
+            <div class="product">
+                <a href="{{ url_for('customer.product2') }}">
                     <img src="../static/images/Crop-Hoddie-Blue.png" alt="Crop Hoodie">
-                    <h3>Crop Hoodie</h3>
-                    <p>Stylish cropped hoodie perfect for tech lovers.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-2">
+                </a>
+                <h3>Crop Hoodie</h3>
+                <p>Stylish cropped hoodie perfect for tech lovers.</p>
+                <div class="currency-slider">
+                    <div class="slider-container">
+                        <div class="slider-thumb">
+                            <span class="currency-icon">$</span>
                         </div>
-                        <div class="price-display">
-                            <small>Your selected price:</small>
-                            <span id="price-display-2">$5</span>
-                        </div>
+                        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-2">
                     </div>
-                    <div class="card-actions">
-                        <button class="action-btn add-to-cart-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
+                    <div class="price-display">
+                        <small>Your selected price:</small>
+                        <span id="price-display-2">$5</span>
                     </div>
                 </div>
+                <div class="card-actions">
+                    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <button class="action-btn" aria-label="add to wishlist">
+                        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </div>
 
-                <!-- Product 3 -->
-                <div class="product" data-colors='{"Blue":"../static/images/Long-sleeved-Blue.png", "Orange":"../static/images/Long-sleeved-Red.png"}'>
-                    <img src="../static/images/Long-sleeved-Red.png" alt="Long-Sleeved Top">
-                    <h3>Long-Sleeved Top</h3>
-                    <p>Stay warm with our comfortable long-sleeved tops.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-3">
+            <!-- Product: Splash Hoodie -->
+            <div class="product">
+                <a href="{{ url_for('customer.product3') }}">
+                    <img src="../static/images/Splash-hoddie-White.png" alt="Splash Hoodie">
+                </a>
+                <h3>Splash Hoodie</h3>
+                <p>Vibrant splash design hoodie for those who like to stand out.</p>
+                <div class="currency-slider">
+                    <div class="slider-container">
+                        <div class="slider-thumb">
+                            <span class="currency-icon">$</span>
                         </div>
-                        <div class="price-display">
-                            <small>Your selected price:</small>
-                            <span id="price-display-3">$5</span>
-                        </div>
+                        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-3">
                     </div>
-                    <div class="card-actions">
-                        <button class="action-btn add-to-cart-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
+                    <div class="price-display">
+                        <small>Your selected price:</small>
+                        <span id="price-display-3">$5</span>
                     </div>
                 </div>
+                <div class="card-actions">
+                    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <button class="action-btn" aria-label="add to wishlist">
+                        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </div>
 
-                <!-- Product 4 -->
-                <div class="product" data-colors='{"Green":"../static/images/Puffer-Green.png", "Yellow":"../static/images/Puffer-Yellow.png"}'>
-                    <img src="../static/images/Puffer-Yellow.png" alt="Puff-Up Jacket">
-                    <h3>Puff-Up Jacket</h3>
-                    <p>Puff out with this warm, stylish jacket. Stay cool while repping your ALX pride!</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-4">
+            <!-- Sweaters -->
+            <!-- Product: Puff-Up Jacket -->
+            <div class="product">
+                <a href="{{ url_for('customer.product4') }}">
+                    <img src="../static/images/Puffer-Pink.png" alt="Puff-Up Jacket">
+                </a>
+                <h3>Puff-Up Jacket</h3>
+                <p>Puff out with this warm, stylish jacket. Stay cool while repping your ALX pride!</p>
+                <div class="currency-slider">
+                    <div class="slider-container">
+                        <div class="slider-thumb">
+                            <span class="currency-icon">$</span>
                         </div>
-                        <div class="price-display">
-                            <small>Your selected price:</small>
-                            <span id="price-display-4">$5</span>
-                        </div>
+                        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-4">
                     </div>
-                    <div class="card-actions">
-                        <button class="action-btn add-to-cart-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
+                    <div class="price-display">
+                        <small>Your selected price:</small>
+                        <span id="price-display-4">$5</span>
                     </div>
                 </div>
+                <div class="card-actions">
+                    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <button class="action-btn" aria-label="add to wishlist">
+                        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </div>
 
-                <!-- Product 5 -->
-                <div class="product" data-colors='{"orange":"../static/images/Comfy-Jacket-Orange.png", "Black":"../static/images/Comfy-Jacket-Black.png"}'>
+            <!-- Product: Comfy Jacket -->
+            <div class="product">
+                <a href="{{ url_for('customer.product5') }}">
                     <img src="../static/images/Comfy-Jacket-Orange.png" alt="Comfy Jacket">
-                    <h3>Comfy Jacket</h3>
-                    <p>For those who value comfort without sacrificing style.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-5">
+                </a>
+                <h3>Comfy Jacket</h3>
+                <p>Stay warm and comfy with our stylish Comfy Jacket, perfect for any occasion.</p>
+                <div class="currency-slider">
+                    <div class="slider-container">
+                        <div class="slider-thumb">
+                            <span class="currency-icon">$</span>
                         </div>
-                        <div class="price-display">
-                            <small>Your selected price:</small>
-                            <span id="price-display-5">$5</span>
-                        </div>
+                        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-5">
                     </div>
-                    <div class="card-actions">
-                        <button class="action-btn add-to-cart-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
+                    <div class="price-display">
+                        <small>Your selected price:</small>
+                        <span id="price-display-5">$5</span>
                     </div>
+                </div>
+                <div class="card-actions">
+                    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <button class="action-btn" aria-label="add to wishlist">
+                        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                    </button>
                 </div>
             </div>
-        </div>
 
-        <!-- Men's Category Section -->
-        <div class="mens-category category-section">
-            <h2>Guys Fit</h2>
-            <div class="products-grid">
-                <!-- Product 6 -->
-                <div class="product" data-colors='{"Blue":"../static/images/Found-Tee-Blue.png", "orange":"../static/images/Found-Tee-Orange.png"}'>
-                    <img src="../static/images/Found-Tee-Blue.png" alt="Found-Me Tshirt">
-                    <h3>Found-Me Tshirt</h3>
-                    <p>Be bold and confident! Let the world know you’ve found your place at ALX.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-6">
+            <!-- Product: Sweater Guy -->
+            <div class="product">
+                <a href="{{ url_for('customer.product6') }}">
+                    <img src="../static/images/Sweater-Guy-Orange.png" alt="Sweater Guy">
+                </a>
+                <h3>Sweater Guy</h3>
+                <p>Stay warm and stylish with our Sweater Guy collection. Perfect for those cool days.</p>
+                <div class="currency-slider">
+                    <div class="slider-container">
+                        <div class="slider-thumb">
+                            <span class="currency-icon">$</span>
                         </div>
-                        <div class="price-display">
-                            <small>Your selected price:</small>
-                            <span id="price-display-6">$5</span>
-                        </div>
+                        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-6">
                     </div>
-                    <div class="card-actions">
-                        <button class="action-btn add-to-cart-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
+                    <div class="price-display">
+                        <small>Your selected price:</small>
+                        <span id="price-display-6">$5</span>
                     </div>
                 </div>
-
-                <!-- Product 7 -->
-                <div class="product" data-colors='{"Brown":"../static/images/Dot-Tshirt-Red.png", "Red":"../static/images/Dot-Tshirt-Green.png"}'>
-                    <img src="../static/images/Dot-Tshirt-Green.png" alt="Dot-Tshirt">
-                    <h3>The Vibe-Tee</h3>
-                    <p>Catch the vibe with this bold and dynamic tee, perfect for making a statement with your ALX pride.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-7">
-                        </div>
-                        <div class="price-display">
-                            <small>Your selected price:</small>
-                            <span id="price-display-7">$5</span>
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="action-btn add-to-cart-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="product" data-colors='{"Orange":"../static/images/Sweater-Guy-Orange.png", "Jade":"../static/images/Sweater-Guy-Jade.png"}'>
-                    <img src="../static/images/Sweater-Guy-Orange.png" alt="Do Good Crewneck">
-                    <h3>Do Good Crewneck</h3>
-                    <p>Look good, do good—this cozy crewneck lets you wear your values with pride and style.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-8">
-                        </div>
-                        <div class="price-display">
-                            <small>Your selected price:</small>
-                            <span id="price-display-8">$5</span>
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="action-btn add-to-cart-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </div>
+                <div class="card-actions">
+                    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <button class="action-btn" aria-label="add to wishlist">
+                        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                    </button>
                 </div>
             </div>
-        </div>
 
-        <!-- Sports Category Section -->
-        <div class="sports-category category-section">
-            <h2>Sports Fit</h2>
-            <div class="products-grid">
-                <!-- Product 9 -->
-                <div class="product" data-colors='{"Green":"../static/images/Bottle-green.png", "orange":"../static/images/Bottle-Orange.png"}'>
+            <!-- Tees -->
+            <!-- Product: Love Tech-Tee -->
+            <div class="product">
+                <a href="{{ url_for('customer.product7') }}">
+                    <img src="../static/images/Tech-Tshirt-Green.png" alt="Love Tech-Tee">
+                </a>
+                <h3>Love Tech-Tee</h3>
+                <p>For the tech lovers who wear their passion! Soft, stylish, and ready to code.</p>
+                <div class="currency-slider">
+                    <div class="slider-container">
+                        <div class="slider-thumb">
+                            <span class="currency-icon">$</span>
+                        </div>
+                        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-7">
+                    </div>
+                    <div class="price-display">
+                        <small>Your selected price:</small>
+                        <span id="price-display-7">$5</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <button class="action-btn" aria-label="add to wishlist">
+                        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product: Look-Good Polo -->
+            <div class="product">
+                <a href="{{ url_for('customer.product8') }}">
+                    <img src="../static/images/Polo-Purple-Woman.png" alt="Look-Good Polo">
+                </a>
+                <h3>Look-Good Polo</h3>
+                <p>Look good! This sleek polo keeps you sharp and ready to take on the day with ALX pride.</p>
+                <div class="currency-slider">
+                    <div class="slider-container">
+                        <div class="slider-thumb">
+                            <span class="currency-icon">$</span>
+                        </div>
+                        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-8">
+                    </div>
+                    <div class="price-display">
+                        <small>Your selected price:</small>
+                        <span id="price-display-8">$5</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <button class="action-btn" aria-label="add to wishlist">
+                        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product: Found Tee -->
+            <div class="product">
+                <a href="{{ url_for('customer.product9') }}">
+                    <img src="../static/images/Found-Tee-Orange.png" alt="Found Tee">
+                </a>
+                <h3>Found Tee</h3>
+                <p>A classic tee for every occasion. Show off your style and rep ALX with pride.</p>
+                <div class="currency-slider">
+                    <div class="slider-container">
+                        <div class="slider-thumb">
+                            <span class="currency-icon">$</span>
+                        </div>
+                        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-9">
+                    </div>
+                    <div class="price-display">
+                        <small>Your selected price:</small>
+                        <span id="price-display-9">$5</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <button class="action-btn" aria-label="add to wishlist">
+                        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product: Sleeveless Top -->
+            <div class="product">
+                <a href="{{ url_for('customer.product10') }}">
+                    <img src="../static/images/Sleeveless-Black.png" alt="Sleeveless Top">
+                </a>
+                <h3>Sleeveless Top</h3>
+                <p>Stay cool and comfortable with this sleek sleeveless top, perfect for any workout or casual day out.</p>
+                <div class="currency-slider">
+                    <div class="slider-container">
+                        <div class="slider-thumb">
+                            <span class="currency-icon">$</span>
+                        </div>
+                        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-10">
+                    </div>
+                    <div class="price-display">
+                        <small>Your selected price:</small>
+                        <span id="price-display-10">$5</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <button class="action-btn" aria-label="add to wishlist">
+                        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product: Long-Sleeved Top -->
+            <div class="product">
+                <a href="{{ url_for('customer.product11') }}">
+                    <img src="../static/images/Long-sleeved-Red.png" alt="Long-Sleeved Top">
+                </a>
+                <h3>Long-Sleeved Top</h3>
+                <p>Stay warm with our comfortable long-sleeved tops.</p>
+                <div class="currency-slider">
+                    <div class="slider-container">
+                        <div class="slider-thumb">
+                            <span class="currency-icon">$</span>
+                        </div>
+                        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-11">
+                    </div>
+                    <div class="price-display">
+                        <small>Your selected price:</small>
+                        <span id="price-display-11">$5</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <button class="action-btn" aria-label="add to wishlist">
+                        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Accessories -->
+            <!-- Product: Sports Bottle -->
+            <div class="product">
+                <a href="{{ url_for('customer.product12') }}">
                     <img src="../static/images/Bottle-green.png" alt="Sports Bottle">
-                    <h3>Sports Bottle</h3>
-                    <p>Stay hydrated with our eco-friendly sports bottle.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-9">
+                </a>
+                <h3>Sports Bottle</h3>
+                <p>Stay hydrated with our eco-friendly sports bottle, perfect for workouts and outdoor activities.</p>
+                <div class="currency-slider">
+                    <div class="slider-container">
+                        <div class="slider-thumb">
+                            <span class="currency-icon">$</span>
                         </div>
-                        <div class="price-display">
-                            <small>Your selected price:</small>
-                            <span id="price-display-9">$5</span>
-                        </div>
+                        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-12">
                     </div>
-                    <div class="card-actions">
-                        <button class="action-btn add-to-cart-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
+                    <div class="price-display">
+                        <small>Your selected price:</small>
+                        <span id="price-display-12">$5</span>
                     </div>
                 </div>
-
-                <!-- Product 10 -->
-                <div class="product" data-colors='{"Blue":"../static/images/Sleeveless-Blue.png", "Black":"../static/images/Sleeveless-Black.png"}'>
-                    <img src="../static/images/Sleeveless-Blue.png" alt="Tanktop">
-                    <h3>Do Hard Things Tank</h3>
-                    <p>Push your limits and do hard things in style. Designed for those who embrace the challenge.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-10">
-                        </div>
-                        <div class="price-display">
-                            <small>Your selected price:</small>
-                            <span id="price-display-10">$5</span>
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="action-btn add-to-cart-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product 11 -->
-                <div class="product" data-colors='{"Orange":"../static/images/Sweater-Guy-Orange.png", "Jade":"../static/images/Sweater-Guy-Jade.png"}'>
-                    <img src="../static/images/Sweater-Guy-Orange.png" alt="Do Good Crewneck">
-                    <h3>Do Good Crewneck</h3>
-                    <p>Look good, do good—this cozy crewneck lets you wear your values with pride and style.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-11">
-                        </div>
-                        <div class="price-display">
-                            <small>Your selected price:</small>
-                            <span id="price-display-11">$5</span>
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="action-btn add-to-cart-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </div>
+                <div class="card-actions">
+                    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <button class="action-btn" aria-label="add to wishlist">
+                        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Popup Modal -->
-       <!-- Modal -->
-       <div id="impact-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p id="impact-message">Woooow $___ 😱 Through your purchase this is going to help us support others💗💗</p>
-            <div class="modal-buttons">
-                <button id="cancel-btn" class="modal-btn cancel">Cancel</button>
-                <button id="add-to-cart-btn" class="modal-btn add-to-cart">Add to Cart</button>
-            </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ALXCLOSET. All rights reserved.</p>
         </div>
-    </div>
-
-
+    </footer>
 
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
     <script src="../static/js/shop.js"></script>
     <script src="../static/js/script.js"></script>
-    <script>
-    document.querySelectorAll('.slider').forEach(function (slider, index) {
-    const priceDisplay = document.querySelector(`#price-display-${index + 1}`);
-
-    slider.addEventListener('input', function () {
-        priceDisplay.textContent = `$${this.value}`;
-    });
-});
-
-
-    </script>
 </body>
 
 </html>
