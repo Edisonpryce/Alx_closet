@@ -25,6 +25,9 @@ class PasswordChangeForm(FlaskForm):
     confirm_new_password = PasswordField('Confirm New Password', validators=[DataRequired(), Length(min=6)])
     change_password = SubmitField('Change Password')
 
+class AdminPrivilagesForm(FlaskForm):
+    admin_email = EmailField('Email', validators=[DataRequired()])
+    submit = SubmitField('Update')
 
 class ShopItemsForm(FlaskForm):
     product_name = StringField('Name of Product', validators=[DataRequired()])
