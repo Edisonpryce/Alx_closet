@@ -2,157 +2,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
-
-body {
-    font-family: 'Raleway', sans-serif;
+/* Basic reset and setting up default fonts */
+body,
+html {
     margin: 0;
     padding: 0;
+    font-family: 'Raleway', sans-serif;
+    /* Main font */
+    scroll-behavior: smooth;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.dashboard-container {
+    padding-top: 20px;
     display: flex;
-    flex-direction: column;
     height: 100vh;
 }
 
-.navbar {
-    background-color: #fffdfa;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.navbar-right a:hover {
-    text-decoration: underline;
-}
-
-.navbar-right a {
-    list-style-type: none;
-    text-decoration: none;
-    font-size: 14px;
-    /* Adjusted font size for "Login" and "Sign Up" */
-    color: #855a5b;
-    /* Maroon color for "Login" and "Sign Up" */
-}
-
-/* Organize navbar items */
-.navbar-container {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-}
-
-.navbar-container>img:hover {
-    cursor: pointer;
-}
-
-/* Icon styles with hover effect */
-.icon {
-    font-size: 20px;
-    margin: 0 15px;
-    cursor: pointer;
-    color: #000;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.icon:hover,
-.icon:active {
-    color: #855a5b;
-    transform: scale(1.2);
-}
-
-/* Search box styles */
-.search-box {
-    margin-left: 150px;
-    display: flex;
-    align-items: center;
-    border: 1px solid #855a5b;
-    border-radius: 40px;
-    padding: 5px 15px;
-    transition: transform 0.3s ease;
-    flex-grow: 1;
-    max-width: 200px;
-}
-
-.search-box input {
-    border: none;
-    outline: none;
-    width: 100%;
-    font-size: 16px;
-    background-color: #fffdfa;
-    color: #000;
-    transition: color 0.3s ease, border-color 0.3s ease;
-}
-
-.search-box input:focus {
-    color: #855a5b;
-}
-
-.search-box:hover {
-    transform: scale(1.05);
-}
-
-.search-icon {
-    color: #855a5b;
-    margin-left: 10px;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 5px;
-}
-
-::-webkit-scrollbar-thumb {
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
     background-color: #855a5b;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background-color: #f0f0f0;
-}
-
-.main-content {
-    margin-top: 6%;
+    color: #ffe9ea;
     display: flex;
-    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
 }
 
-.menu {
-    width: 200px;
-    background-color: #f0f0f0;
-    padding: 20px;
+.sidebar-header {
+    margin-bottom: 40px;
 }
 
-.menu ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.menu li {
+.sidebar-header .logo {
+    width: 150px;
     margin-bottom: 10px;
 }
 
-.menu a {
+.sidebar-menu {
+    list-style: none;
+    width: 100%;
+}
+
+.sidebar-menu li {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
     text-decoration: none;
-    color: #333;
+    color: white;
+    font-size: 16px;
+    transition: background 0.3s ease;
 }
 
-.menu a.active {
-    color: #0066cc;
-    font-weight: bold;
+.sidebar-menu a i {
+    margin-right: 10px;
 }
 
-.content {
-    flex-grow: 1;
+.sidebar-menu a.active, .sidebar-menu a:hover {
+    background-color: #bdbaba;
+    border-radius: 5px;
+}
+
+
+
+
+/* Main Content Styling */
+.main-content {
+    flex: 1;
     padding: 20px;
+    overflow-y: auto;
 }
 
 .page {
@@ -163,39 +87,80 @@ body {
     display: block;
 }
 
-.user-dropdown {
-    display: none;
-    position: absolute;
-    top: 50px;
-    /* Adjust based on your navbar height */
-    right: 10px;
+h2 {
+    padding-bottom: 50px;
+    font-size: 24px;
+    color: #000000;
+}
+
+.table-wrapper {
+    margin-top: 90px;
     background-color: white;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 5px;
-    overflow: hidden;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.user-dropdown.show {
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #bdbaba;
+    color: white;
+}
+
+.table tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Form Styling */
+.form-wrapper {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
     display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #bdbaba;
 }
 
-.user-dropdown ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
 }
 
-.user-dropdown ul li {
-    padding: 10px 20px;
+.form-group input[type="submit"] {
+    background-color: #bdbaba;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 12px;
 }
 
-.user-dropdown ul li a {
-    text-decoration: none;
-    color: black;
-    display: block;
+.form-group input[type="submit"]:hover {
+    background-color: #bdbaba;
 }
 
-.user-dropdown ul li:hover {
-    background-color: #f1f1f1;
+.logout-btn i {
+    margin-right: 5px;
 }
