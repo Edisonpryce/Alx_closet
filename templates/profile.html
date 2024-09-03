@@ -66,20 +66,12 @@
     
                     {{ form.hidden_tag() }}
             
-                    <div class="mb-3">
-                        <label for="exampleInputEmail" class="form-label"> {{ form.current_password.label }}</label>
+                        {{ form.current_password.label }}
                         {{ form.current_password }}
-                    </div>
-            
-                    <div class="mb-3">
-                        <label for="exampleInputEmail" class="form-label"> {{ form.new_password.label }}</label>
+                        {{ form.new_password.label }}
                         {{ form.new_password }}
-                    </div>
-            
-                    <div class="mb-3">
-                        <label for="exampleInputEmail" class="form-label"> {{ form.confirm_new_password.label }}</label>
+                        {{ form.confirm_new_password.label }}
                         {{ form.confirm_new_password }}
-                    </div>
             
                     {{ form.change_password }}
                 
