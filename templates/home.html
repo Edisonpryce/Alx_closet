@@ -31,9 +31,7 @@
                 <a href="{{ url_for('customer.profile')}}" >
                     <i class="fas fa-user icon"></i>
                 </a>
-                <a href="{{ url_for('auth.log_out') }}">
-                    <span>Log out</span><span></span>
-                </a>
+            
             </div>    
         </div>
     </nav>
@@ -42,282 +40,340 @@
     <div class="banner">
         <img src="../static/images/banner1.png" alt="ALX Closet Banner">
         <div class="banner-content">
-            <p>ALX Closet redefines shopping—set your price, support future leaders, and wear your impact with pride. Join us in making a difference.</p>
             <div class="banner-buttons">
-                <h3>Welcome {{ user.name }}</h3>
+                <button class="btn shop-now"><a href="shop.html">Shop Now</a></button>
+                <button class="btn shop-now"><a href=""> About Us</a></button> 
+                <h3><span>Welcome {{ user.name }}</span></h3>
+               
             </div>
         </div>
+
+      
     </div>
             
     </div>
 
-    <!-- Women's Category Section -->
-    <div class="container">
-        <div class="womens-category">
-            <h2>Womens Category</h2>
-            <div class="products-grid">
-                <div class="product" data-colors='{"Yellow":"../static/images/Smiley-Hoddie-Yellow.png", "Maroon":"../static/images/Smiley-Hoddie-Maroon.png"}'>
-                    <img src="../static/images/Smiley-Hoddie-Yellow.png" alt="Smiley Hoodie">
-                    <h3>The Smiley Hoodie</h3>
-                    <p>Comfortable soft hoodie with a playful smiley face, perfect for all your outings.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="0" class="slider">
-                        </div>
+
+<!-- Women's Category Section -->
+<div class="container">
+<div class="womens-category category-section">
+    <h2>Womens Category</h2>
+    <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product">
+            <a href="{{ url_for('customer.product1') }}">
+                <img src="../static/images/Smiley-Hoddie-Yellow.png" alt="Smiley Hoodie">
+            </a>
+            <h3>The Smiley Hoodie</h3>
+            <p>Comfortable soft hoodie with a playful smiley face, perfect for all your outings.</p>
+            <div class="currency-slider">
+                <div class="slider-container">
+                    <div class="slider-thumb">
+                        <span class="currency-icon">$</span>
                     </div>
-                    <div class="card-actions">
-                        <button class="action-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </div>
+                    <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-1">
                 </div>
-                <div class="product" data-colors='{"Grey":"../static/images/Puffer-Grey.png", "Pink":"../static/images/Puffer-Pink.png"}'>
-                    <img src="../static/images/Puffer-Pink.png" alt="Puff-Up Jacket">
-                    <h3>Puff-Up Jacket</h3>
-                    <p>Puff out with this warm, stylish jacket. Stay cool while repping your ALX pride!</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="0" class="slider">
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="action-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </div>
-                </div>
-                <div class="product" data-colors='{"Brown":"../static/images/Tech-Tshirt-Brown.png", "Green":"../static/images/Tech-Tshirt-Green.png"}'>
-                    <img src="../static/images/Tech-Tshirt-Green.png" alt="Love Tech-Tee">
-                    <h3>Love Tech-Tee</h3>
-                    <p>For the tech lovers who wear their passion! Soft, stylish, and ready to code.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="0" class="slider">
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="action-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </div>
-                </div>
-                <div class="product" data-colors='{"Purple":"../static/images/Polo-Purple-Woman.png", "Orange":"../static/images/Polo-Orange-Woman.png"}'>
-                    <img src="../static/images/Polo-Orange-Woman.png" alt="Look-Good Polo">
-                    <h3>Look-Good Polo</h3>
-                    <p>Look good! This sleek polo keeps you sharp and ready to take on the day with ALX pride.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="0" class="slider">
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="action-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </div>
+                <div class="price-display">
+                    <small>Your selected price:</small>
+                    <span id="price-display-1">$5</span>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Men's Category Section -->
-    <div class="container">
-        <div class="mens-category">
-            <h2>Mens Category</h2>
-            <div class="products-grid">
-                <div class="product" data-colors='{"Blue":"../static/images/Found-Tee-Blue.png", "orange":"../static/images/Found-Tee-Orange.png"}'>
-                    <img src="../static/images/Found-Tee-Blue.png" alt="Found-Me Tshirt">
-                    <h3> Found-Me Tshirt</h3>
-                    <p>Be bold and confident! Let the world know you’ve found your place at Alx</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="0" class="slider">
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="action-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </div>
-                </div>
-                <div class="product" data-colors='{"Orange":"../static/images/Sweater-Guy-Orange.png", "Jade":"../static/images/Sweater-Guy-Jade.png"}'>
-                    <img src="../static/images/Sweater-Guy-Orange.png" alt="Do Good Crewneck">
-                    <h3>Do Good Crewneck</h3>
-                    <p>Look good, do good—this cozy crewneck lets you wear your values with pride and style.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="0" class="slider">
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="action-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </div>
-                </div>
-                <div class="product" data-colors='{"Blue":"../static/images/Sleeveless-Blue.png", "Black":"../static/images/Sleeveless-Black.png"}'>
-                    <img src="../static/images/Sleeveless-Blue.png" alt="Tanktop">
-                    <h3> Do Hard Things Tank</h3>
-                    <p>Push your limits and do hard things in style. Designed for those who embrace the challenge.</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="0" class="slider">
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="action-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </div>
-                </div>
-                <div class="product" data-colors='{"Brown":"../static/images/Dot-Tshirt-Red.png", "Red":"../static/images/Dot-Tshirt-Green.png"}'>
-                    <img src="../static/images/Dot-Tshirt-Green.png" alt="Dot-Tshirt">
-                    <h3>The Vibe-Tee</h3>
-                    <p>Catch the vibe with this bold and dynamic tee, perfect for making a statement with your ALX pride</p>
-                    <div class="currency-slider">
-                        <div class="slider-container">
-                            <div class="slider-thumb">
-                                <span class="currency-icon">$</span>
-                            </div>
-                            <input type="range" min="5" max="1000" value="0" class="slider">
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="action-btn" aria-label="add to cart">
-                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn" aria-label="add to wishlist">
-                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                        <button class="action-btn compare-btn" aria-label="compare">
-                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </div>
-                </div>
-               
+            <div class="card-actions">
+                <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                    <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                </button>
+                <button class="action-btn" aria-label="add to wishlist">
+                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                </button>
             </div>
         </div>
+<!-- Product 2: Puff-Up Jacket -->
+<div class="product">
+<a href="{{ url_for('customer.product2') }}">
+    <img src="../static/images/Puffer-Pink.png" alt="Puff-Up Jacket">
+</a>
+<h3>Puff-Up Jacket</h3>
+<p>Puff out with this warm, stylish jacket. Stay cool while repping your ALX pride!</p>
+<div class="currency-slider">
+    <div class="slider-container">
+        <div class="slider-thumb">
+            <span class="currency-icon">$</span>
+        </div>
+        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-2">
     </div>
+    <div class="price-display">
+        <small>Your selected price:</small>
+        <span id="price-display-2">$5</span>
+    </div>
+</div>
+<div class="card-actions">
+    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+    </button>
+    <button class="action-btn" aria-label="add to wishlist">
+        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+    </button>
+</div>
+</div>
 
-
-    <!-- New Banner Section -->
-    <section class="section banner" aria-label="banner" data-section>
-        <div class="container">
-            <ul class="banner-list">
-                <li>
-                    <div class="banner-card banner-card-1 has-before hover:shine">
-                        <a href="#" class="btn">SHOP NOW</a>
-                        <div class="has-bg-image" style="background-image: url('../static/images/Banner-Couple.png')"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="banner-card banner-card-2 has-before hover:shine">
-                        <a href="#" class="btn">NEW COLLECTION</a>
-                        <div class="has-bg-image" style="background-image: url('../static/images/Banner-Sporty.png')"></div>
-                    </div>
-                </li>
-            </ul>
+<!-- Product 3: Love Tech-Tee -->
+<div class="product">
+<a href="products.html">
+    <img src="../static/images/Tech-Tshirt-Green.png" alt="Love Tech-Tee">
+</a>
+<h3>Love Tech-Tee</h3>
+<p>For the tech lovers who wear their passion! Soft, stylish, and ready to code.</p>
+<div class="currency-slider">
+    <div class="slider-container">
+        <div class="slider-thumb">
+            <span class="currency-icon">$</span>
         </div>
-    </section>
-    
-    <section class="section feature" aria-label="feature" data-section>
-        <div class="container">
-            <h2 class="section-title">Why Shop with us?</h2>
-            <ul class="flex-list">
-                <li class="flex-item">
-                    <div class="feature-card">
-                        <img src="../static/images/feature-truck.png" class="card-icon" alt="Free Shipping ">
-                        <h3 class="card-title">Free quality shipping </h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </li>
-                <li class="flex-item">
-                    <div class="feature-card">
-                        <img src="../static/images/feature-love.png" class="card-icon" alt="Love">
-                        <h3 class="card-title">Designed with Love</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </li>
-                <li class="flex-item">
-                    <div class="feature-card">
-                        <img src="../static/images/feature-eco.png" class="card-icon" alt="Eco Friendly">
-                        <h3 class="card-title">Eco Friendly</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </section>
-    
-    <footer>
-        
-    </footer>
+        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-3">
+    </div>
+    <div class="price-display">
+        <small>Your selected price:</small>
+        <span id="price-display-3">$5</span>
+    </div>
+</div>
+<div class="card-actions">
+    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+    </button>
+    <button class="action-btn" aria-label="add to wishlist">
+        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+    </button>
+</div>
+</div>
 
+<!-- Product 4: Look-Good Polo -->
+<div class="product">
+<a href="{{ url_for('customer.product4') }}">
+    <img src="../static/images/Polo-Purple-Woman.png" alt="Look-Good Polo">
+</a>
+<h3>Look-Good Polo</h3>
+<p>Look good! This sleek polo keeps you sharp and ready to take on the day with ALX pride.</p>
+<div class="currency-slider">
+    <div class="slider-container">
+        <div class="slider-thumb">
+            <span class="currency-icon">$</span>
+        </div>
+        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-4">
+    </div>
+    <div class="price-display">
+        <small>Your selected price:</small>
+        <span id="price-display-4">$5</span>
+    </div>
+</div>
+<div class="card-actions">
+    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+    </button>
+    <button class="action-btn" aria-label="add to wishlist">
+        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+    </button>
+</div>
+</div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Mens Category Section -->
+<div class="container">
+    <div class="mens-category category-section">
+        <h2>Mens Category</h2>
+        <div class="products-grid">
+            <!-- Product 5-->
+<div class="product">
+<a href="{{ url_for('customer.product5') }}">
+    <img src="../static/images/Found-Tee-Orange.png" alt="Found Tee">
+</a>
+<h3>Found Tee</h3>
+<p>A classic tee for every occasion. Show off your style and rep ALX with pride.</p>
+<div class="currency-slider">
+    <div class="slider-container">
+        <div class="slider-thumb">
+            <span class="currency-icon">$</span>
+        </div>
+        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-5">
+    </div>
+    <div class="price-display">
+        <small>Your selected price:</small>
+        <span id="price-display-5">$5</span>
+    </div>
+</div>
+<div class="card-actions">
+    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+    </button>
+    <button class="action-btn" aria-label="add to wishlist">
+        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+    </button>
+  
+</div>
+</div>
+
+<!-- Product 7: Sleeveless Top -->
+<div class="product">
+<a href="{{ url_for('customer.product7') }}">
+    <img src="../static/images/Sleeveless-Black.png" alt="Sleeveless Top">
+</a>
+<h3>Sleeveless Top</h3>
+<p>Stay cool and comfortable with this sleek sleeveless top, perfect for any workout or casual day out.</p>
+<div class="currency-slider">
+    <div class="slider-container">
+        <div class="slider-thumb">
+            <span class="currency-icon">$</span>
+        </div>
+        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-7">
+    </div>
+    <div class="price-display">
+        <small>Your selected price:</small>
+        <span id="price-display-7">$5</span>
+    </div>
+</div>
+<div class="card-actions">
+    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+    </button>
+    <button class="action-btn" aria-label="add to wishlist">
+        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+    </button>
+
+</div>
+</div>
+
+
+  <!-- Product 6:-->
+  <div class="product">
+    <a href="{{ url_for('customer.product6') }}">
+        <img src="../static/images/Sweater-Guy-Jade.png" alt="Sweater Guy">
+    </a>
+    <h3>Sweet Sweater</h3>
+    <p>Stay warm and stylish with our Sweater Guy collection. Perfect for those cool days.</p>
+    <div class="currency-slider">
+        <div class="slider-container">
+            <div class="slider-thumb">
+                <span class="currency-icon">$</span>
+            </div>
+            <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-6">
+        </div>
+        <div class="price-display">
+            <small>Your selected price:</small>
+            <span id="price-display-6">$5</span>
+        </div>
+    </div>
+    <div class="card-actions">
+        <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+        </button>
+        <button class="action-btn" aria-label="add to wishlist">
+            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+        </button>
+      
+    </div>
+</div>
+
+
+<!-- Product 8: Dot T-shirt -->
+<div class="product">
+<a href="{{ url_for('customer.product8') }}">
+    <img src="../static/images/Dot-Tshirt-Red.png" alt="Dot T-shirt">
+</a>
+<h3>Dot T-shirt</h3>
+<p>A stylish dot pattern t-shirt that adds a unique flair to your casual outfit. Perfect for any day out.</p>
+<div class="currency-slider">
+    <div class="slider-container">
+        <div class="slider-thumb">
+            <span class="currency-icon">$</span>
+        </div>
+        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-8">
+    </div>
+    <div class="price-display">
+        <small>Your selected price:</small>
+        <span id="price-display-8">$5</span>
+    </div>
+</div>
+<div class="card-actions">
+    <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+    </button>
+    <button class="action-btn" aria-label="add to wishlist">
+        <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+    </button>
+   
+</div>
+</div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- New Banner Section -->
+<section class="section banner" aria-label="banner" data-section>
+    <div class="container">
+        <ul class="banner-list">
+            <li>
+                <div class="banner-card banner-card-1 has-before hover:shine">
+                    <a href="{{ url_for('customer.shop') }}" class="btn">SHOP NOW</a>
+                    <div class="has-bg-image" style="background-image: url('../static/images/Banner-Couple.png')"></div>
+                </div>
+            </li>
+            <li>
+                <div class="banner-card banner-card-2 has-before hover:shine">
+                    <a href="#" class="btn">NEW COLLECTION</a>
+                    <div class="has-bg-image" style="background-image: url('../static/images/Banner-Sporty.png')"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+
+
+
+<!-- Feature Section -->
+<section class="section feature" aria-label="feature" data-section>
+    <div class="container">
+        <h2 class="section-title">Why Shop with us?</h2>
+        <ul class="flex-list">
+            <li class="flex-item">
+                <div class="feature-card">
+                    <img src="../static/images/feature-truck.png" class="card-icon" alt="Free Shipping ">
+                    <h3 class="card-title">Free quality shipping</h3>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </li>
+            <li class="flex-item">
+                <div class="feature-card">
+                    <img src="../static/images/feature-love.png" class="card-icon" alt="Love">
+                    <h3 class="card-title">Designed with Love</h3>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </li>
+            <li class="flex-item">
+                <div class="feature-card">
+                    <img src="../static/images/feature-eco.png" class="card-icon" alt="Eco Friendly">
+                    <h3 class="card-title">Eco Friendly</h3>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer>
+    <div class="container">
+        <p>&copy; 2024 ALXCLOSET. All rights reserved.</p>
+    </div>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+    <script src="../static/js/shop.js"></script>
     <script src="../static/js/script.js"></script>
+</footer>
 </body>
 
 </html>

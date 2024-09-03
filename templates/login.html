@@ -9,169 +9,100 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Additional styling for the modal appearance */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4e6e7; /* Light maroon background */
-        }
+       body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f2f2; /* Light maroon background */
+}
 
-        .navbar {
-            width: 100%;
-            background-color: #fff;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+.form-container {
+    position: relative;
+    background-color: white;
+    padding: 40px; /* Increased padding for larger size */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Increased max-width for a larger form */
+    width: 100%;
+    text-align: center;
+}
 
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    font-size: 30px;
+    color: #855a5b;
+    cursor: pointer;
+}
 
-        .navbar-left, .navbar-right {
-            display: flex;
-            align-items: center;
-        }
+.form-container h4 {
+    color: #855a5b; /* Updated color */
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
 
-        .icon {
-            margin-right: 15px;
-            cursor: pointer;
-        }
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
-        .search-box {
-            position: relative;
-        }
+input[type="text"], input[type="password"], .form-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Rounded corners */
+    font-size: 16px;
+    width: 100%;
+    font-family: 'Raleway', sans-serif; /* Apply Raleway font */
+}
 
-        .search-box input {
-            padding: 7px;
-            border: 1px solid #ccc;
-            border-radius: 20px;
-            width: 200px;
-            padding-right: 30px;
-        }
+input[type="submit"] {
+    background-color: #855a5b; /* Updated color */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
 
-        .search-icon {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #855a5b;
-        }
+input[type="submit"]:hover {
+    background-color: #6a4747; /* Slightly darker shade for hover effect */
+}
 
-        .form-container {
-            position: relative;
-            background-color: white;
-            padding: 30px;
-            border-radius: 15px; /* Rounded corners */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            margin-top: 100px; /* Adjusted for navbar */
-        }
+p {
+    margin-top: 10px;
+    font-family: 'Raleway', sans-serif;
+}
 
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 18px;
-            color: #855a5b;
-            cursor: pointer;
-        }
+p a {
+    color: #855a5b; /* Updated color */
+    text-decoration: none;
+}
 
-        .form-container h4 {
-            color: #855a5b; /* Updated color */
-            margin-bottom: 20px;
-            font-family: 'Playfair Display', serif;
-        }
+p a:hover {
+    text-decoration: underline;
+}
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        input[type="text"], input[type="password"] {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 10px; /* Rounded corners */
-            font-size: 16px;
-            width: 100%;
-        }
-
-        input[type="submit"] {
-            background-color: #855a5b; /* Updated color */
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 10px; /* Rounded corners */
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #6a4747; /* Slightly darker shade for hover effect */
-        }
-
-        p {
-            margin-top: 10px;
-            font-family: 'Raleway', sans-serif;
-        }
-
-        p a {
-            color: #855a5b; /* Updated color */
-            text-decoration: none;
-        }
-
-        p a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="{{ url_for('customer.index')}}">
-                <img src="../static/images/alx-logo.png" alt="Alx-logo">
-            </a>
-            <div class="navbar-left">
-                <div class="icon">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="search-box">
-                    <input type="text" placeholder="Search">
-                    <i class="fas fa-search search-icon"></i>
-                </div>
-            </div>
-            <div class="navbar-right">
-                <i class="fas fa-shopping-cart icon"></i>
-                <i class="fas fa-star icon"></i>
-                <i class="fas fa-user icon"></i>
-            </div>
-        </div>
-    </nav>
-
     <div class="form-container">
         <span class="close-btn">&times;</span>
 
         {% if message %}
-            <h2 style="color: rgb(255, 47, 227);">{{ message }}</h2>
+            <h2 style="color: rgba(0, 0, 0, 0.256);">{{ message }}</h2>
         {% endif %}
         
-        <h4>LOGIN HERE</h4>
+        <h4>Hey There Kindly Login</h4>
         <form method="POST" action="{{ url_for('auth.login') }}"> 
             {{ form.hidden_tag() }}
-            {{ form.email(placeholder="Email") }}
-            {{ form.password(placeholder="Password") }}
+            {{ form.email(placeholder="Email", class_="form-input") }}
+            {{ form.password(placeholder="Password", class_="form-input") }}
             {{ form.submit() }}
         </form>
 
@@ -180,9 +111,9 @@
     </div>
 
     <script>
-        // JavaScript to close the form
+        // JavaScript to redirect to index.html when the close button is clicked
         document.querySelector('.close-btn').addEventListener('click', function() {
-            document.querySelector('.form-container').style.display = 'none';
+            window.location.href = "{{ url_for('customer.index') }}";
         });
     </script>
 </body>

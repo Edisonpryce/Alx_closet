@@ -32,11 +32,7 @@
                     <i class="fas fa-star icon"></i>
                     
                 </a>
-                <a href="{{ url_for('auth.login') }}">
-                    <i class="fas fa-user icon"></i>
-                    <span>Login</span><span> |</span>
-                </a>
-                <a href="{{ url_for('auth.signup') }}" class="signup-link">Sign Up</a>
+
             </div>
         </div>
     </nav>
@@ -47,7 +43,7 @@
         <div class="banner-content">
             <p>ALX Closet redefines shopping—set your price, support future leaders, and wear your impact with pride. Join us in making a difference.</p>
             <div class="banner-buttons">
-                <button class="btn shop-now"><a href="shop.html">Shop Now</a></button>
+                <button class="btn shop-now"><a href="{{ url_for('customer.shop') }}">Shop Now</a></button>
                 <button class="btn shop-now"><a href="{{ url_for('auth.signup') }}">Sign Up</a></button>
             </div>
         </div>
@@ -371,20 +367,6 @@
             </ul>
         </div>
     </section>
-
-    <!-- Popup Modal -->
-    <!-- Modal -->
-    <div id="impact-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p id="impact-message">Woooow $___ 😱 Through your purchase this is going to help us support others💗💗</p>
-            <div class="modal-buttons">
-                <button id="cancel-btn" class="modal-btn cancel">Cancel</button>
-                <button id="add-to-cart-btn" class="modal-btn add-to-cart">Add to Cart</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer Section -->
     <footer>
         <div class="container">

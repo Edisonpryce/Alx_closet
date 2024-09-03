@@ -1,53 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boxicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="../static/styles/admin.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- My CSS -->
     <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="stylesheet" href="../static/styles/admin.css">
     <title>Alx Closet - Admin Dashboard</title>
 </head>
-<nav class="navbar">
-    <div class="navbar-container">
-        <a href="{{ url_for('customer.index') }}">
-            <img src="../static/images/alx-logo.png" alt="Alx-logo">
-        </a>
-        <div class="navbar-left">
-            <h4>Welcome, Admin: {{ user.name }}</h4>
-        </div>
-        <div class="navbar-right">
-            <a href="{{ url_for('auth.log_out') }}" class="logout-btn">
-                <i class="fas fa-sign-out-alt"></i> Log out
-            </a>
-        </div>
-    </div>
-</nav>
-
 <body>
-    <div class="dashboard-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-            </div>
-            <ul class="sidebar-menu">
-                <li><a href="#" data-page="customers" class="active"><i class="fas fa-users"></i> Customers</a></li>
-                <li><a href="#" data-page="add_to_shop"><i class="fas fa-plus-circle"></i> Add Shop Items</a></li>
-                <li><a href="#" data-page="wishlist"><i class="fas fa-list"></i> Shop Items</a></li>
-                <li><a href="#" data-page="address-book"><i class="fas fa-box"></i> View Orders</a></li>
-                <li><a href="#" data-page="settings"><i class="fas fa-cog"></i> Settings</a></li>
-            </ul>
-        </aside>
+    
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="{{ url_for('customer.index') }}" class="brand">
+            <i class='bx bxs-'></i>
+            <span class="text">Alxcloset</span>
+        </a>
+    
+        <ul class="side-menu top">
+            <li class="active">
+                <a href="#" data-page="dashboard">
+                    <i class='bx bxs-home'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-page="customers">
+                    <i class='bx bxs-user'></i>
+                    <span class="text">Customers</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-page="add_to_shop">
+                    <i class='bx bxs-plus-circle'></i>
+                    <span class="text"> Add Shop Items</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-page="address-book">
+                    <i class='bx bxs-box'></i>
+                    <span class="text">View Orders</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-page="settings">
+                    <i class='bx bxs-cog'></i>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('auth.log_out') }}" class="logout-btn">
+                    <i class="bx bxs-log-out"></i> Log out
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- SIDEBAR -->
 
-        <!-- Main Content -->
-        <main class="main-content">
-          
-            <!-- Content Sections -->
-            <section class="content customers page active">
-                
+    <!-- CONTENT -->
+    <section id="content">
+        <!-- NAVBAR -->
+        <nav>
+            <i class='bx bx-menu'></i>
+        </nav>
+        <!-- NAVBAR -->
+
+        <!-- MAIN --> 
+        <main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>Welcome, Admin: {{ user.name }}</h1>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li><i class='bx bx-chevron-right'></i></li>
+                        <li>
+                            <a class="active" href="#">Home</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Dashboard Page -->
+            <section class="content dashboard page active">
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-user'></i>
+                        <span class="text">
+                            <h3>0</h3>
+                            <p>Number of Customers</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-check-circle'></i>
+                        <span class="text">
+                            <h3>0</h3>
+                            <p>Number of Orders</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-coin-stack'></i>
+                        <span class="text">
+                            <h3>0</h3>
+                            <p>Total Sales</p>
+                        </span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Customers Page -->
+            <section class="content customers page">
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-user'></i>
+                        <span class="text">
+                            <p>This Page Displays All of AlxCloset Users, and all relevant details</p>
+                        </span>
+                    </li>
+                </ul>
+
                 <div class="table-wrapper">
-                    <h2>Customers</h2>
+                    <!-- First Table -->
                     <table class="table">
                         <thead>
                             <tr>
@@ -55,10 +132,6 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Password</th>
-                                <th>Admin Status</th>
-                                <th>Telephone</th>
-                                <th>Date Signup</th>
-                                <th>Last Update</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,6 +141,24 @@
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.email }}</td>
                                 <td>{{ user.password }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+    
+                    <!-- Second Table -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Admin Status</th>
+                                <th>Telephone</th>
+                                <th>Date Signup</th>
+                                <th>Last Update</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                            <tr>
                                 <td>{{ user.is_admin }}</td>
                                 <td>{{ user.telephone }}</td>
                                 <td>{{ user.created_at }}</td>
@@ -78,10 +169,17 @@
                     </table>
                 </div>
             </section>
-       
 
+            <!-- Add Shop Items Page -->
             <section class="content add_to_shop page">
-                
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-plus-circle'></i>
+                        <span class="text">
+                            <p>Add items to your shop and set the prices, stock, and upload product images.</p>
+                        </span>
+                    </li>
+                </ul>
                 <div class="form-wrapper">
                     <h2>Add Shop Items</h2>
                     <form action="" method="POST" enctype="multipart/form-data">
@@ -113,37 +211,82 @@
                 </div>
             </section>
 
-            <section class="content wishlist page">
-                <h2>Shop Items</h2>
-                <p>Items in your wishlist will appear here.</p>
-            </section>
-
+            <!-- View Orders Page -->
             <section class="content address-book page">
-                <h2>View Orders</h2>
-                <p>Manage your orders here.</p>
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-box'></i>
+                        <span class="text">
+                            <p>View and manage all customer orders.</p>
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="table-wrapper">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer Name</th>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                                <th>Order Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Assuming `orders` is the variable containing the order details -->
+                            {% for order in orders %}
+                            <tr>
+                                <td>{{ order.id }}</td>
+                                <td>{{ order.customer_name }}</td>
+                                <td>{{ order.product_name }}</td>
+                                <td>{{ order.quantity }}</td>
+                                <td>{{ order.total_price }}</td>
+                                <td>{{ order.order_date }}</td>
+                                <td>{{ order.status }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </section>
 
+            <!-- Settings Page -->
             <section class="content settings page">
-                <h2>Settings</h2>
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-cog'></i>
+                        <span class="text">
+                            <p>Manage your account settings and email preferences.</p>
+                        </span>
+                    </li>
+                </ul>
                 <div class="form-wrapper">
+                    <h2>Settings</h2>
                     <form style="padding: 30px;" method="POST">
                         {{ admin_form.hidden_tag() }}
                         <div class="form-group">
                             <label>Email Address</label>
-                            {{ admin_form.admin_email() }}
+                            {{ admin_form.admin_email }}
                         </div>
                         <div class="form-group">
-                            {{ admin_form.submit() }}
+                            <label>Change Password</label>
+                            {{ admin_form.new_password }}
+                        </div>
+                        <div class="form-group">
+                            {{ admin_form.submit }}
                         </div>
                     </form>
                 </div>
             </section>
         </main>
-    </div>
+    </section>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const menuLinks = document.querySelectorAll('.sidebar-menu a');
+            const menuLinks = document.querySelectorAll('.side-menu a');
             const pages = document.querySelectorAll('.page');
 
             menuLinks.forEach(link => {
@@ -151,10 +294,12 @@
                     e.preventDefault();
                     const pageClass = this.getAttribute('data-page');
 
-                    menuLinks.forEach(l => l.classList.remove('active'));
+                    // Remove 'active' class from all menu links and hide all pages
+                    menuLinks.forEach(l => l.parentElement.classList.remove('active'));
                     pages.forEach(p => p.classList.remove('active'));
 
-                    this.classList.add('active');
+                    // Add 'active' class to the clicked link's parent li and show the corresponding page
+                    this.parentElement.classList.add('active');
                     document.querySelector('.' + pageClass).classList.add('active');
                 });
             });
@@ -163,6 +308,6 @@
             menuLinks[0].click();
         });
     </script>
+    
 </body>
-
 </html>
