@@ -84,87 +84,44 @@
                     </ul>
                 </div>
             </div>
-
-            <!-- Dashboard Page -->
-            <section class="content dashboard page active">
-                <ul class="box-info">
-                    <li>
-                        <i class='bx bxs-user'></i>
-                        <span class="text">
-                            <h3>0</h3>
-                            <p>Number of Customers</p>
-                        </span>
-                    </li>
-                    <li>
-                        <i class='bx bxs-check-circle'></i>
-                        <span class="text">
-                            <h3>0</h3>
-                            <p>Number of Orders</p>
-                        </span>
-                    </li>
-                    <li>
-                        <i class='bx bxs-coin-stack'></i>
-                        <span class="text">
-                            <h3>0</h3>
-                            <p>Total Sales</p>
-                        </span>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- Customers Page -->
-            <section class="content customers page">
-                <ul class="box-info">
-                    <li>
-                        <i class='bx bxs-user'></i>
-                        <span class="text">
-                            <p>This Page Displays All of AlxCloset Users, and all relevant details</p>
-                        </span>
-                    </li>
-                </ul>
-
-                <div class="table-wrapper">
-                    <!-- First Table -->
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Password</th>
-                            </tr>
-                        </thead>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div class="menu">
+            <ul>
+                <li><a href="#" data-page="Customers">Customers</a></li>
+                <li><a href="#" data-page="order-history">Add Shop Items</a></li>
+                <li><a href="#" data-page="wishlist">Shop Items</a></li>
+                <li><a href="#" data-page="address-book">View Orders</a></li>
+                <li><a href="#" data-page="password-reset">Settings</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="customers page">
+                <h2>Number of customers</h2>
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Admin status</th>
+                            <th scope="col">Telephone</th>
+                            <th scope="col">Date signup</th>
+                            <th scope="col">Last update</th>
+                        </tr>
                         <tbody>
                             {% for user in users %}
-                            <tr>
-                                <td>{{ user.id }}</td>
-                                <td>{{ user.name }}</td>
-                                <td>{{ user.email }}</td>
-                                <td>{{ user.password }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-    
-                    <!-- Second Table -->
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Admin Status</th>
-                                <th>Telephone</th>
-                                <th>Date Signup</th>
-                                <th>Last Update</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for user in users %}
-                            <tr>
-                                <td>{{ user.is_admin }}</td>
-                                <td>{{ user.telephone }}</td>
-                                <td>{{ user.created_at }}</td>
-                                <td>{{ user.updated_at }}</td>
-                            </tr>
-                            {% endfor %}
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.password }}</td>
+                            <td>{{ user.is_admin }}</td>
+                            <td>{{ user.telephone }}</td>
+                            <td>{{ user.created_at }}</td>
+                            <td>{{ user.updated_at }}</td>
+                            {%endfor%}
                         </tbody>
                     </table>
                 </div>
