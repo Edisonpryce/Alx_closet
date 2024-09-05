@@ -18,7 +18,7 @@ def dashboard():
     admin_form = AdminPrivilagesForm()
     shop_form = ShopItemsForm()
 
-    if request.method == 'POST':
+    if request.method:
         # Handle Admin Privileges Form
         if 'email' in request.form and admin_form.validate_on_submit():
             email = admin_form.email.data
@@ -70,14 +70,3 @@ def add_shop_items(form):
         flash('Product Not Added!!')
 
     return redirect(url_for('admin.dashboard'))
-
-"""
-@admin.route('/customers')
-@login_required
-def customers():
-    if current_user.is_admin:
-        session = current_app.config['SESSION']
-        customers = session.query.all()
-        return render_template('customers.html', customers=customers)
-    return render_template('404.html')
-"""

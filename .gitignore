@@ -1,4 +1,5 @@
 # Ignore venv
+__pycache__
 .venv
 .env
 .logins.sh
