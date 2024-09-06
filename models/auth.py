@@ -2,7 +2,7 @@
 and all the logic authentication is handled here
 """
 from flask import render_template, redirect, url_for, flash, current_app, Blueprint, request
-from .forms import SignUpForm, LoginForm, PasswordChangeForm  # Import your form
+from .forms import SignUpForm, LoginForm, PasswordChangeForm 
 from .tables import User
 from flask_login import login_user, login_required, logout_user, current_user
 
@@ -20,7 +20,6 @@ def login():
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
-
         session = current_app.config['SESSION']
 
         user = session.query(User).filter_by(email=email).first()
@@ -38,8 +37,7 @@ def login():
                 flash('Incorrect Email or Password')
         else:
             flash('Account does not exist please Sign Up')
-            message = 'Account does not exist please Sign Up'
-    return render_template('login.html', form=form, message=message)
+    return render_template('login.html', form=form)
 
 
 @auth.route('/signup', methods=['GET', 'POST'], strict_slashes=False)
@@ -67,11 +65,6 @@ def signup():
             except Exception as e:
                 print(e)
                 flash("Can't create the Account, Email already exist")
-
-            form.name.data = ''
-            form.email.data = ''
-            form.password.data = ''
-            #form.password2.data = ''
     return render_template('signup.html', form=form)
 
 

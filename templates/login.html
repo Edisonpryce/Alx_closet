@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALXCLOSET Project - Login</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+{% extends "form.html" %}
     
+{% block styles %}
     <style>
        body {
     display: flex;
@@ -87,17 +80,13 @@ p a {
 p a:hover {
     text-decoration: underline;
 }
-
     </style>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <div class="form-container">
         <span class="close-btn">&times;</span>
 
-        {% if message %}
-            <h2 style="color: rgba(0, 0, 0, 0.256);">{{ message }}</h2>
-        {% endif %}
-        
         <h4>Hey There Kindly Login</h4>
         <form method="POST" action="{{ url_for('auth.login') }}"> 
             {{ form.hidden_tag() }}
@@ -116,5 +105,4 @@ p a:hover {
             window.location.href = "{{ url_for('customer.index') }}";
         });
     </script>
-</body>
-</html>
+{% endblock %}

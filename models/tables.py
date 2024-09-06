@@ -46,7 +46,7 @@ class Product(Base):
     __tablename__ = 'products'
 
     # Creation of the products table
-    id = Column(String(36), primary_key=True, nullable=False, default=str(uuid4()))
+    id = Column(String(36), primary_key=True, nullable=False, default=lambda: str(uuid4()))
     product_name = Column(String(36), nullable=False)
     min_price = Column(Integer, nullable=False)
     max_price = Column(Integer, nullable=False)
