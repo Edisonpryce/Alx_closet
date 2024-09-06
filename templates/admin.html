@@ -58,6 +58,9 @@
 
     <!-- CONTENT -->
     <main>
+        {% for message in get_flashed_messages() %}
+        <strong>{{ message }}</strong>
+        {%endfor%}
         <section id="content">
             <nav>
                 <i class='bx bx-menu'></i>
@@ -170,7 +173,7 @@
             <!-- Settings Page -->
         <section class="content settings page">
             <div class="form-wrapper">
-                <h2>Settings</h2>
+                <h2>Add/Remove Admin</h2>
                 <form style="padding: 30px;" method="POST">
                     {{ admin_form.hidden_tag() }}
                     <div class="form-group">

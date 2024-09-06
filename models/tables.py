@@ -51,7 +51,7 @@ class Product(Base):
     min_price = Column(Integer, nullable=False)
     max_price = Column(Integer, nullable=False)
     in_stock = Column(Integer, nullable=False)
-    product_image = Column(String(36), nullable=True)
+    product_picture = Column(String(36), nullable=True)
     created_at = Column(DateTime, default=datetime.now())
     carts = relationship("Cart", backref="product")
     orders = relationship("Order", backref="product")
