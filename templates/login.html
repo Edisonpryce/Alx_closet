@@ -1,7 +1,7 @@
 {% extends "form.html" %}
     
 {% block styles %}
-    <style>
+<style>
        body {
     display: flex;
     justify-content: center;
@@ -102,7 +102,7 @@ p a:hover {
     <script>
         // JavaScript to redirect to index.html when the close button is clicked
         document.querySelector('.close-btn').addEventListener('click', function() {
-            window.location.href = "{{ url_for('customer.index') }}";
+            window.location.href = "{{ url_for('auth.home') }}";
         });
     </script>
 {% endblock %}

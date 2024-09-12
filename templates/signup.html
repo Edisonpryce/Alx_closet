@@ -3,8 +3,8 @@
 {% block title %} ALXCLOSET - signup {% endblock %}
 
 {% block styles %}
-    <style>
-       body {
+<style>
+   body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,9 +143,9 @@ p a:hover {
     </div>
 
     <script>
-        // JavaScript to redirect to index.html when the close button is clicked
+        // JavaScript to redirect to home.html when the close button is clicked
         document.querySelector('.close-btn').addEventListener('click', function() {
-            window.location.href = "{{ url_for('customer.index') }}";
+            window.location.href = "{{ url_for('auth.home') }}";
         });
     </script>
 {% endblock %}

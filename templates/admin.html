@@ -11,10 +11,13 @@
 <body>
     <!-- SIDEBAR -->
     <section id="sidebar">
-        <a href="{{ url_for('customer.index') }}" class="brand">
+        <a href="{{ url_for('auth.home') }}" class="brand">
             <i class='bx bxs-'></i>
             <span class="text">Alxcloset</span>
         </a>
+        {% for message in get_flashed_messages() %}
+            <strong>{{ message }}</strong>
+        {% endfor %}
     
         <ul class="side-menu top">
             <li class="active">
@@ -32,11 +35,11 @@
             <li>
                 <a href="#" data-page="add_to_shop">
                     <i class='bx bxs-plus-circle'></i>
-                    <span class="text"> Add Shop Items</span>
+                    <span class="text">Add Shop Items</span>
                 </a>
             </li>
             <li>
-                <a href="#" data-page="address-book">
+                <a href="#" data-page="view_orders">
                     <i class='bx bxs-box'></i>
                     <span class="text">View Orders</span>
                 </a>
@@ -47,12 +50,8 @@
                     <span class="text">Settings</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ url_for('auth.log_out') }}" class="logout-btn">
-                    <i class="bx bxs-log-out"></i> Log out
-                </a>
-            </li>
         </ul>
+        <button class="btn shop-now"><a href="{{ url_for('auth.log_out') }}">Logout</a></button>
     </section>
     <!-- SIDEBAR -->
 
@@ -71,126 +70,104 @@
                 </div>
             </div>
             <div class="main-content">
-                <div class="content">
-                    <div class="customers page">
+                <!-- Customers Page -->
+                <div class="content customers page">
                     <h2>Number of customers</h2>
-                        <table class="table table-dark table-hover">
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Admin status</th>
+                                <th scope="col">Telephone</th>
+                                <th scope="col">Date signup</th>
+                                <th scope="col">Last update</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.is_admin }}</td>
+                                <td>{{ user.telephone }}</td>
+                                <td>{{ user.created_at }}</td>
+                                <td>{{ user.updated_at }}</td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Add Shop Items Page -->
+                <div class="content add_to_shop page">
+                    <h2>Add Shop Items</h2> 
+                    <div>
+                        <a href="{{ url_for('admin.add_to_shop') }}">Add to shop</a>
+                    </div> 
+                    <h2> View Products</h2>
+                    <div>
+                        <a href="{{ url_for('admin.products') }}">View available products</a>
+                    </div> 
+                </div>
+
+
+                <!-- View Orders Page -->
+                <div class="content view_orders page">
+                    <div class="table-wrapper">
+                        <h2>View Orders</h2>
+                        <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Admin status</th>
-                                    <th scope="col">Telephone</th>
-                                    <th scope="col">Date signup</th>
-                                    <th scope="col">Last update</th>
+                                    <th>Order ID</th>
+                                    <th>Customer Name</th>
+                                    <th>Product Name</th>
+                                    <th>Quantity</th>
+                                    <th>Total Price</th>
+                                    <th>Order Date</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for user in users %}
+                                <!-- Assuming `orders` is the variable containing the order details -->
+                                {% for order in orders %}
                                 <tr>
-                                    <td>{{ user.id }}</td>
-                                    <td>{{ user.name }}</td>
-                                    <td>{{ user.email }}</td>
-                                    <td>{{ user.is_admin }}</td>
-                                    <td>{{ user.telephone }}</td>
-                                    <td>{{ user.created_at }}</td>
-                                    <td>{{ user.updated_at }}</td>
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.customer_name }}</td>
+                                    <td>{{ order.product_name }}</td>
+                                    <td>{{ order.quantity }}</td>
+                                    <td>{{ order.total_price }}</td>
+                                    <td>{{ order.order_date }}</td>
+                                    <td>{{ order.status }}</td>
                                 </tr>
-                                {%endfor%}
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </div>
-        </section>
-                
-            <!-- Add Shop Items Page -->
-        <section class="content add_to_shop page">
-            <div class="form-wrapper">
-                <h2>Add Shop Items</h2>
-                <form action="" method="POST" enctype="multipart/form-data">
-                    {{ shop_form.hidden_tag() }}
-                    <div class="form-group">
-                        <label>Product Name</label>
-                        {{ shop_form.product_name }}
-                    </div>
-                    <div class="form-group">
-                        <label>Minimum Price</label>
-                        {{ shop_form.min_price }}
-                    </div>
-                    <div class="form-group">
-                        <label>Max Price</label>
-                        {{ shop_form.max_price }}
-                    </div>
-                    <div class="form-group">
-                        <label>In Stock</label>
-                        {{ shop_form.in_stock }}
-                    </div>
-                    <div class="form-group">
-                        <label>Product Picture</label>
-                        {{ shop_form.product_picture }}
-                    </div>
-                    <div class="form-group">
-                        {{ shop_form.add_product }}
-                    </div>
-                </form>
-            </div>
-        </section>
 
-            <!-- View Orders Page -->
-        <section class="content address-book page">
-            <div class="table-wrapper">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Customer Name</th>
-                            <th>Product Name</th>
-                            <th>Quantity</th>
-                            <th>Total Price</th>
-                            <th>Order Date</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Assuming `orders` is the variable containing the order details -->
-                        {% for order in orders %}
-                        <tr>
-                            <td>{{ order.id }}</td>
-                            <td>{{ order.customer_name }}</td>
-                            <td>{{ order.product_name }}</td>
-                            <td>{{ order.quantity }}</td>
-                            <td>{{ order.total_price }}</td>
-                            <td>{{ order.order_date }}</td>
-                            <td>{{ order.status }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </section>
-            <!-- Settings Page -->
-        <section class="content settings page">
-            <div class="form-wrapper">
-                <h2>Add/Remove Admin</h2>
-                <form style="padding: 30px;" method="POST">
-                    {{ admin_form.hidden_tag() }}
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        {{ admin_form.admin_email }}
+                <!-- Settings Page -->
+                <div class="content settings page">
+                    <div class="form-wrapper">
+                        <h2>Add/Remove Admin</h2>
+                        <form style="padding: 30px;" method="POST">
+                            {{ admin_form.hidden_tag() }}
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                {{ admin_form.email }}
+                            </div>
+                            <div class="form-group">
+                                {{ admin_form.submit }}
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label>Change Password</label>
-                        {{ admin_form.new_password }}
-                    </div>
-                    <div class="form-group">
-                        {{ admin_form.submit }}
-                    </div>
-                </form>
+                </div>
             </div>
         </section>
     </main>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const menuLinks = document.querySelectorAll('.side-menu a');

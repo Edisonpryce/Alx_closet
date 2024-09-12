@@ -3,7 +3,6 @@
 """
 from flask import Flask
 from models.admin import admin
-from models.pages import page 
 from models.auth import auth
 from models.client import customer
 from models.db_storage import DBStorage
@@ -28,12 +27,13 @@ login_manager.login_view = 'auth.login'
 @login_manager.user_loader
 
 def load_user(id):
-    return db._DBStorage__session.query(User).get(id) 
+    return db._DBStorage__session.get(User, id)
 
-app.register_blueprint(page, url_prefix='/')
+
+app.register_blueprint(customer, url_prefix='/')
 app.register_blueprint(admin, url_prefix='/') 
 app.register_blueprint(auth, url_prefix='/')
-app.register_blueprint(customer, url_prefix='/')
+
 
 app.teardown_appcontext
 def remove_session(exception):

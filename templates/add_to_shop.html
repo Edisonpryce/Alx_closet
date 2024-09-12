@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <title>Alx Closet - Admin Dashboard</title>
+</head>
+<body>
+            <div class="main-content">
+                <div class="content add_to_shop page">
+                    <h2>Add Shop Items</h2> 
+                    <form method="POST" enctype="multipart/form-data">
+                        {{ shop_form.hidden_tag() }}
+                        <div>
+                            <label for="product_name">Product Name:</label>
+                            {{ shop_form.product_name }}
+                        </div>
+                        <div></div>
+                            <label for="gender">Gender:</label>
+                            {{ shop_form.gender }}
+                        </div>
+                        <div>
+                            <label for="min_price">Minimum Price:</label>
+                            {{ shop_form.min_price }}
+                        </div>
+                        <div>
+                            <label for="max_price">Maximum Price:</label>
+                            {{ shop_form.max_price }}
+                        </div>
+                        <div>
+                            <label for="selected_price">Selected Price:</label>
+                            {{ shop_form.selected_price }}
+                        </div>
+                        <div>
+                            <label for="in_stock">In Stock:</label>
+                            {{ shop_form.in_stock }}
+                        </div>
+                        <div>
+                            <label for="description">Description</label>
+                            {{ shop_form.description }}
+                        </div>
+                        <div>
+                            <label for="product_picture">Product Picture:</label>
+                            {{ shop_form.product_picture }}
+                        </div>
+                        <input type="submit" value="Add Product">
+                    </form>
+            </div>
+</body>
+</html>

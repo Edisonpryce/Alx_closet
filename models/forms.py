@@ -26,15 +26,18 @@ class PasswordChangeForm(FlaskForm):
     change_password = SubmitField('Change Password')
 
 class AdminPrivilagesForm(FlaskForm):
-    admin_email = EmailField('Email', validators=[DataRequired()])
+    email = EmailField('Email', validators=[DataRequired()])
     submit = SubmitField('Update')
 
 class ShopItemsForm(FlaskForm):
     product_name = StringField('Name of Product', validators=[DataRequired()])
+    gender = StringField('Gender', validators=[DataRequired()])
     min_price = FloatField('minimum Price', validators=[DataRequired()])
     max_price = FloatField('maximum  Price', validators=[DataRequired()])
     in_stock = IntegerField('In Stock', validators=[DataRequired(), NumberRange(min=0)])
+    selected_price = IntegerField('Selected Price', validators=[DataRequired()])
     product_picture = FileField('Product Picture', validators=[FileRequired()])
+    description = StringField('Description', validators=[DataRequired()])
     
     add_product = SubmitField('Add Product')
     update_product = SubmitField('Update')

@@ -1,7 +1,5 @@
 """ Using sqlalchemy to create database tables
 """
-from uuid import uuid4
-from hashlib import md5
 from sqlalchemy import Column, String, Integer, Float, DateTime, ForeignKey, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
@@ -15,8 +13,8 @@ class User(Base, UserMixin):
     __tablename__ = 'users'
 
     # Columns for User infor intake 
-    id = Column(String(36), primary_key=True, nullable=False, default=str(uuid4()))
-    name = Column(String(26), nullable=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(26), nullable=False)
     email = Column(String(46), nullable=False, unique=True)
     password = Column(String(150), nullable=False)
     telephone = Column(String(15), nullable=False)
@@ -46,12 +44,15 @@ class Product(Base):
     __tablename__ = 'products'
 
     # Creation of the products table
-    id = Column(String(36), primary_key=True, nullable=False, default=lambda: str(uuid4()))
+    id = Column(Integer, primary_key=True, autoincrement=True)
     product_name = Column(String(36), nullable=False)
+    gender = Column(String(6), default='male', nullable=False)
     min_price = Column(Integer, nullable=False)
     max_price = Column(Integer, nullable=False)
+    selected_price = Column(Integer, default=10, nullable=False)
     in_stock = Column(Integer, nullable=False)
-    product_picture = Column(String(36), nullable=True)
+    description = Column(String(200), nullable=False)
+    product_picture = Column(String(2000), nullable=True)
     created_at = Column(DateTime, default=datetime.now())
     carts = relationship("Cart", backref="product")
     orders = relationship("Order", backref="product")
@@ -67,8 +68,8 @@ class Cart(Base):
     # Making of the cart table
     id = Column(Integer, primary_key=True, autoincrement=True)
     quantity = Column(Integer, nullable=False)
-    customer_link = Column(String(36), ForeignKey('users.id'), nullable=False)
-    product_link = Column(String(36), ForeignKey('products.id'), nullable=False)
+    customer_link = Column(Integer, ForeignKey('users.id'), nullable=False)
+    product_link = Column(Integer, ForeignKey('products.id'), nullable=False)
 
     def __str__(self):
         return f"<Cart {self.id}>"
@@ -83,8 +84,8 @@ class Order(Base):
     price = Column(Float, nullable=False)
     status = Column(String(60), nullable=False)
     payment_id = Column(String(36), nullable=False) 
-    customer_link = Column(String(36), ForeignKey('users.id'), nullable=False)
-    product_link = Column(String(36), ForeignKey('products.id'), nullable=False)
+    customer_link = Column(Integer, ForeignKey('users.id'), nullable=False)
+    product_link = Column(Integer, ForeignKey('products.id'), nullable=False)
 
     def __str__(self):
         return f"<Order {self.id}>"

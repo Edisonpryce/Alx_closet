@@ -17,41 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const cancelModalButton = document.getElementById('cancel-btn');
   let cartCount = 0;
 
-  addToCartButtons.forEach((button, index) => {
-      button.addEventListener('click', function() {
-          const priceSlider = document.getElementById(`price-slider-${index + 1}`);
-          const selectedPrice = parseInt(priceSlider.value, 10);
 
-          if (selectedPrice > 100) {
-              impactMessage.innerHTML = `Woooow $${selectedPrice} 😱 Through your purchase this is going to help us support others💗💗`;
-          } else {
-              impactMessage.innerHTML = `Thank you for your purchase of $${selectedPrice}!`;
-          }
-
-          modal.style.display = "block";
-
-          addToCartModalButton.onclick = function() {
-              cartCount++;
-              cartCountElement.textContent = cartCount;
-              modal.style.display = "none";
-          };
-      });
-  });
-
-  closeModalButton.addEventListener('click', function() {
-      modal.style.display = "none";
-  });
-
-  cancelModalButton.addEventListener('click', function() {
-      modal.style.display = "none";
-  });
-
-  window.addEventListener('click', function(event) {
-      if (event.target === modal) {
-          modal.style.display = "none";
-      }
-  });
-});
 
 
 document.addEventListener('DOMContentLoaded', function () {

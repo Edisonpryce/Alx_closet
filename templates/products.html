@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <title>Alx Closet - Admin Dashboard</title>
+</head>
+<body>
+            
+            <div>
+                {% if products %}
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Date Added</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Minimum Price</th>
+                                <th scope="col">Maximum Price</th>
+                                <th scope="col">Selected Price</th>
+                                <th scope="col">In Stock</th>
+                                <th scope="col">Product Picture</th>
+                            </tr>
+                        </thead>
+                    
+                        <tbody>
+                            {% for product in products %}
+                            <tr>
+                                <th scope="row">{{ product.id }}</th>
+                                <td>{{ product.created_at }}</td>
+                                <td>{{ product.product_name }}</td>
+                                <td>{{ product.gender }}</td>
+                                <td>{{ product.min_price }}</td>
+                                <td>{{ product.max_price }}</td>
+                                <td>{{ product.selected_price }}</td>
+                                <td>{{ product.in_stock }}</td>
+                                <td><img src="{{ product.product_picture }}" alt="" style="height: 50px; width: 50px; border-radius: 2px;"></td>
+                                <td>
+                                    <a href="{{ url_for('admin.update_product', product_id=product.id) }}">Update</a>
+                                    <br>
+                                    <a href="{{ url_for('admin.delete_product', product_id=product.id) }}">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>           
+                    {% else %}
+                        <h3 style="color: red;">No Shop Items </h3> 
+                    {% endif %}
+            </div>
+</body>
+</html>
