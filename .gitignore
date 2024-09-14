@@ -1,5 +1,6 @@
 # Ignore venv
 __pycache__
 .venv
+.vscode
 .env
 .logins.sh
