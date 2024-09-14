@@ -1,0 +1,155 @@
+
+{% extends "base.html" %}
+
+{% block body %}
+    <!-- Banner Section -->
+    <div class="banner">
+        <img src="../static/images/banner1.png" alt="ALX Closet Banner">
+        <div class="banner-content">
+            <p>ALX Closet redefines shopping—set your price, support future leaders, and wear your impact with pride. Join us in making a difference.</p>
+            <div class="banner-buttons">
+                {% if current_user.is_authenticated %}
+                {% else %}
+                <button class="btn shop-now"><a href="{{ url_for('customer.shop') }}">Shop Now</a></button>
+                <button class="btn sign-now"><a href="{{ url_for('auth.signup') }}">Sign Up</a></button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Women's Category Section -->
+    <div class="container">
+    <div class="womens-category category-section">
+    <h2>Womens Category</h2>
+    <div class="products-grid">
+        
+        {% if products %}
+        {% for product in products %}
+        {% if product.gender == 'female' %}
+        <div class="product">
+            <a href="{{ url_for('customer.product_to_buy', product_id=product.id) }}">
+                <img src="{{ product.product_picture }}" alt="{{ product.product_name }}">
+            </a>
+            <h3>{{ product.product_name }}</h3>
+            <p>{{ product.description }}</p>
+            <div class="currency-slider">
+                <div class="slider-container">
+                    <div class="slider-thumb">
+                        <span class="currency-icon">$</span>
+                    </div>
+                    <input type="range" min="{{ product.min_price }}" max="{{ product.max_price }}" value="{{ product.selected_price }}" class="slider" id="price-slider-1">
+                </div>
+                <div class="price-display">
+                    <small>Your selected price:</small>
+                    <span id="price-display-1">$5</span>
+                </div>
+            </div>
+            <div class="card-actions">
+                <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+                    <a href="{{ url_for('customer.add_to_cart', product_id=product.id) }}">
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </a>  
+                </button>
+                <button class="action-btn" aria-label="add to wishlist">
+                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                </button>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+    <!-- Mens Category Section -->
+    <div class="container">
+    <div class="mens-category category-section">
+        <h2>Mens Category</h2>
+        <div class="products-grid">
+
+        {% for product in products %}
+        {% if product.gender == 'female' %}
+    <div class="product">
+    <a href="{{ url_for('customer.product_to_buy', product_id=product.id) }}">
+        <img src="{{ product.product_picture }}" alt="{{ product.product_name }}">
+    </a>
+    <h3>{{ product.product_name }}</h3>
+    <p>{{ product.description }}</p>
+    <div class="currency-slider">
+        <div class="slider-container">
+            <div class="slider-thumb">
+                <span class="currency-icon">$</span>
+            </div>
+            <input type="range" min="{{ product.min_price }}" max="{{ product.max_price }}" value="{{ product.selected_price }}" class="slider" id="price-slider-5">
+        </div>
+        <div class="price-display">
+            <small>Your selected price:</small>
+            <span id="price-display-5">$5</span>
+        </div>
+    </div>
+    <div class="card-actions">
+        <button class="action-btn add-to-cart-btn" aria-label="add to cart">
+            <a href="{{ url_for('customer.add_to_cart', product_id=product.id) }}">
+                <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+            </a>
+        </button>
+        <button class="action-btn" aria-label="add to wishlist">
+            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+        </button>
+    </div>
+    </div>
+
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    <h1>No product in the database yet</h1>
+    {% endif %}
+    
+
+<!-- New Banner Section -->
+<section class="section banner" aria-label="banner" data-section>
+    <div class="container">
+        <ul class="banner-list">
+            <li>
+                <div class="banner-card banner-card-1 has-before hover:shine">
+                    <a href="{{ url_for('customer.shop') }}" class="btn">SHOP NOW</a>
+                    <div class="has-bg-image" style="background-image: url('../static/images/Banner-Couple.png')"></div>
+                </div>
+            </li>
+            <li>
+                <div class="banner-card banner-card-2 has-before hover:shine">
+                    <a href="#" class="btn">NEW COLLECTION</a>
+                    <div class="has-bg-image" style="background-image: url('../static/images/Banner-Sporty.png')"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- Feature Section -->
+<section class="section feature" aria-label="feature" data-section>
+    <div class="container">
+        <h2 class="section-title">Why Shop with us?</h2>
+        <ul class="flex-list">
+            <li class="flex-item">
+                <div class="feature-card">
+                    <img src="../static/images/feature-truck.png" class="card-icon" alt="Free Shipping ">
+                    <h3 class="card-title">Free quality shipping</h3>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </li>
+            <li class="flex-item">
+                <div class="feature-card">
+                    <img src="../static/images/feature-love.png" class="card-icon" alt="Love">
+                    <h3 class="card-title">Designed with Love</h3>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </li>
+            <li class="flex-item">
+                <div class="feature-card">
+                    <img src="../static/images/feature-eco.png" class="card-icon" alt="Eco Friendly">
+                    <h3 class="card-title">Eco Friendly</h3>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

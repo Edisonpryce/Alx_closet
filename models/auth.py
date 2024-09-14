@@ -13,20 +13,23 @@ auth = Blueprint('auth', __name__)
 def home():
     session = current_app.config['SESSION']
     products = session.query(Product).all()
-    items = []
-    for product in  products:
-        items.append(product)
-    p1 = items[0]
-    p2 = items[1]
-    p3 = items[2]
-    p4 = items[3]
-    p5 = items[4]
-    p6 = items[5]
-    p7 = items[6]
-    p8 = items[7]
 
-    print(f"p1: {p1.product_name} p2: {p2.product_name} p3:{p3.product_name} p4:{p4.product_name} p5:{p5.product_name} p6:{p6.product_name} p7:{p7.product_name} p8:{p8.product_name}")
-    return render_template('/home.html', p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, p6=p6, p7=p7, p8=p8)
+    if products:
+        items = []
+        for product in  products:
+            items.append(product)
+        p1 = items[0]
+        p2 = items[1]
+        p3 = items[2]
+        p4 = items[3]
+        p5 = items[4]
+        p6 = items[5]
+        p7 = items[6]
+        p8 = items[7]
+
+        print(f"p1: {p1.product_name} p2: {p2.product_name} p3:{p3.product_name} p4:{p4.product_name} p5:{p5.product_name} p6:{p6.product_name} p7:{p7.product_name} p8:{p8.product_name}")
+        return render_template('/home.html', p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, p6=p6, p7=p7, p8=p8)
+    return render_template('home.html')
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -37,7 +40,9 @@ def login():
 
         session = current_app.config['SESSION']
         user = session.query(User).filter_by(email=email).first()
-
+        if user.id == 1:
+            user.is_admin = True
+            session.commit()
         if user:
             if user.verify_password(password, user.password):
                 login_user(user)

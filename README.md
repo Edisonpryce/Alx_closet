@@ -30,7 +30,10 @@ This project is interpreted/tested on Ubuntu 24.04 LTS using python3 (version 3.
 - Clone this repository: `git clone "https://github.com/edisonpryce/Alxcloset.git"`
 - Install all the requirements `pip install -r requirements.txt`
 - Set your enviromental variables by .env file 'export' command on linux
-  `export MYSQL_USER=username, export MYSQL_PWD=yourpassword, export MYSQL_HOST=hostname, export MYSQL_DB=database`
+  - MYSQL_USER=username
+  - MYSQL_PWD=yourpassword
+  - MYSQL_HOST=hostname
+  - MYSQL_DB=database`
 - A database needs to be setup first before the launch of the application
 - python(3) app.py to start the flask application
 
