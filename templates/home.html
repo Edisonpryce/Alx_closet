@@ -187,9 +187,9 @@
     </div>
     </div>
 
-    <!-- Product 7: Sleeveless Top -->
+    <!-- Product 6: Sleeveless Top -->
     <div class="product">
-        <a href="{{ url_for('customer.product_to_buy', product_id=p6.id) }}">
+        <a href="{{ url_for('customer.product_to_buy', product_id=p7.id) }}">
         <img src="../static/images/Sleeveless-Black.png" alt="Sleeveless Top">
     </a>
     <h3>Sleeveless Top</h3>
@@ -219,9 +219,9 @@
     </div>
 
 
-  <!-- Product 6:-->
+  <!-- Product 7:-->
     <div class="product">
-        <a href="{{ url_for('customer.product_to_buy', product_id=p7.id) }}">
+        <a href="{{ url_for('customer.product_to_buy', product_id=p6.id) }}">
         <img src="../static/images/Sweater-Guy-Jade.png" alt="Sweater Guy">
     </a>
     <h3>Sweet Sweater</h3>
@@ -231,7 +231,7 @@
             <div class="slider-thumb">
                 <span class="currency-icon">$</span>
             </div>
-            <input type="range" min="{{ p6.min_price }}" max="{{ p6.max_price }}" value="{{ p6.selected_price }}"" class="slider" id="price-slider-6">
+            <input type="range" min="{{ p6.min_price }}" max="{{ p6.max_price }}" value="{{ p6.selected_price }}" class="slider" id="price-slider-6">
         </div>
         <div class="price-display">
             <small>Your selected price:</small>
