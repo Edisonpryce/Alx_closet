@@ -12,7 +12,7 @@
                     {% for product in cart %}
                     <div class="row">
                         <div class="">
-                            <img src="{{ product.product.product_picture }}" alt="" class="" height="150px" width="150px">
+                            <img src="../static/product_media/{{ product.product.product_picture }}" alt="" class="" height="150px" width="150px">
                         </div>
                             <div>
                                 <h3>{{ product.product.product_name }}</h3>
@@ -67,8 +67,6 @@
                 </div>
             </div>
         </div>
-
-
 
         {% else %}
 
