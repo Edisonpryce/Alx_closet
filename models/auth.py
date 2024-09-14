@@ -27,9 +27,9 @@ def home():
         p7 = items[6]
         p8 = items[7]
 
-        print(f"p1: {p1.product_name} p2: {p2.product_name} p3:{p3.product_name} p4:{p4.product_name} p5:{p5.product_name} p6:{p6.product_name} p7:{p7.product_name} p8:{p8.product_name}")
-        return render_template('/home.html', p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, p6=p6, p7=p7, p8=p8)
-    return render_template('home.html')
+    print(f"p1: {p1.product_name} p2: {p2.product_name} p3:{p3.product_name} p4:{p4.product_name} p5:{p5.product_name} p6:{p6.product_name} p7:{p7.product_name} p8:{p8.product_name}")
+    return render_template('/home.html', p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, p6=p6, p7=p7, p8=p8)
+  
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
