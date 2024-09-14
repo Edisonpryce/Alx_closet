@@ -15,6 +15,7 @@
             </div>
         </div>
     </div>
+    {% if product %}
 
     <!-- Women's Category Section -->
     <div class="container">
@@ -284,8 +285,11 @@
             </div>
         </div>
     </div>
-
-
+    {% else %}
+    <h1>
+        Page under construction
+    </h1>
+    {% endif %}
 
 <!-- New Banner Section -->
 <section class="section banner" aria-label="banner" data-section>
