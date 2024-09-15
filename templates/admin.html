@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/styles/admin.css">
     <title>Alx Closet - Admin Dashboard</title>
 </head>
@@ -12,112 +12,137 @@
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="{{ url_for('auth.home') }}" class="brand">
-            <i class='bx bxs-'></i>
+            <i class="fas fa-shopping-bag"></i>
             <span class="text">Alxcloset</span>
         </a>
-        {% for message in get_flashed_messages() %}
-            <strong>{{ message }}</strong>
-        {% endfor %}
-    
-        <ul class="side-menu top">
+        <ul class="side-menu">
             <li class="active">
                 <a href="#" data-page="dashboard">
-                    <i class='bx bxs-home'></i>
+                    <i class="fas fa-tachometer-alt"></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
             <li>
                 <a href="#" data-page="customers">
-                    <i class='bx bxs-user'></i>
+                    <i class="fas fa-users"></i>
                     <span class="text">Customers</span>
                 </a>
             </li>
             <li>
                 <a href="#" data-page="add_to_shop">
-                    <i class='bx bxs-plus-circle'></i>
+                    <i class="fas fa-plus-circle"></i>
                     <span class="text">Add Shop Items</span>
                 </a>
             </li>
             <li>
                 <a href="#" data-page="view_orders">
-                    <i class='bx bxs-box'></i>
+                    <i class="fas fa-shopping-cart"></i>
                     <span class="text">View Orders</span>
                 </a>
             </li>
             <li>
                 <a href="#" data-page="settings">
-                    <i class='bx bxs-cog'></i>
+                    <i class="fas fa-cog"></i>
                     <span class="text">Settings</span>
                 </a>
             </li>
         </ul>
-        <button class="btn shop-now"><a href="{{ url_for('auth.log_out') }}">Logout</a></button>
+        <a href="{{ url_for('auth.log_out') }}" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </a>
     </section>
     <!-- SIDEBAR -->
 
     <!-- CONTENT -->
     <main>
-        {% for message in get_flashed_messages() %}
-        <strong>{{ message }}</strong>
-        {%endfor%}
         <section id="content">
             <nav>
-                <i class='bx bx-menu'></i>
+                <i class="fas fa-bars toggle-sidebar"></i>
+                <h1>Welcome, Admin: {{ user.name }}</h1>
             </nav> 
-            <div class="head-title">
-                <div class="left">
-                    <h1>Welcome, Admin: {{ user.name }}</h1>
-                </div>
-            </div>
             <div class="main-content">
+                <!-- Flash messages -->
+                {% for message in get_flashed_messages() %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+
+                <!-- Dashboard Page -->
+                <div class="content dashboard page active">
+                    <h2>Dashboard Overview</h2>
+                    <div class="dashboard-cards">
+                        <div class="dashboard-card" id="total-orders">
+                            <i class="fas fa-clipboard-list"></i>
+                            <h3>Total Orders</h3>
+                            <p>{{ total_orders }}</p>
+                        </div>
+                        <div class="dashboard-card" id="total-customers">
+                            <i class="fas fa-user-friends"></i>
+                            <h3>Total Customers</h3>
+                            <p>{{ total_customers }}</p>
+                        </div>
+                        <div class="dashboard-card" id="total-revenue">
+                            <i class="fas fa-dollar-sign"></i>
+                            <h3>Total Revenue</h3>
+                            <p>{{ total_revenue }}</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Customers Page -->
                 <div class="content customers page">
-                    <h2>Number of customers</h2>
-                    <table class="table table-dark table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Admin status</th>
-                                <th scope="col">Telephone</th>
-                                <th scope="col">Date signup</th>
-                                <th scope="col">Last update</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for user in users %}
-                            <tr>
-                                <td>{{ user.id }}</td>
-                                <td>{{ user.name }}</td>
-                                <td>{{ user.email }}</td>
-                                <td>{{ user.is_admin }}</td>
-                                <td>{{ user.telephone }}</td>
-                                <td>{{ user.created_at }}</td>
-                                <td>{{ user.updated_at }}</td>
-                            </tr>
-                            {%endfor%}
-                        </tbody>
-                    </table>
+                    <h2>Customers</h2>
+                    <div class="table-wrapper">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Admin</th>
+                                    <th>Telephone</th>
+                                    <th>Signup Date</th>
+                                    <th>Last Update</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
+                                <tr>
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.name }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.is_admin }}</td>
+                                    <td>{{ user.telephone }}</td>
+                                    <td>{{ user.created_at }}</td>
+                                    <td>{{ user.updated_at }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Add Shop Items Page -->
                 <div class="content add_to_shop page">
-                    <h2>Add Shop Items</h2> 
-                    <div>
-                        <a href="{{ url_for('admin.add_to_shop') }}">Add to shop</a>
-                    </div> 
-                    <h2> View Products</h2>
-                    <div>
-                        <a href="{{ url_for('admin.products') }}">View available products</a>
-                    </div> 
+                    <h2>Manage Shop Items</h2> 
+                    <div class="dashboard-cards">
+                        <div class="dashboard-card">
+                            <i class="fas fa-plus-circle"></i>
+                            <h3>Add to Shop</h3>
+                            <a href="{{ url_for('admin.add_to_shop') }}" class="btn">Add New Item</a>
+                        </div>
+                        <div class="dashboard-card">
+                            <i class="fas fa-list"></i>
+                            <h3>View Products</h3>
+                            <a href="{{ url_for('admin.products') }}" class="btn">View All Products</a>
+                        </div>
+                    </div>
                 </div>
-
 
                 <!-- View Orders Page -->
                 <div class="content view_orders page">
+                    <h2>View Orders</h2>
                     <div class="table-wrapper">
-                        <h2>View Orders</h2>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -131,7 +156,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Assuming `orders` is the variable containing the order details -->
                                 {% for order in orders %}
                                 <tr>
                                     <td>{{ order.id }}</td>
@@ -150,16 +174,16 @@
 
                 <!-- Settings Page -->
                 <div class="content settings page">
+                    <h2>Add/Remove Admin</h2>
                     <div class="form-wrapper">
-                        <h2>Add/Remove Admin</h2>
-                        <form style="padding: 30px;" method="POST">
+                        <form method="POST">
                             {{ admin_form.hidden_tag() }}
                             <div class="form-group">
                                 <label>Email Address</label>
-                                {{ admin_form.email }}
+                                {{ admin_form.email(class="form-control") }}
                             </div>
                             <div class="form-group">
-                                {{ admin_form.submit }}
+                                {{ admin_form.submit(class="btn") }}
                             </div>
                         </form>
                     </div>
@@ -172,24 +196,40 @@
         document.addEventListener('DOMContentLoaded', function() {
             const menuLinks = document.querySelectorAll('.side-menu a');
             const pages = document.querySelectorAll('.page');
+            const toggleSidebar = document.querySelector('.toggle-sidebar');
+            const sidebar = document.querySelector('#sidebar');
 
             menuLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const pageClass = this.getAttribute('data-page');
 
-                    // Remove 'active' class from all menu links and hide all pages
                     menuLinks.forEach(l => l.parentElement.classList.remove('active'));
                     pages.forEach(p => p.classList.remove('active'));
 
-                    // Add 'active' class to the clicked link's parent li and show the corresponding page
                     this.parentElement.classList.add('active');
                     document.querySelector('.' + pageClass).classList.add('active');
                 });
             });
 
-            // Activate the first page by default
+            toggleSidebar.addEventListener('click', function() {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('#content').classList.toggle('expanded');
+            });
+
+            // Activate the dashboard page by default
             menuLinks[0].click();
+
+            // Add interactivity to dashboard cards
+            const dashboardCards = document.querySelectorAll('.dashboard-card');
+            dashboardCards.forEach(card => {
+                card.addEventListener('mouseover', function() {
+                    this.style.transform = 'scale(1.05)';
+                });
+                card.addEventListener('mouseout', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
         });
     </script>
 </body>
