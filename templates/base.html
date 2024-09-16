@@ -20,8 +20,10 @@
     {% block styles %}
     {% endblock %}
 </head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <body>
     <!-- Header Section -->
+    {% if request.endpoint != 'auth.profile' %}
     <header>
         <nav class="navbar">
             <div class="navbar-container">
@@ -52,11 +54,11 @@
                         <i class="fas fa-user icon"></i>
                     </a>
                     {% endif %}
-                    
                 </div>
             </div>
         </nav>
     </header>
+    {% endif %}
     <!-- Flush notification bar -->
     <div class="container" style="margin-top: 5%; background-color: rgb(35, 145, 35);">
         {% for message in get_flashed_messages() %}

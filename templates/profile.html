@@ -1,63 +1,403 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>User Profile - Alxcloset</title>
+    <style>
+        :root {
+            --primary-color: #855a5b;
+            --light-primary: #a67a7b;
+            --dark-primary: #64454b;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --secondary-color: #f5f7fa;
+            --light-text: #fff;
+            --border-color: #e0e0e0;
+        }
 
-{% block body %}
-    <div class="main-content" style="display: flex;">
-        <div class="menu" style="width: 20%; text-align: right; margin-top: 5.5%; padding-right: 20px; background-color: #f9f9f9;">
-            <ul style="list-style-type: none; padding: 0;">
-                <li style="margin-bottom: 15px;"><a href="#" data-page="notifications">Notifications</a></li>
-                <li style="margin-bottom: 15px;"><a href="#" data-page="wishlist">Wishlist</a></li>
-                <li style="margin-bottom: 15px;"><a href="#" data-page="favorite-products">Favorite Products</a></li>
-                <li style="margin-bottom: 15px;"><a href="#" data-page="order-history">Order History</a></li>
-                <li style="margin-bottom: 15px;"><a href="#" data-page="password-reset">Password Reset</a></li>
-                <button class="btn shop-now"><a href="{{ url_for('auth.log_out') }}">Logout</a></button>
-            
-            </ul>
-        </div>
-        <div class="content" style="width: 80%; padding-left: 20px;">
-            <div class="notifications page" style="display: none;">
-                <h2>Notifications</h2>
-                <p>You have no notifications.</p>
-            </div>
-            <div class="wishlist page" style="display: none;">
-                <h2>Wishlist</h2>
-                <p>Items in your wishlist will appear here.</p>
-            </div>
-            <div class="favorite-products page" style="display: none;">
-                <h2>Favorite Products</h2>
-                <p>Your favorite products will be listed here.</p>
-            </div>
-            <div class="order-history page" style="display: none;">
-                <h2>Order History</h2>
-                <p>Your order history will be displayed here.</p>
-            </div>
-            <div class="password-reset page" style="display: none;">
-                <h2>Password Reset</h2>
-                <form style="padding: 30px;" method="POST">
-                    {{ form.hidden_tag() }}
-                    {{ form.current_password.label }}
-                    {{ form.current_password }}
-                    {{ form.new_password.label }}
-                    {{ form.new_password }}
-                    {{ form.confirm_new_password.label }}
-                    {{ form.confirm_new_password }}
-                    {{ form.change_password }}
-                </form>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-{% block js %}
-<script>
-    document.querySelectorAll('.menu ul li a').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelectorAll('.content .page').forEach(function(page) {
-                page.style.display = 'none';
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        #sidebar {
+            width: 250px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--dark-primary));
+            color: var(--light-text);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        #sidebar.collapsed {
+            margin-left: -250px;
+        }
+
+        #sidebar .brand {
+            font-size: 24px;
+            font-weight: 700;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            color: var(--light-text);
+            text-decoration: none;
+        }
+
+        #sidebar .brand i {
+            margin-right: 10px;
+        }
+
+        #sidebar .side-menu {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #sidebar .side-menu li {
+            margin-bottom: 5px;
+        }
+
+        #sidebar .side-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+            color: var(--light-text);
+            text-decoration: none;
+        }
+
+        #sidebar .side-menu a:hover,
+        #sidebar .side-menu li.active a {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        #sidebar .side-menu a i {
+            margin-right: 15px;
+            font-size: 20px;
+        }
+
+        #content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        #content.expanded {
+            margin-left: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .toggle-sidebar {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        h1, h2 {
+            color: var(--text-color);
+        }
+
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .dashboard-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .dashboard-card i {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .dashboard-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .dashboard-card p {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-primary);
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .password-reset-form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .password-reset-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .alert {
+            padding: 10px;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="{{ url_for('auth.home') }}" class="brand">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="text">Alxcloset</span>
+        </a>
+        <ul class="side-menu">
+            <li class="active">
+                <a href="#" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-page="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="text">Notifications</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-page="wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="text">Wishlist</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-page="favorite-products">
+                    <i class="fas fa-star"></i>
+                    <span class="text">Favorite Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-page="order-history">
+                    <i class="fas fa-history"></i>
+                    <span class="text">Order History</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" data-page="password-reset">
+                    <i class="fas fa-key"></i>
+                    <span class="text">Password Reset</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('auth.log_out') }}" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- SIDEBAR -->
+
+    <!-- CONTENT -->
+    <main>
+        <section id="content">
+            <nav>
+                <i class="fas fa-bars toggle-sidebar"></i>
+                <h1>Welcome, User: {{ current_user.username }}</h1>
+            </nav>
+            <div class="main-content">
+                <!-- Flash messages -->
+                {% for message in get_flashed_messages() %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+
+                <!-- Dashboard Page -->
+                <div class="content dashboard page active">
+                    <h2>Dashboard Overview</h2>
+                    <div class="dashboard-cards">
+                        <div class="dashboard-card" id="total-orders">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h3>Total Orders</h3>
+                            <p></p>
+                        </div>
+                        <div class="dashboard-card" id="wishlist-items">
+                            <i class="fas fa-heart"></i>
+                            <h3>Wishlist Items</h3>
+                            <p></p>
+                        </div>
+                        <div class="dashboard-card" id="favorite-products">
+                            <i class="fas fa-star"></i>
+                            <h3>Favorite Products</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications Page -->
+                <div class="content notifications page">
+                    <h2>Notifications</h2>
+                    <p>You have no new notifications.</p>
+                </div>
+
+                <!-- Wishlist Page -->
+                <div class="content wishlist page">
+                    <h2>Wishlist</h2>
+                    <p>Your wishlist is empty.</p>
+                </div>
+
+                <!-- Favorite Products Page -->
+                <div class="content favorite-products page">
+                    <h2>Favorite Products</h2>
+                    <p>You haven't added any favorite products yet.</p>
+                </div>
+
+                <!-- Order History Page -->
+                <div class="content order-history page">
+                    <h2>Order History</h2>
+                    <p>You haven't placed any orders yet.</p>
+                </div>
+
+                <!-- Password Reset Page -->
+                <div class="content password-reset page">
+                    <div class="password-reset-form">
+                        <h2>Password Reset</h2>
+                        <form method="POST">
+                            {{ form.hidden_tag() }}
+                            <div class="form-group">
+                                {{ form.current_password.label }}
+                                {{ form.current_password(class="form-control") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.new_password.label }}
+                                {{ form.new_password(class="form-control") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.confirm_new_password.label }}
+                                {{ form.confirm_new_password(class="form-control") }}
+                            </div>
+                            {{ form.change_password(class="btn") }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuLinks = document.querySelectorAll('.side-menu a');
+            const pages = document.querySelectorAll('.page');
+            const toggleSidebar = document.querySelector('.toggle-sidebar');
+            const sidebar = document.querySelector('#sidebar');
+            const content = document.querySelector('#content');
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (!this.classList.contains('logout-btn')) {
+                        e.preventDefault();
+                        const pageClass = this.getAttribute('data-page');
+
+                        menuLinks.forEach(l => l.parentElement.classList.remove('active'));
+                        pages.forEach(p => p.classList.remove('active'));
+
+                        this.parentElement.classList.add('active');
+                        document.querySelector('.' + pageClass).classList.add('active');
+                    }
+                });
             });
-            const pageClass = '.' + e.target.getAttribute('data-page');
-            document.querySelector(pageClass).style.display = 'block';
+
+            toggleSidebar.addEventListener('click', function() {
+                sidebar.classList.toggle('collapsed');
+                content.classList.toggle('expanded');
+            });
+
+            // Add interactivity to dashboard cards
+            const dashboardCards = document.querySelectorAll('.dashboard-card');
+            dashboardCards.forEach(card => {
+                card.addEventListener('mouseover', function() {
+                    this.style.transform = 'scale(1.05)';
+                });
+                card.addEventListener('mouseout', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
         });
-    });
-</script>
-{% endblock %}
+    </script>
+</body>
+</html>
