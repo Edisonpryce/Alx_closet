@@ -16,6 +16,24 @@
             padding: 0.5rem 1rem;
             border-radius: 0.25rem;
         }
+
+        .site-footer {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.site-footer .credits {
+    margin-top: 10px;
+    font-style: italic;
+}
     </style>
     {% block styles %}
     {% endblock %}
@@ -72,10 +90,12 @@
     </main>
    
     <!-- Footer Section -->
-    <footer>
-        <div class="container" >
-            <p>&copy; 2024 ALXCLOSET. All rights reserved.</p>
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2023 ALX Closet. All rights reserved.</p>
+            <p class="credits">A project by Janice Gathoga and Edison Asare</p>
         </div>
+    </footer>
         <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
         <script src="../static/js/script.js"></script>
     </footer>

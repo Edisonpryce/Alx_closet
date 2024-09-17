@@ -1,6 +1,7 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 /* Basic reset and setting up default fonts */
 body,
@@ -146,6 +147,7 @@ h6 {
 }
 
 
+
 .banner-content h1 {
     font-family: 'Playfair Display', serif;
     font-size: 60px;
@@ -162,62 +164,114 @@ h6 {
     margin-left: 20px;
 }
 
+
+
+
+.banner-buttons {
+    position: absolute;
+    bottom: 10%; /* Adjust this value to move buttons up or down */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
 .banner-buttons .btn {
-    padding: 10px 40px;
-    /* Increased padding for a longer button */
-    border: none;
-    border-radius: 20px;
-    /* Fully rounded corners */
+    padding: 12px 40px;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    background-color: #855a5b;
-    /* Maroon color */
-    color: #fff;
-    /* White text */
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    display: inline-block;
-    text-align: center;
-    margin: 0 10px;
-    /* Spacing between buttons */
     text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.banner-buttons .shop-now {
+    background-color: #000;
+    color: #fff;
+}
+
+.banner-buttons .sign-up {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-color: #fff;
 }
 
 .banner-buttons .btn:hover {
-    background-color: #a67a7b;
-    /* Lighter maroon on hover */
     transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.banner-content {
-    position: absolute;
-    top: 71%;
-    left: 90px;
-    /* Adjusted from 90px to 50px for better alignment */
-    transform: translateY(-50%);
+.banner-buttons .shop-now:hover {
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+}
+
+.banner-buttons .sign-up:hover {
+    background-color: #fff;
     color: #000;
 }
 
+.banner-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
 
-.banner-buttons .btn a {
-    text-decoration: none;
-    /* Remove underline */
-    color: white;
-    /* Set text color to white */
+.banner {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.advert-strip {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 5px 0;
+    overflow: hidden;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.advert-content {
+    width: 100%;
+    overflow: hidden;
+}
+
+.advert-scroller {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 60s linear infinite;
 }
 
 
-
-.banner-buttons .btn:active {
-    background-color: #C29B99;
-    /* Even lighter maroon when clicked */
+.advert-item {
+    flex: 0 0 auto;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-.banner-buttons .btn a:hover {
-    color: white;
-    /* Ensure text color remains white on hover */
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 
-/* Style for Login and Sign Up in the navbar */
 .navbar-right a {
     color: #855a5b;
     /* Maroon color */
@@ -241,9 +295,43 @@ h6 {
     /* Keep the text maroon */
 }
 
+.category-section {
+    margin-top: 100px; /* Adjust as needed */
+    background-color: transparent;
+    padding: 0 20px; /* Add some horizontal padding */
+}
 
+.category-section h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 50px; /* Space between title and products */
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block; /* Makes the element only as wide as its content */
+    padding-bottom: 10px; /* Space for underline */
+}
 
-/* Category section */
+.category-section h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Full width of the text */
+    height: 2px; /* Thickness of the underline */
+    background-color: #333; /* Color of the underline */
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px; /* Space between products */
+}
+
+.womens-category {
+    padding-top: 40px; /* Add some extra padding specifically for the women's category */
+}
+
 .womens-category,
 .mens-category,
 .sports-category {
@@ -299,17 +387,806 @@ h6 {
 }
 
 .product h3 {
-    font-size: 20px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 15px 0 10px;
+    padding: 0 15px;
     color: #333;
-    margin: 10px 0;
 }
 
 .product p {
+    font-family: 'Raleway', sans-serif;
     font-size: 14px;
-    color: #777;
-    margin-bottom: 15px;
-    padding: 0 10px;
+    color: #666;
+    padding: 0 15px 15px;
+    line-height: 1.4;
 }
+
+
+/* Currency slider */
+.product .currency-slider {
+    margin: 20px auto;
+    width: 80%;
+    position: relative;
+}
+
+.slider-container {
+    position: relative;
+    height: 20px;
+    background-color: #f0f1f2;
+    border-radius: 10px;
+}
+
+/* Custom slider */
+.slider {
+    --webkit-appearance: none;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    z-index: 1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.slider-thumb {
+    position: absolute;
+    left: 0;
+    top: -12px;
+    width: 40px;
+    height: 40px;
+    background-color: #6fb96f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    transition: left 0.2s ease;
+    z-index: 2;
+}
+
+/* Hide default slider styling */
+.slider::-webkit-slider-thumb {
+    --webkit-appearance: none;
+    appearance: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 0;
+    height: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* 3D effect on the slider thumb */
+.currency-slider .slider-thumb {
+    background: linear-gradient(to top, #64b164, #8dd38d);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.slider-thumb .currency-icon {
+    font-size: 16px;
+    color: #fff;
+}
+
+/* Zoom effect on product hover */
+.product:hover {
+    transform: scale(1.07);
+}
+
+/* Card actions (like buttons) */
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.action-btn {
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn ion-icon {
+    font-size: 20px;
+    color: #333;
+}
+
+.action-btn:hover {
+    background-color: #855a5b;
+    transform: scale(1.1);
+}
+
+.action-btn:hover ion-icon {
+    color: #fff;
+}
+
+/* Show card actions on product hover */
+.product:hover .card-actions {
+    opacity: 1;
+}
+
+/* Banner list */
+.banner-list {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+.banner-card:hover {
+    transform: scale(0.9);
+}
+
+.banner-card {
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    color: #fff;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-card .card-subtitle {
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.banner-card .btn {
+    background-color: #f2e6e7;
+    color: #855a5b;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 50;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.has-bg-image {
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+ul,
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Feature section */
+.feature {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #ffffff;
+    margin-top: 40px;
+}
+
+.feature .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.flex-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.flex-item {
+    flex: 1;
+    max-width: 350px;
+}
+
+.feature-card {
+    text-align: left;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* This ensures all cards are the same height */
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card-image {
+    height: 200px; /* Fixed height for image container */
+    overflow: hidden;
+}
+
+.feature-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will ensure the image covers the area without distortion */
+    object-position: center; /* This centers the image within its container */
+}
+
+.feature-card-content {
+    padding: 20px;
+    flex-grow: 1; /* This allows the content area to expand and fill the card */
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-card .card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    color: #333;
+    margin: 0 0 15px; /* Increased margin for better spacing with more text */
+}
+
+.feature-card .card-text {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 0;
+    flex-grow: 1; /* This allows the text to expand and fill the content area */
+    overflow: auto; /* In case the text is very long, this allows scrolling */
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-title {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+.about-us {
+    background-color: #f8f8f8;
+    padding: 60px 0;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 0 20px;
+}
+
+.about-content h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.learn-more {
+    display: inline-block;
+    background-color: #855a5b;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.learn-more:hover {
+    background-color: #6a4748;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Raleway&display=swap');
+
+/* Basic reset and setting up default fonts */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    /* Main font */
+    scroll-behavior: smooth;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+/* Use a different font for headings and paragraphs */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #fffdfa;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.navbar-right a:hover {
+    text-decoration: underline;
+}
+
+.navbar-right a {
+    list-style-type: none;
+    text-decoration: none;
+    font-size: 14px;
+    /* Adjusted font size for "Login" and "Sign Up" */
+    color: #855a5b;
+    /* Maroon color for "Login" and "Sign Up" */
+}
+
+/* Organize navbar items */
+.navbar-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.navbar-container>img:hover {
+    cursor: pointer;
+}
+
+/* Icon styles with hover effect */
+.icon {
+    font-size: 20px;
+    margin: 0 15px;
+    cursor: pointer;
+    color: #000;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.icon:hover,
+.icon:active {
+    color: #855a5b;
+    transform: scale(1.2);
+}
+
+/* Search box styles */
+.search-box {
+    margin-left: 130px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #855a5b;
+    border-radius: 40px;
+    padding: 5px 15px;
+    transition: transform 0.3s ease;
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    background-color: #fffdfa;
+    color: #000;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.search-box input:focus {
+    color: #855a5b;
+}
+
+.search-box:hover {
+    transform: scale(1.05);
+}
+
+.search-icon {
+    color: #855a5b;
+    margin-left: 10px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #855a5b;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+}
+
+/* Banner section */
+.banner {
+    position: relative;
+    text-align: left;
+    color: #333;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+}
+
+
+
+.banner-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    margin: 0 0 10px;
+    color: #000;
+}
+
+.banner-content p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 0 20px;
+    color: #000;
+    margin-left: 20px;
+}
+
+
+
+
+.banner-buttons {
+    position: absolute;
+    bottom: 10%; /* Adjust this value to move buttons up or down */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.banner-buttons .btn {
+    padding: 12px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.banner-buttons .shop-now {
+    background-color: #000;
+    color: #fff;
+}
+
+.banner-buttons .sign-up {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-color: #fff;
+}
+
+.banner-buttons .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.banner-buttons .shop-now:hover {
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+}
+
+.banner-buttons .sign-up:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.advert-strip {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 5px 0;
+    overflow: hidden;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.advert-content {
+    width: 100%;
+    overflow: hidden;
+}
+
+.advert-scroller {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 60s linear infinite;
+}
+
+
+.advert-item {
+    flex: 0 0 auto;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.navbar-right a {
+    color: #855a5b;
+    /* Maroon color */
+    text-decoration: none;
+    /* Remove default underline */
+    transition: color 0.3s ease;
+    /* Smooth transition */
+}
+
+.navbar-right a:hover {
+    text-decoration: underline;
+    /* Underline on hover */
+    color: #855a5b;
+    /* Keep the text maroon */
+}
+
+.navbar-right .signup-link:hover {
+    text-decoration: underline;
+    /* Underline on hover for Sign Up */
+    color: #855a5b;
+    /* Keep the text maroon */
+}
+
+.category-section {
+    margin-top: 100px; /* Adjust as needed */
+    background-color: transparent;
+    padding: 0 20px; /* Add some horizontal padding */
+}
+
+.category-section h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 50px; /* Space between title and products */
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block; /* Makes the element only as wide as its content */
+    padding-bottom: 10px; /* Space for underline */
+}
+
+.category-section h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Full width of the text */
+    height: 2px; /* Thickness of the underline */
+    background-color: #333; /* Color of the underline */
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px; /* Space between products */
+}
+
+.womens-category {
+    padding-top: 40px; /* Add some extra padding specifically for the women's category */
+}
+
+.womens-category,
+.mens-category,
+.sports-category {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.womens-category h2,
+.mens-category h2,
+.sports-category h2 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+/* Center content and limit width */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Product grid layout */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    justify-items: stretch;
+}
+
+/* Product card styles */
+.product {
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.product h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 15px 0 10px;
+    padding: 0 15px;
+    color: #333;
+}
+
+.product p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #666;
+    padding: 0 15px 15px;
+    line-height: 1.4;
+}
+
 
 /* Currency slider */
 .product .currency-slider {
@@ -527,29 +1404,69 @@ ol {
     min-width: 200px;
 }
 
-.feature-card {
+.feature {
     text-align: center;
-    padding: 30px;
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 60px 20px;
+    background-color: #ffffff;
+    margin-top: 40px;
 }
 
-.feature-card .card-icon {
-    width: 100px;
+.feature .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.flex-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.flex-item {
+    flex: 1;
+    max-width: 350px;
+}
+
+.feature-card {
+    text-align: left;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    overflow: hidden; /* This ensures the image doesn't spill out of the rounded corners */
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card img {
+    width: 100%;
     height: auto;
-    margin: 0 auto 20px;
+    display: block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.feature-card-content {
+    padding: 20px;
 }
 
 .feature-card .card-title {
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 20px;
-    margin: 15px 0;
+    color: #333;
+    margin: 0 0 10px;
 }
 
 .feature-card .card-text {
-    font-size: 16px;
-    color: #777;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 0;
 }
-
 /* Modal styles */
 .modal {
     display: none;
@@ -592,26 +1509,64 @@ ol {
     cursor: pointer;
 }
 
-.modal-buttons {
-    margin-top: 20px;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.modal-btn {
+.animate-title {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+.about-us {
+    background-color: #f8f8f8;
+    padding: 60px 0;
+}
+
+
+.about-content h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+
+.about-content .learn-more {
+    display: inline-block;
+    background-color: #855a5b;
+    color: #fff;
     padding: 10px 20px;
+    text-align: center;
+    border-radius: 0px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
     border: none;
-    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
     cursor: pointer;
-    margin: 5px;
 }
 
-.cancel {
-    background-color: red;
-    color: white;
-}
-
-.add-to-cart {
-    background-color: #249327;
-    color: white;
+.about-content .learn-more:hover {
+    background-color: #6a4748;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 footer {

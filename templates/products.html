@@ -145,7 +145,7 @@
                         <td data-label="Max Price">{{ product.max_price }}</td>
                         <td data-label="Selected Price">{{ product.selected_price }}</td>
                         <td data-label="In Stock">{{ product.in_stock }}</td>
-                        <td data-label="Picture"><img src="{{ product.product_picture }}" alt="{{ product.product_name }}"></td>
+                        <td data-label="Picture"><img src="../static/product_media/{{ product.product_picture }}" alt="{{ product.product_name }}"></td>
                         <td data-label="Actions">
                             <div class="action-icons">
                                 <a href="{{ url_for('admin.update_product', product_id=product.id) }}" title="Update"><i class="fas fa-pen-fancy"></i></a>
