@@ -2,23 +2,52 @@
 
 {% block body %}
     <!-- Banner Section with Slideshow -->
-    <div class="banner">
-        <div class="slide">
-            <img src="../static/images/Banner11.png" alt="ALX Closet Banner">
-        </div>
-        <div class="slide">
-            <img src="../static/images/banner1.png" alt="ALX Closet Banner 1">
-        </div>
-        <div class="banner-content">
-            <div class="banner-buttons">
-                {% if current_user.is_authenticated %}
-                {% else %}
+   <!-- Banner Section with Slideshow -->
+<div class="banner">
+    <div class="slide">
+        <img src="../static/images/banner1.png" alt="ALX Closet Banner">
+    </div>
+    <div class="slide">
+        <img src="../static/images/banner2.png" alt="ALX Closet Banner 1">
+    </div>
+    <div class="slide">
+        <img src="../static/images/banner3.png" alt="ALX Closet Banner 1">
+    </div>
+    <div class="banner-content">
+        <div class="banner-buttons">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('auth.profile', id=current_user.id) }}" class="btn profile">My Profile</a>
+                <a href="{{ url_for('customer.shop') }}" class="btn shop-now">Shop Now</a>
+            {% else %}
                 <a href="{{ url_for('customer.shop') }}" class="btn shop-now">Shop Now</a>
                 <a href="{{ url_for('auth.signup') }}" class="btn sign-up">Join Us</a>
-                {% endif %}
-            </div>
+            {% endif %}
         </div>
     </div>
+    
+</div><!-- Banner Section with Slideshow -->
+<div class="banner">
+    <div class="slide">
+        <img src="../static/images/banner1.png" alt="ALX Closet Banner">
+    </div>
+    <div class="slide">
+        <img src="../static/images/banner2.png" alt="ALX Closet Banner 1">
+    </div>
+    <div class="slide">
+        <img src="../static/images/banner3.png" alt="ALX Closet Banner 1">
+    </div>
+    <div class="banner-content">
+        <div class="banner-buttons">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('auth.profile', id=current_user.id) }}" class="btn profile">My Profile</a>
+                <a href="{{ url_for('customer.shop') }}" class="btn shop-now">Shop Now</a>
+            {% else %}
+                <a href="{{ url_for('customer.shop') }}" class="btn shop-now">Shop Now</a>
+                <a href="{{ url_for('auth.signup') }}" class="btn sign-up">Join Us</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
 
     <!-- Advert Strip -->
     <div class="advert-strip">
@@ -413,7 +442,14 @@
     // Repopulate adverts every minute to keep content fresh
     setInterval(populateAdverts, 60000);
 
-    
+    document.querySelectorAll('.slider').forEach(function (slider, index) {
+    const priceDisplay = document.querySelector(`#price-display-${index + 1}`);
+
+    slider.addEventListener('input', function () {
+        priceDisplay.textContent = `$${this.value}`;
+    });
+});
+
 
     </script>
 {% endblock %}

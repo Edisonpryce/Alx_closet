@@ -1,119 +1,122 @@
 {% extends "form.html" %}
 
-{% block title %} ALXCLOSET - signup {% endblock %}
-
 {% block styles %}
 <style>
-   body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f2f2; /* Light maroon background */
-}
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f2f2; /* Light maroon background */
+    }
 
-.form-container {
-    position: relative;
-    background-color: white;
-    padding: 30px; /* Reduced padding for a slightly smaller form */
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px; /* Reduced max-width for a smaller form */
-    width: 100%;
-    text-align: center;
-}
+    .form-container {
+        position: relative;
+        background-color: white;
+        padding: 40px; /* Increased padding for larger size */
+        border-radius: 15px; /* Rounded corners */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px; /* Increased max-width for a larger form */
+        width: 100%;
+        text-align: center;
+    }
 
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 30px;
-    font-size: 30px;
-    color: #855a5b;
-    cursor: pointer;
-}
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 30px;
+        font-size: 30px;
+        color: #855a5b;
+        cursor: pointer;
+    }
 
-.form-container h1 {
-    color: #855a5b; /* Updated color */
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 20px;
-}
+    .form-container h4 {
+        color: #855a5b; /* Updated color */
+        margin-bottom: 20px;
+        font-family: 'Space Grotesk', sans-serif;
+    }
 
-.social-icons {
-    margin-bottom: 20px;
-}
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
 
-.social-icons a {
-    margin: 0 10px;
-    color: #855a5b;
-    font-size: 18px;
-    text-decoration: none;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px; /* Set width */
-    height: 40px; /* Set height */
-    border-radius: 50%; /* Make them circular */
-    border: 1px solid #855a5b; /* Optional: add a border */
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+    input[type="text"], input[type="email"], input[type="password"], input[type="tel"], .form-input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px; /* Rounded corners */
+        font-size: 16px;
+        width: 100%;
+        font-family: 'Space Grotesk', sans-serif; /* Apply Space Grotesk font */
+    }
 
-.social-icons a:hover {
-    color: white;
-    background-color: #6a4747; /* Change background on hover */
-}
+    input[type="submit"] {
+        background-color: #855a5b; /* Updated color */
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 10px; /* Rounded corners */
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: 'Space Grotesk', sans-serif;
+    }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+    input[type="submit"]:hover {
+        background-color: #6a4747; /* Slightly darker shade for hover effect */
+    }
 
-input[type="text"], input[type="email"], input[type="password"], input[type="tel"], .form-input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px; /* Rounded corners */
-    font-size: 16px;
-    width: 100%;
-    font-family: 'Raleway', sans-serif; /* Apply Raleway font */
-}
+    p {
+        margin-top: 10px;
+        font-family: 'Space Grotesk', sans-serif;
+        color: #555;
+    }
 
-input[type="submit"] {
-    background-color: #855a5b; /* Updated color */
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 10px; /* Rounded corners */
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-}
+    p a {
+        color: #855a5b; /* Updated color */
+        text-decoration: none;
+    }
 
-input[type="submit"]:hover {
-    background-color: #6a4747; /* Slightly darker shade for hover effect */
-}
+    p a:hover {
+        text-decoration: underline;
+    }
 
-span {
-    display: block;
-    margin: 10px 0;
-    font-family: 'Raleway', sans-serif;
-    color: #555;
-}
+    .flash-message {
+        font-family: 'Space Grotesk', sans-serif;
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        font-weight: 500;
+        text-align: center;
+    }
 
-p {
-    margin-top: 10px;
-    font-family: 'Raleway', sans-serif;
-    color: #555;
-}
+    .social-icons {
+        margin-bottom: 20px;
+    }
 
-p a {
-    color: #855a5b; /* Updated color */
-    text-decoration: none;
-}
+    .social-icons a {
+        margin: 0 10px;
+        color: #855a5b;
+        font-size: 18px;
+        text-decoration: none;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px; /* Set width */
+        height: 40px; /* Set height */
+        border-radius: 50%; /* Make them circular */
+        border: 1px solid #855a5b; /* Optional: add a border */
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-p a:hover {
-    text-decoration: underline;
-}
+    .social-icons a:hover {
+        color: white;
+        background-color: #6a4747; /* Change background on hover */
+    }
 </style>
 {% endblock %}
 
@@ -121,14 +124,24 @@ p a:hover {
     <div class="form-container">
         <span class="close-btn">&times;</span>
 
-        <span>Create an Account</span>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash-message">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <h4>Create an Account</h4>
         <div class="social-icons">
             <a href="#" class="icon"><i class="fab fa-google"></i></a>
             <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="icon"><i class="fab fa-github"></i></a>
             <a href="#" class="icon"><i class="fab fa-linkedin-in"></i></a>
         </div>
-        <span>or register an account with us</span>
+        <p>or register an account with us</p>
         <form method="POST" action="{{ url_for('auth.signup') }}">
             {{ form.hidden_tag() }}
             {{ form.name(placeholder="Name", class_="form-input") }}

@@ -25,48 +25,64 @@ h5,
 h6 {
     font-family: 'Playfair Display', serif;
 }
-
-/* Navbar styles */
-.navbar {
-    background-color: #fffdfa;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+/* Fixed Navbar Styles */
+.fixed-navbar {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.navbar-right a:hover {
-    text-decoration: underline;
-}
-
-.navbar-right a {
-    list-style-type: none;
-    text-decoration: none;
-    font-size: 14px;
-    /* Adjusted font size for "Login" and "Sign Up" */
-    color: #855a5b;
-    /* Maroon color for "Login" and "Sign Up" */
-}
-
-/* Organize navbar items */
-.navbar-container {
     width: 100%;
-    max-width: 1200px;
+    background-color: #fffdfa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px 0;
+}
+
+.navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-.navbar-container>img:hover {
-    cursor: pointer;
+.navbar-logo img {
+    height: 40px;
+    width: auto;
+}
+
+.navbar-search {
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+.navbar-search input {
+    width: 100%;
+    padding: 8px 15px;
+    border: 1px solid #855a5b;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.navbar-icons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-icons a {
+    color: #855a5b;
+    font-size: 20px;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.navbar-icons a:hover {
+    color: #6a4748;
+}
+
+/* Adjust main content to account for fixed navbar */
+body {
+    padding-top: 60px; /* Adjust this value based on your navbar height */
 }
 
 /* Icon styles with hover effect */
@@ -120,19 +136,7 @@ h6 {
     margin-left: 10px;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 5px;
-}
 
-::-webkit-scrollbar-thumb {
-    background-color: #855a5b;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background-color: #f0f0f0;
-}
 
 /* Banner section */
 .banner {
@@ -274,23 +278,18 @@ h6 {
 
 .navbar-right a {
     color: #855a5b;
-    /* Maroon color */
     text-decoration: none;
-    /* Remove default underline */
     transition: color 0.3s ease;
-    /* Smooth transition */
+
 }
 
 .navbar-right a:hover {
-    text-decoration: underline;
-    /* Underline on hover */
+
     color: #855a5b;
     /* Keep the text maroon */
 }
 
 .navbar-right .signup-link:hover {
-    text-decoration: underline;
-    /* Underline on hover for Sign Up */
     color: #855a5b;
     /* Keep the text maroon */
 }
@@ -999,6 +998,20 @@ h6 {
     color: #000;
 }
 
+.banner-buttons .profile {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-color: #fff;
+}
+
+.banner-buttons .profile:hover {
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+}
+
+
+
 .banner-container {
     position: relative;
     width: 100%;
@@ -1569,14 +1582,66 @@ ol {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-footer {
-    background-color: #f9f9f9;
+
+.site-footer {
+    background-color: #000000;
+    color: #ffffff;
     text-align: center;
     padding: 20px 0;
 }
 
-footer p {
+.site-footer p {
     margin: 0;
     font-size: 14px;
-    color: #777;
+    font-family: 'Raleway', sans-serif;
 }
+
+.site-footer .credits {
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #855a5b;
+    border-radius: 6px;
+}
+
+
+
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #855a5b #f0f0f0;
+}
+
+/* Ensure the navbar spans the full width including the padding */
+.fixed-navbar {
+    width: calc(100% + 20px); /* Adjust this to match the body padding-right */
+    left: -20px; /* Offset the navbar to counteract the body padding */
+}
+
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #855a5b;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #855a5b #f0f0f0;
+}
+

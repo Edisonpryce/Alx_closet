@@ -19,6 +19,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 500px; /* Increased max-width for a larger form */
     width: 100%;
+    
     text-align: center;
 }
 
@@ -34,7 +35,7 @@
 .form-container h4 {
     color: #855a5b; /* Updated color */
     margin-bottom: 20px;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 form {
@@ -49,7 +50,7 @@ input[type="text"], input[type="password"], .form-input {
     border-radius: 10px; /* Rounded corners */
     font-size: 16px;
     width: 100%;
-    font-family: 'Raleway', sans-serif; /* Apply Raleway font */
+    font-family: 'Space Grotesk', sans-serif; /* Apply Space Grotesk font */
 }
 
 input[type="submit"] {
@@ -69,7 +70,7 @@ input[type="submit"]:hover {
 
 p {
     margin-top: 10px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 p a {
@@ -80,12 +81,33 @@ p a {
 p a:hover {
     text-decoration: underline;
 }
+
+.flash-message {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center;
+}
     </style>
 {% endblock %}
 
 {% block content %}
     <div class="form-container">
         <span class="close-btn">&times;</span>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash-message">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
 
         <h4>Hey There Kindly Login</h4>
         <form method="POST" action="{{ url_for('auth.login') }}"> 

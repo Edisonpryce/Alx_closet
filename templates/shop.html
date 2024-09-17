@@ -12,28 +12,40 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="{{ url_for('auth.home')}}">
-                <img src="../static/images/alx-logo.png" alt="Alx-logo">
-            </a>
-            <div class="navbar-left">
-                <div class="search-box">
-                    <input type="text" placeholder="Search">
-                    <i class="fas fa-search search-icon"></i>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a href="{{ url_for('auth.home') }}">
+                    <img src="../static/images/alx-logo.png" alt="Alx-logo">
+                </a>
+                <div class="navbar-left">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search">
+                        <a href="{{ url_for('customer.search')}}">
+                            <i class="fas fa-search search-icon"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-right">
+                    <a href="{{ url_for('customer.display_cart_items') }}">
+                        <i class="fas fa-shopping-cart icon"></i>
+                    </a>
+                    <a href="{{ url_for('customer.favorite_products') }}">
+                        <i class="fas fa-star icon"></i>
+                    </a>
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('auth.profile', id=current_user.id) }}" >
+                        <i class="fas fa-user icon"></i>
+                    </a>
+                    {% else %}
+                    <a href="{{ url_for('auth.login') }}" >
+                        <i class="fas fa-user icon"></i>
+                    </a>
+                    {% endif %}
                 </div>
             </div>
-            <div class="navbar-right">
-                <a href="#">
-                    <i class="fas fa-shopping-cart icon"></i>
-                </a>
-                <a href="#">
-                    <i class="fas fa-star icon"></i>
-                </a>
-              
-            </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
 
 
@@ -397,15 +409,25 @@
         </div>
     </div>
 
-    <footer>
+       <!-- Footer Section -->
+       <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2024 ALXCLOSET. All rights reserved.</p>
+            <p>&copy; 2024 ALX Closet. All rights reserved.</p>
+            <p class="credits">A project by Janice Gathoga and Edison Asare</p>
         </div>
     </footer>
 
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
-    <script src="../static/js/shop.js"></script>
-    <script src="../static/js/script.js"></script>
+    <script>
+    document.querySelectorAll('.slider').forEach(function (slider, index) {
+        const priceDisplay = document.querySelector(`#price-display-${index + 1}`);
+    
+        slider.addEventListener('input', function () {
+            priceDisplay.textContent = `$${this.value}`;
+        });
+    });
+</script>
+   
 </body>
 
 </html>

@@ -17,28 +17,12 @@
             border-radius: 0.25rem;
         }
 
-        .site-footer {
-    background-color: #000000;
-    color: #ffffff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-.site-footer p {
-    margin: 0;
-    font-size: 14px;
-    font-family: 'Raleway', sans-serif;
-}
-
-.site-footer .credits {
-    margin-top: 10px;
-    font-style: italic;
-}
     </style>
     {% block styles %}
     {% endblock %}
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 <body>
     <!-- Header Section -->
     {% if request.endpoint != 'auth.profile' %}
@@ -78,11 +62,7 @@
     </header>
     {% endif %}
     <!-- Flush notification bar -->
-    <div class="container" style="margin-top: 5%; background-color: rgb(35, 145, 35);">
-        {% for message in get_flashed_messages() %}
-        <Strong>{{ message }}</Strong>
-        {% endfor %}
-    </div>
+    
     <!-- Main section-->
     <main>
         {% block body %}
@@ -92,7 +72,7 @@
     <!-- Footer Section -->
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2023 ALX Closet. All rights reserved.</p>
+            <p>&copy; 2024 ALX Closet. All rights reserved.</p>
             <p class="credits">A project by Janice Gathoga and Edison Asare</p>
         </div>
     </footer>

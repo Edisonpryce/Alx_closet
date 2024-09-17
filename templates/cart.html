@@ -1,77 +1,207 @@
 {% extends "base.html" %}
 
 {% block body %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
-        {% if cart %}
+    .cart-container {
+        max-width: 1200px;
+        margin: 80px auto 0;
+        padding: 20px;
+        font-family: 'Space Grotesk', sans-serif;
+    }
 
-        <h1>Shopping Cart</h1>
-        <div class="col-sm-8">
-            <div class="card">
-                <div class="card-body">
+    .cart-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+        text-align: center;
+        color: #000000;
+        text-decoration: underline;
+    }
 
-                    {% for product in cart %}
-                    <div class="row">
-                        <div class="">
-                            <img src="../static/product_media/{{ product.product.product_picture }}" alt="" class="" height="150px" width="150px">
-                        </div>
-                            <div>
-                                <h3>{{ product.product.product_name }}</h3>
-                                <div class="my-3">
-                                    <label for="quantity">Quantity</label>
-                                    <a class="minus-cart btn" pid="{{product.id}}"><i class="fas fa-minus-square fa-lg"></i></a>
-                                    <span id="quantity">{{ product.quantity }}</span>
-                                    <a class="plus-cart btn " pid="{{ product.id }}"><i class="fas fa-plus-square fa-lg"></i></a>
-                                </div>
+    .cart-items {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
 
-                                <div class="d-flex justify-content-between">
-                                    <p class="mb-0"><span><strong>$ {{ product.product.selected_price }}</strong></span></p>
-                                    <a href="" class="remove-cart btn btn-sm btn-secondary mr-3 " pid="{{product.id}}">Remove</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
+    .cart-item {
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
 
-                    {% endfor %}
-                </div>
+    .cart-item-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        margin-bottom: 15px;
+    }
+
+    .cart-item-name {
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .quantity-control {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .quantity-btn {
+        background-color: #6a4748;
+        color: white;
+        border: none;
+        width: 30px;
+        height: 30px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .quantity-btn:hover {
+        background-color: #523637;
+        transform: scale(1.05);
+    }
+
+    .quantity-control span {
+        margin: 0 10px;
+        font-weight: 500;
+    }
+
+    .cart-item-price {
+        font-weight: 600;
+        color: #6a4748;
+        margin-bottom: 10px;
+    }
+
+    .remove-btn {
+        background-color: #6a4748;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        cursor: pointer;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .remove-btn:hover {
+        background-color: #523637;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .cart-summary {
+        background-color: #f9f9f9;
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .cart-summary h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #6a4748;
+    }
+
+    .cart-summary ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .cart-summary li {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-size: 1rem;
+    }
+
+    .cart-summary .total {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+    }
+
+    .place-order-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #6a4748;
+        color: white;
+        border: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .place-order-btn:hover {
+        background-color: #523637;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .empty-cart {
+        text-align: center;
+        color: #6a4748;
+        font-size: 1.5rem;
+        margin-top: 50px;
+    }
+</style>
+
+<div class="cart-container">
+    {% if cart %}
+    <h1 class="cart-title">Your Cart</h1>
+    <div class="cart-items">
+        {% for product in cart %}
+        <div class="cart-item">
+            <img src="../static/product_media/{{ product.product.product_picture }}" alt="" class="cart-item-image">
+            <h3 class="cart-item-name">{{ product.product.product_name }}</h3>
+            <div class="quantity-control">
+                <button class="quantity-btn minus-cart" data-pid="{{product.id}}">-</button>
+                <span>{{ product.quantity }}</span>
+                <button class="quantity-btn plus-cart" data-pid="{{ product.id }}">+</button>
             </div>
+            <p class="cart-item-price">$ {{ product.product.selected_price }}</p>
+            <button class="remove-btn" data-pid="{{product.id}}">Remove</button>
         </div>
-
-        <div class="col-sm-4">
-            <div class="card">
-                <div class="card-body">
-                    <h3>Everything here ...</h3>
-                    <hr color="black">
-                    <ul class="list-group">
-                        {% for product in cart %}
-
-                        <li class=""><strong>{{ product.product.product_name }}</strong><span id="amount">{{ product.product.selected_price }} X <span id="quantity{{product.id}}">{{ product.quantity }}</span></span></li>
-
-                        {% endfor %}
-
-
-                        <li class="l">Amount <span>$ <span id="amount_tt">{{ amount }}</span></span></li>
-
-                        <li class="">
-                            <div style="margin-top: 15px;">
-                                <strong>Total</strong><small>(Excluding Shipping)</small>
-                            </div>
-                            <span><strong>USD$ </strong><span id="totalcost"><strong>{{ total }}</strong></span></span>
+        {% endfor %}
+    </div>
     
-                        </li>
+    <div class="cart-summary">
+        <h3>Order Summary</h3>
+        <ul>
+            {% for product in cart %}
+            <li>
+                <span>{{ product.product.product_name }}</span>
+                <span>$ {{ product.product.selected_price }} x {{ product.quantity }}</span>
+            </li>
+            {% endfor %}
+            <li class="total">
+                <span>Total</span>
+                <span>$ {{ total }}</span>
+            </li>
+        </ul>
+        <button class="place-order-btn">Place Order</button>
+    </div>
+    {% else %}
+    <h1 class="empty-cart">Your cart is empty</h1>
+    {% endif %}
+</div>
 
-                    </ul>
 
-                    <div class="d-grid"><a href="" class="btn btn-primary">Place Order</a></div>
-
-                </div>
-            </div>
-        </div>
-
-        {% else %}
-
-        <h1 class="text-center mb-5" style="color: red;">Your Cart is Empty</h1>
-
-        {% endif %}
 
 {% endblock %}
