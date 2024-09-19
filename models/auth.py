@@ -3,7 +3,7 @@ and all the logic authentication is handled here
 """
 from flask import render_template, redirect, url_for, flash, current_app, Blueprint, request
 from .forms import SignUpForm, LoginForm, PasswordChangeForm 
-from .tables import User, Product
+from .tables import User, Product, Cart
 from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
@@ -13,6 +13,7 @@ auth = Blueprint('auth', __name__)
 def home():
     session = current_app.config['SESSION']
     products = session.query(Product).all()
+    carts = session.query(Cart).all()
 
     if products:
         items = []
@@ -28,8 +29,8 @@ def home():
         p8 = items[7]
 
         print(f"p1: {p1.product_name} p2: {p2.product_name} p3:{p3.product_name} p4:{p4.product_name} p5:{p5.product_name} p6:{p6.product_name} p7:{p7.product_name} p8:{p8.product_name}")
-        return render_template('/home.html', p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, p6=p6, p7=p7, p8=p8)
-    return render_template('home.html')
+        return render_template('/home.html', p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, p6=p6, p7=p7, p8=p8, cart=carts)
+    return render_template('home.html', cart=carts)
   
 
 @auth.route('/login', methods=['GET', 'POST'])

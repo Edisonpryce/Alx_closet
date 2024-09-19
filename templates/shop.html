@@ -28,7 +28,11 @@
                 </div>
                 <div class="navbar-right">
                     <a href="{{ url_for('customer.display_cart_items') }}">
+                        {% if cart %}
+                        <i class="fa fa-cart-plus" aria-hidden="true" style="color: red; font-size: 20px; margin-right: 5px;"></i>
+                        {% else %}
                         <i class="fas fa-shopping-cart icon"></i>
+                        {% endif %}
                     </a>
                     <a href="{{ url_for('customer.favorite_products') }}">
                         <i class="fas fa-star icon"></i>
@@ -58,7 +62,7 @@
             <!-- Hoodies -->
             <!-- Product: The Smiley Hoodie -->
             <div class="product"> 
-                <a href="#">
+                <a href="{{ url_for('customer.product_to_buy', product_id=p1.id) }}">
                     <img src="../static/images/Smiley-Hoddie-Yellow.png" alt="Smiley Hoodie">
                 </a>
                 <h3>The Smiley Hoodie</h3>
@@ -68,11 +72,11 @@
                         <div class="slider-thumb">
                             <span class="currency-icon">$</span>
                         </div>
-                        <input type="range" min="5" max="1000" value="5" class="slider" id="price-slider-1">
+                        <input type="range" min="{{ p1.min_price }}" max="{{ p1.max_price }}" value="{{ p1.selected_price }}" class="slider" id="price-slider-1">
                     </div>
                     <div class="price-display">
                         <small>Your selected price:</small>
-                        <span id="price-display">$5</span>
+                        <span id="price-display">${{ p1.min_price }}</span>
                     </div>
                 </div>
                 <div class="card-actions">
@@ -87,7 +91,7 @@
 
             <!-- Product: Crop Hoodie -->
             <div class="product">
-                <a href="#">
+                <a href="{{ url_for('customer.product_to_buy', product_id=p9.id) }}">
                     <img src="../static/images/Crop-Hoddie-Blue.png" alt="Crop Hoodie">
                 </a>
                 <h3>Crop Hoodie</h3>
@@ -116,7 +120,7 @@
 
             <!-- Product: Splash Hoodie -->
             <div class="product">
-                <a href="#">
+                <a href="{{ url_for('customer.product_to_buy', product_id=p10.id) }}">
                     <img src="../static/images/Splash-hoddie-White.png" alt="Splash Hoodie">
                 </a>
                 <h3>Splash Hoodie</h3>
@@ -146,7 +150,7 @@
             <!-- Sweaters -->
             <!-- Product: Puff-Up Jacket -->
             <div class="product">
-                <a href="#">
+                <a href="{{ url_for('customer.product_to_buy', product_id=p2.id) }}">
                     <img src="../static/images/Puffer-Pink.png" alt="Puff-Up Jacket">
                 </a>
                 <h3>Puff-Up Jacket</h3>
@@ -175,7 +179,7 @@
 
             <!-- Product: Comfy Jacket -->
             <div class="product">
-                <a href="#">
+                <a href="{{ url_for('customer.product_to_buy', product_id=p11.id) }}">
                     <img src="../static/images/Comfy-Jacket-Orange.png" alt="Comfy Jacket">
                 </a>
                 <h3>Comfy Jacket</h3>
@@ -204,7 +208,7 @@
 
             <!-- Product: Sweater Guy -->
             <div class="product">
-                <a href="#">
+                <a href="{{ url_for('customer.product_to_buy', product_id=p12.id) }}">
                     <img src="../static/images/Sweater-Guy-Orange.png" alt="Sweater Guy">
                 </a>
                 <h3>Sweater Guy</h3>
@@ -234,7 +238,7 @@
             <!-- Tees -->
             <!-- Product: Love Tech-Tee -->
             <div class="product">
-                <a href="#">
+                <a href="{{ url_for('customer.product_to_buy', product_id=p3.id) }}">
                     <img src="../static/images/Tech-Tshirt-Green.png" alt="Love Tech-Tee">
                 </a>
                 <h3>Love Tech-Tee</h3>
@@ -263,7 +267,7 @@
 
             <!-- Product: Look-Good Polo -->
             <div class="product">
-                <a href="#">
+                <a href="{{ url_for('customer.product_to_buy', product_id=p4.id) }}">
                     <img src="../static/images/Polo-Purple-Woman.png" alt="Look-Good Polo">
                 </a>
                 <h3>Look-Good Polo</h3>
@@ -292,7 +296,7 @@
 
             <!-- Product: Found Tee -->
             <div class="product">
-                <a href="#">
+                <a href="{{ url_for('customer.product_to_buy', product_id=p13.id) }}">
                     <img src="../static/images/Found-Tee-Orange.png" alt="Found Tee">
                 </a>
                 <h3>Found Tee</h3>
@@ -321,7 +325,7 @@
 
             <!-- Product: Sleeveless Top -->
             <div class="product">
-                <a href="#">
+                <a href="{{ url_for('customer.product_to_buy', product_id=p6.id) }}">
                     <img src="../static/images/Sleeveless-Black.png" alt="Sleeveless Top">
                 </a>
                 <h3>Sleeveless Top</h3>
@@ -350,7 +354,7 @@
 
             <!-- Product: Long-Sleeved Top -->
             <div class="product">
-                <a href="#">
+                <a href="{{ url_for('customer.product_to_buy', product_id=p14.id) }}">
                     <img src="../static/images/Long-sleeved-Red.png" alt="Long-Sleeved Top">
                 </a>
                 <h3>Long-Sleeved Top</h3>
@@ -380,7 +384,7 @@
             <!-- Accessories -->
             <!-- Product: Sports Bottle -->
             <div class="product">
-                <a href="#">
+                <a href="{{ url_for('customer.product_to_buy', product_id=p15.id) }}">
                     <img src="../static/images/Bottle-green.png" alt="Sports Bottle">
                 </a>
                 <h3>Sports Bottle</h3>

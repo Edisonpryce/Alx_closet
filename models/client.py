@@ -24,14 +24,37 @@ def search():
 
 @customer.route('/shop.html', methods=['GET', 'POST'], strict_slashes=False)
 def shop():
-    return render_template('/shop.html')
+    session = current_app.config['SESSION']
+    products = session.query(Product).all()
+    carts = session.query(Cart).all()
+    items = []
+    for product in products:
+        items.append(product)
+    
+    p1 = items[0]
+    p2 = items[1]
+    p3 = items[2]
+    p4 = items[3]
+    p5 = items[4]
+    p6 = items[5]
+    p7 = items[6]
+    p8 = items[7]
+    p9 = items[8]
+    p10 = items[9]
+    p11 = items[10]
+    p12 = items[11]
+    p13 = items[12]
+    p14 = items[13]
+    p15 = items[14]
+    return render_template('/shop.html', p1=p1, p2=p2, p3=p3, p4=p4, p5=p5, p6=p6, p7=p7, p8=p8, p9=p9, p10=p10, p11=p11, p12=p12, p13=p13, p14=p14, p15=p15, cart=carts)
 
 @customer.route('/product_to_buy/<int:product_id>', methods=['GET', 'POST'], strict_slashes=False)
 def product_to_buy(product_id):
     session = current_app.config['SESSION']
+    carts = session.query(Cart).all()
     product = session.query(Product).filter_by(id=product_id).first()
 
-    return render_template('/product_to_buy.html', product=product) 
+    return render_template('/product_to_buy.html', product=product, cart=carts) 
 
 
 @customer.route('/favorite_products', methods=['GET', 'POST'], strict_slashes=False)
@@ -85,12 +108,12 @@ def display_cart_items():
     return render_template('cart.html', cart=cart, amount=amount, total=amount+0)
 
 
-@customer.route('/pluscart')
+@customer.route('/pluscart/<int:cart_id>')
 @login_required
-def plus_cart():
+def plus_cart(cart_id):
     session = current_app.config['SESSION']
     if request.method == 'GET':
-        cart_id = request.args.get('cart_id')
+        
         cart_product = session.query(Cart).get(cart_id)
         cart_product.quantity = cart_product.quantity + 1
         session.commit()
@@ -100,23 +123,17 @@ def plus_cart():
         amount = 0
 
         for product in cart:
-            amount += product.product.current_price * product.quantity
+            amount += product.product.selected_price * product.quantity
 
-        data = {
-            'quantity': cart_product.quantity,
-            'amount': amount,
-            'total': amount + 0
-        }
-
-        return jsonify(data)
+        return redirect(request.referrer)
 
 
-@customer.route('/minuscart')
+@customer.route('/minuscart/<int:cart_id>')
 @login_required
-def minus_cart():
+def minus_cart(cart_id):
     session = current_app.config['SESSION']
     if request.method == 'GET':
-        cart_id = request.args.get('cart_id')
+    
         cart_product = session.query(Cart).get(cart_id)
         cart_product.quantity = cart_product.quantity - 1
         session.commit()
@@ -126,38 +143,25 @@ def minus_cart():
         amount = 0
 
         for item in cart:
-            amount += item.product.current_price * item.quantity
+            amount += item.product.selected_price * item.quantity
 
-        data = {
-            'quantity': cart_product.quantity,
-            'amount': amount,
-            'total': amount + 0
-        }
-
-        return jsonify(data)
+        return redirect(request.referrer)
 
 
-@customer.route('removecart')
+@customer.route('removecart/<int:cart_id>')
 @login_required
-def remove_cart():
+def remove_cart(cart_id):
     session = current_app.config['SESSION']
     if request.method == 'GET':
-        cart_id = request.args.get('cart_id')
+        #cart_id = request.args.get('cart_id')
         cart_product = session.query(Cart).get(cart_id)
         session.delete(cart_product)
         session.commit()
 
         cart = session.query(Cart).filter_by(customer_link=current_user.id).all()
-
         amount = 0
 
         for product in cart:
-            amount += product.product.current_price * product.quantity
+            amount += product.product.selected_price * product.quantity
 
-        data = {
-            'quantity': cart_product.quantity,
-            'amount': amount,
-            'total': amount + 0
-        }
-
-        return jsonify(data)
+        return redirect(request.referrer)

@@ -27,7 +27,11 @@
             </div>
             <div class="navbar-right">
                 <a href="{{ url_for('customer.display_cart_items') }}">
+                    {% if cart %}
+                    <i class="fa fa-cart-plus" aria-hidden="true" style="color: red; font-size: 20px; margin-right: 5px;"></i>
+                    {% else %}
                     <i class="fas fa-shopping-cart icon"></i>
+                    {% endif %}
                 </a>
                 <a href="#">
                     <i class="fas fa-star icon"></i>
@@ -91,12 +95,12 @@
             </div>
             <div class="product-quantity">
                 <label for="quantity">Quantity</label>
-                <input type="number" id="quantity" name="quantity" value="1" min="1">
+                <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{ product.in_stock }}">
             </div>
 
           
             <button type="submit" class="btn add-to-cart-btn">
-                <a href="{{ url_for('customer.add_to_cart', product_id=product.id) }}">
+                <a href="{{ url_for('customer.add_to_cart', product_id=product.id) }}" style="color: white; text-decoration: none;">
                     <i class="fas fa-cart-plus"></i> Add to Cart
                 </a>
             </button>

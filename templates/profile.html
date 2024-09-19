@@ -318,7 +318,9 @@
                 <!-- Wishlist Page -->
                 <div class="content wishlist page">
                     <h2>Wishlist</h2>
-                    <p>Your wishlist is empty.</p>
+                    <a href="{{ url_for('customer.display_cart_items') }}" style="background-color: #855a5b; color: white;">
+                        Click here to proceed
+                    </a>
                 </div>
 
                 <!-- Favorite Products Page -->
@@ -330,7 +332,7 @@
                 <!-- Order History Page -->
                 <div class="content order-history page">
                     <h2>Order History</h2>
-                    <p>You haven't placed any orders yet.</p>
+                    <p>Your order history will be displayed here</p>
                 </div>
 
                 <!-- Password Reset Page -->

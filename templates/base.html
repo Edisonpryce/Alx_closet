@@ -15,6 +15,7 @@
             margin-top: 65px; /* Adjusts space between navbar and flash message */
             padding: 0.5rem 1rem;
             border-radius: 0.25rem;
+            text-align: center;
         }
 
     </style>
@@ -42,7 +43,11 @@
                 </div>
                 <div class="navbar-right">
                     <a href="{{ url_for('customer.display_cart_items') }}">
+                        {% if cart %}
+                        <i class="fa fa-cart-plus" aria-hidden="true" style="color: red; font-size: 20px; margin-right: 5px;"></i>
+                        {% else %}
                         <i class="fas fa-shopping-cart icon"></i>
+                        {% endif %}
                     </a>
                     <a href="{{ url_for('customer.favorite_products') }}">
                         <i class="fas fa-star icon"></i>
